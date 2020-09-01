@@ -7,4 +7,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ArasakaTheme" parent="Theme.MaterialComponents.Light.NoActionBar" >
+        <item name="colorPrimaryDark">@color/colorDarkBackground</item>
+        <item name="colorPrimary">@color/colorRed</item>
+        <item name="colorAccent">@color/colorSkyBlue</item>
+    </style>
+
+    <style name="ArasakaTabTheme" parent="ArasakaTheme" >
+        <item name="colorPrimary">@color/colorArasakaBackground</item>
+        <item name="colorAccent">@color/colorArasakaRed</item>
+    </style>
+
+
 </resources>
