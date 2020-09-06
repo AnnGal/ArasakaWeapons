@@ -20,8 +20,10 @@
             android:layout_height="110dp"
             android:layout_width="120dp"
             android:contentDescription="image"
+            android:layout_margin="8dp"
+            android:src="@drawable/arasaka_logo"
             android:layout_gravity="center"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerInside"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,27 +34,68 @@
             <TextView
                 android:id="@+id/product_name"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:text="title"
+                android:textSize="18sp"
+                android:text="card title"
+                android:textColor="@color/colorArasakaRed"
+                android:textStyle="bold"
+                android:textAllCaps="true"
                 android:layout_width="match_parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/product_stats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/colorAccent"
                 android:text="test" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/product_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test" />
+                android:layout_weight="1"
+                android:text="description full of worlds and phrases can be longdescription full of worlds and phrases can be long" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/product_cost"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="test" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="4dp"
+                    android:gravity="center_vertical"
+                    android:text="7500"/>
+
+                <TextView
+                    android:id="@+id/currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="4dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/currency_2077"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:scaleType="center"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="2dp"
+                    android:background="@drawable/baseline_shopping_cart_black_18"
+                    />
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
