@@ -32,6 +32,7 @@
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:textColor="@android:color/white"
+            android:visibility="gone"
             android:textSize="10sp" />
     </LinearLayout>
 

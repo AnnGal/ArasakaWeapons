@@ -1,6 +1,9 @@
 package art.manguste.android.ArasakaWeapons;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,9 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.snackbar.Snackbar;
 
 import art.manguste.android.ArasakaWeapons.data.CatalogType;
 
@@ -32,6 +37,7 @@ public class WeaponListFragment extends Fragment
     private String mParam2;
 
     private Toast mToast;
+    private ViewGroup mViewGroup;
 
     public WeaponListFragment() {
         // Required empty public constructor
@@ -67,8 +73,11 @@ public class WeaponListFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_list, container, false);
+
+        mViewGroup = container;
         // add adapter
         CardAdapter adapter = new CardAdapter(CatalogType.WEAPON, this);
         recyclerView.setAdapter(adapter);
@@ -88,12 +97,34 @@ public class WeaponListFragment extends Fragment
 
     @Override
     public void onViewClick(View v, int position, MaterialCardView item) {
-        if (v.getId() == R.id.ib_add_position_in_cart){
-            // Do your stuff here
-            item.findViewById(R.id.ib_add_position_in_cart).setVisibility(View.GONE);
-            item.findViewById(R.id.tv_move_to_cart_from_card).setVisibility(View.VISIBLE);
-            /*Intent intent = new Intent(getContext(), CartActivity.class);
-            startActivity(intent);*/
+        if (v.getId() == R.id.ib_add_position_in_cart || v.getId() == R.id.ll_add_position_in_cart){
+
+            // Change visibility
+            //item.findViewById(R.id.ib_add_position_in_cart).setVisibility(View.GONE);
+            //item.findViewById(R.id.ll_add_position_in_cart).setVisibility(View.GONE);
+            //item.findViewById(R.id.tv_move_to_cart_from_card).setVisibility(View.VISIBLE);
+
+            // Snackbar interaction
+            String snackMessage = "\"" + ((TextView) item.findViewById(R.id.product_name)).getText() + "\" added to your cart";
+            Snackbar snackbar = Snackbar
+                    .make(mViewGroup, snackMessage, Snackbar.LENGTH_LONG)
+                    .setAction(getString(R.string.go_to_cart), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(getContext(), CartActivity.class));
+                        }
+                    });
+
+            //change snackbar colors
+            snackbar.setActionTextColor(getResources().getColor(R.color.colorArasakaBackground));
+            snackbar.setBackgroundTint(getResources().getColor(R.color.colorDarkBackground));
+
+            TextView tvSnackbar = ((TextView) snackbar.getView().findViewById(R.id.snackbar_text));
+            tvSnackbar.setTextColor(getResources().getColor(R.color.colorArasakaRed));
+            tvSnackbar.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+
+            snackbar.show();
+
         } else if (v.getId() == R.id.tv_move_to_cart_from_card){
             // Do your stuff here
             Intent intent = new Intent(getContext(), CartActivity.class);

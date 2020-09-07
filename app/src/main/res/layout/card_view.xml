@@ -86,16 +86,23 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <ImageButton
-                    android:id="@+id/ib_add_position_in_cart"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:scaleType="center"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginBottom="4dp"
-                    android:visibility="visible"
-                    android:background="@drawable/ic_add_cart_24"
-                    />
+                <LinearLayout
+                    android:id="@+id/ll_add_position_in_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/ib_add_position_in_cart"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:scaleType="center"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginBottom="4dp"
+                        android:visibility="visible"
+                        android:background="@drawable/ic_add_cart_24"
+                        />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv_move_to_cart_from_card"

@@ -8,9 +8,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/ArasakaTheme">
-        <activity android:name=".CartActivity"></activity>
-        <activity android:name=".CardDetailActivity" />
+        android:theme="@style/ArasakaMainTheme">
+        <activity android:name=".CartActivity"
+            android:theme="@style/ArasakaTheme"/>
+        <activity android:name=".CardDetailActivity"
+            android:theme="@style/ArasakaTheme"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -88,8 +89,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
             item = itemView;
 
             ImageButton addCartButton = itemView.findViewById(R.id.ib_add_position_in_cart);
+            LinearLayout addCartLinearLayout =  itemView.findViewById(R.id.ll_add_position_in_cart);
             TextView goCartButton = itemView.findViewById(R.id.tv_move_to_cart_from_card);
 
+            // on whole card click
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -98,6 +101,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                 }
             });
 
+            // on cart icon click
             addCartButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -105,7 +109,16 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                         mOnClickListener.onViewClick(v, getAdapterPosition(), item);
                 }
             });
+            // on the linear layout which contains cart icon click
+            addCartLinearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(mOnClickListener != null)
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item);
+                }
+            });
 
+            // on go to tv click
             goCartButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
