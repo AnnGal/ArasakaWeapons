@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.material.card.MaterialCardView;
+
 import art.manguste.android.ArasakaWeapons.data.CatalogType;
 
 /**
@@ -85,8 +87,14 @@ public class WeaponListFragment extends Fragment
     }
 
     @Override
-    public void onViewClick(View v, int position) {
-        if(v.getId() == R.id.ib_add_position_from_card){
+    public void onViewClick(View v, int position, MaterialCardView item) {
+        if (v.getId() == R.id.ib_add_position_in_cart){
+            // Do your stuff here
+            item.findViewById(R.id.ib_add_position_in_cart).setVisibility(View.GONE);
+            item.findViewById(R.id.tv_move_to_cart_from_card).setVisibility(View.VISIBLE);
+            /*Intent intent = new Intent(getContext(), CartActivity.class);
+            startActivity(intent);*/
+        } else if (v.getId() == R.id.tv_move_to_cart_from_card){
             // Do your stuff here
             Intent intent = new Intent(getContext(), CartActivity.class);
             startActivity(intent);

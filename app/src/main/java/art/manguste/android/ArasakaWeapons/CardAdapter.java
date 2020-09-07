@@ -36,7 +36,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
     interface ListItemClickListener{
         void onListItemClick(int position);
-        void onViewClick(View v, int position);
+        void onViewClick(View v, int position, MaterialCardView item);
     }
 
     @NonNull
@@ -86,7 +86,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         public CardViewHolder(@NonNull MaterialCardView itemView) {
             super(itemView);
             item = itemView;
-            ImageButton addCartButton = itemView.findViewById(R.id.ib_add_position_from_card);
+
+            ImageButton addCartButton = itemView.findViewById(R.id.ib_add_position_in_cart);
+            TextView goCartButton = itemView.findViewById(R.id.tv_move_to_cart_from_card);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -100,7 +102,15 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                 @Override
                 public void onClick(View v) {
                     if(mOnClickListener != null)
-                        mOnClickListener.onViewClick(v, getAdapterPosition());
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item);
+                }
+            });
+
+            goCartButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(mOnClickListener != null)
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item);
                 }
             });
         }
