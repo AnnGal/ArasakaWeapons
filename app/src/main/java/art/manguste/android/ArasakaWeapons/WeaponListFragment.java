@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import art.manguste.android.ArasakaWeapons.data.CatalogType;
 
@@ -18,7 +19,8 @@ import art.manguste.android.ArasakaWeapons.data.CatalogType;
  * Use the {@link WeaponListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WeaponListFragment extends Fragment {
+public class WeaponListFragment extends Fragment
+        implements CardAdapter.ListItemClickListener {
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -26,6 +28,8 @@ public class WeaponListFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private Toast mToast;
 
     public WeaponListFragment() {
         // Required empty public constructor
@@ -64,23 +68,29 @@ public class WeaponListFragment extends Fragment {
         // Inflate the layout for this fragment
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_list, container, false);
         // add adapter
-        StoreCardAdapter adapter = new StoreCardAdapter(CatalogType.WEAPON);
+        CardAdapter adapter = new CardAdapter(CatalogType.WEAPON, this);
         recyclerView.setAdapter(adapter);
         // connect data and view
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerView.setLayoutManager(layoutManager);
 
-        //
-/*        adapter.setListener(new CaptionedImageAdapter.Listener() {
-            @Override
-            public void onClick(int position) {
-                //Intent intent = new Intent(getActivity(), DetailActivity.class);
-                Intent intent = new Intent(getActivity(), DetailActivity.class);
-                intent.putExtra(DetailActivity.EXTRA_ID, position);
-                getActivity().startActivity(intent);
-            }
-        });*/
-
         return recyclerView;
     }
+
+    @Override
+    public void onListItemClick(int position) {
+        Intent intent = new Intent(getContext(), CardDetailActivity.class);
+        intent.putExtra(Intent.EXTRA_TEXT, CatalogType.WEAPON+"_#"+String.valueOf(position));
+        startActivity(intent);
+    }
+
+    @Override
+    public void onViewClick(View v, int position) {
+        if(v.getId() == R.id.ib_add_position_from_card){
+            // Do your stuff here
+            Intent intent = new Intent(getContext(), CartActivity.class);
+            startActivity(intent);
+        }
+    }
+
 }

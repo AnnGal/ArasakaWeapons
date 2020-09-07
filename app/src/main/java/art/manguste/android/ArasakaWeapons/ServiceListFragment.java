@@ -64,7 +64,7 @@ public class ServiceListFragment extends Fragment {
             // Inflate the layout for this fragment
             RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_list, container, false);
             // add adapter
-            StoreCardAdapter adapter = new StoreCardAdapter(CatalogType.SERVICE);
+            CardAdapter adapter = new CardAdapter(CatalogType.SERVICE);
             recyclerView.setAdapter(adapter);
             // connect data and view
             GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
