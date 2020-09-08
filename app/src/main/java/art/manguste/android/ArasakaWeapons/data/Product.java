@@ -1,12 +1,12 @@
 package art.manguste.android.ArasakaWeapons.data;
 
-abstract class CardItem {
+abstract class Product {
      String title;
      String description;
      Float price;
      CatalogType type;
 
-    public CardItem(String title, String description, Float price) {
+    public Product(String title, String description, Float price) {
         this.title = title;
         this.description = description;
         this.price = price;

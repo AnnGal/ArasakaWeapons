@@ -9,7 +9,7 @@
 
     <style name="ArasakaTheme" parent="Theme.MaterialComponents.Light.DarkActionBar" >
         <item name="colorPrimaryDark">@color/colorDarkBackground</item>
-        <item name="colorPrimary">@color/colorRed</item>
+        <item name="colorPrimary">@color/colorArasakaRed</item>
         <item name="colorAccent">@color/colorSkyBlue</item>
         <item name="android:actionBarWidgetTheme">@color/colorDarkBackground</item>
     </style>
@@ -24,5 +24,13 @@
         <item name="colorAccent">@color/colorArasakaRed</item>
     </style>
 
+    <style name="ArasakaBlackToolbarTheme" parent="ArasakaMainTheme" >
+        <item name="colorPrimary">@color/colorDarkBackground</item>
+        <item name="android:textColorSecondary">@color/colorArasakaRed</item>
+    </style>
+
+    <style name="ToolbarColoredBackArrow" parent="ArasakaMainTheme">
+        <item name="android:textColorSecondary">@color/colorArasakaRed</item>
+    </style>
 
 </resources>
