@@ -9,9 +9,10 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
+
+import art.manguste.android.ArasakaWeapons.data.CatalogType;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             switch (position) {
-                case 0: return new WeaponListFragment();
-                case 1: return new ServiceListFragment();
+                case 0: return StoreListFragment.newInstance(CatalogType.WEAPON);
+                case 1: return StoreListFragment.newInstance(CatalogType.SERVICE);
             }
             return null;
         }
