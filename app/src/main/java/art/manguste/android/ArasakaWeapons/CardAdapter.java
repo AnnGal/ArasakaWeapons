@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 
 import art.manguste.android.ArasakaWeapons.data.CatalogType;
+import art.manguste.android.ArasakaWeapons.data.Product;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
 
@@ -72,12 +73,13 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
     @Override
     public int getItemCount() {
-        //TODO: replace with ArrayLength
+
         if (mCatalogType.equals(CatalogType.WEAPON)){
-            return 8;
-        } else  if (mCatalogType.equals(CatalogType.SERVICE)){
-            return 5;
+            return Product.weapons.length;
+        } else if (mCatalogType.equals(CatalogType.SERVICE)){
+            return Product.services.length;
         }
+
         return 0;
     }
 
@@ -129,8 +131,21 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         }
 
         void bind(int listIndex) {
-            TextView productName = item.findViewById(R.id.product_name);
-            productName.setText(mCatalogType.toString() + " #"+listIndex);
+            Product product = null;
+            if (mCatalogType.equals(CatalogType.SERVICE)) {
+                product = Product.services[listIndex];
+            } else if  (mCatalogType.equals(CatalogType.WEAPON)) {
+                product = Product.weapons[listIndex];
+            }
+            
+            if (product != null) {
+                ((TextView) item.findViewById(R.id.product_name)).setText(product.getTitle());
+            }
+            
+
+
+
+
         }
 
     }

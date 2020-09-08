@@ -36,8 +36,6 @@ public class CardDetailActivity extends AppCompatActivity {
                 startActivity(new Intent(getBaseContext(), CartActivity.class));
             }
         });
-
-        //this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
