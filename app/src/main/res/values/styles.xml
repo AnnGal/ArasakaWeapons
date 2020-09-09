@@ -33,4 +33,8 @@
         <item name="android:textColorSecondary">@color/colorArasakaRed</item>
     </style>
 
+    <style name="TextBottomToolbar">
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>

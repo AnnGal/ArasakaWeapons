@@ -25,17 +25,19 @@ public class CardDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("");
 
+        // TODO del aft test
         Intent intent = getIntent();
         if (intent.hasExtra(Intent.EXTRA_TEXT)){
             ((TextView) findViewById(R.id.product_name)).setText( intent.getStringExtra(Intent.EXTRA_TEXT));
         }
 
-        ((ImageButton) findViewById(R.id.ib_add_position_in_cart)).setOnClickListener(new View.OnClickListener() {
+        // TODO replace this with normal interaction
+/*        ((ImageButton) findViewById(R.id.ib_add_position_in_cart)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getBaseContext(), CartActivity.class));
             }
-        });
+        });*/
     }
 
     @Override
