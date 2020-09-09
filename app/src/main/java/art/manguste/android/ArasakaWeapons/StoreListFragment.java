@@ -1,5 +1,6 @@
 package art.manguste.android.ArasakaWeapons;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,12 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.snackbar.Snackbar;
 
 import art.manguste.android.ArasakaWeapons.data.CatalogType;
+import art.manguste.android.ArasakaWeapons.data.Order;
+import art.manguste.android.ArasakaWeapons.data.Product;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +32,7 @@ public class StoreListFragment extends Fragment
     private static final String CATALOG_TYPE = "catalog_type";
 
     private CatalogType catalogType;
-
+    private Context mContex;
 
     private ViewGroup mViewGroup;
 
@@ -71,6 +73,8 @@ public class StoreListFragment extends Fragment
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_list, container, false);
 
         mViewGroup = container;
+        mContex = getContext();
+
         // add adapter
         CardAdapter adapter;
         adapter = new CardAdapter(catalogType, this);
@@ -83,15 +87,17 @@ public class StoreListFragment extends Fragment
         return recyclerView;
     }
 
+
+
     @Override
-    public void onListItemClick(int position) {
-        Intent intent = new Intent(getContext(), CardDetailActivity.class);
+    public void onListItemClick(int position, Product product) {
+        Intent intent = new Intent(mContex, CardDetailActivity.class);
         intent.putExtra(Intent.EXTRA_TEXT, CatalogType.WEAPON+"_#"+String.valueOf(position));
         startActivity(intent);
     }
 
     @Override
-    public void onViewClick(View v, int position, MaterialCardView item) {
+    public void onViewClick(View v, int position, MaterialCardView item, Product product) {
         if (v.getId() == R.id.ib_add_position_in_cart || v.getId() == R.id.ll_add_position_in_cart){
 
             // Change visibility
@@ -109,20 +115,22 @@ public class StoreListFragment extends Fragment
                             startActivity(new Intent(getContext(), CartActivity.class));
                         }
                     });
-
             //change snackbar colors
             snackbar.setActionTextColor(getResources().getColor(R.color.colorArasakaBackground));
             snackbar.setBackgroundTint(getResources().getColor(R.color.colorDarkBackground));
-
+            //snackbar message appearance
             TextView tvSnackbar = ((TextView) snackbar.getView().findViewById(R.id.snackbar_text));
             tvSnackbar.setTextColor(getResources().getColor(R.color.colorArasakaRed));
             tvSnackbar.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-
             snackbar.show();
+
+            Order.getCurrentOrder().placeOrderToCart(product, 1);
+            ((MainActivity) mContex).CheckCartImage();
+
 
         } else if (v.getId() == R.id.tv_move_to_cart_from_card){
             // Do your stuff here
-            Intent intent = new Intent(getContext(), CartActivity.class);
+            Intent intent = new Intent(mContex, CartActivity.class);
             startActivity(intent);
         }
     }

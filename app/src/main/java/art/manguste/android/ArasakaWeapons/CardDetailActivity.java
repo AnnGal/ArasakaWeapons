@@ -11,8 +11,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
+import art.manguste.android.ArasakaWeapons.data.Order;
+
 
 public class CardDetailActivity extends AppCompatActivity {
+    TextView mCartImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,8 @@ public class CardDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("");
 
+        mCartImage = findViewById(R.id.tv_to_cart_from_detail);
+
         // TODO del aft test
         Intent intent = getIntent();
         if (intent.hasExtra(Intent.EXTRA_TEXT)){
@@ -36,8 +41,22 @@ public class CardDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getBaseContext(), CartActivity.class));
+                CheckCartImage();
             }
-        });*/
+        });
+
+        */
+
+        CheckCartImage();
+    }
+
+    public void CheckCartImage() {
+        Order order = Order.getCurrentOrder();
+        if (order.isAnyProductInCart()){
+            mCartImage.setBackground(getResources().getDrawable(R.drawable.ic_cart));
+        } else {
+            mCartImage.setBackground(getResources().getDrawable(R.drawable.ic_empty_cart));
+        }
     }
 
     @Override
