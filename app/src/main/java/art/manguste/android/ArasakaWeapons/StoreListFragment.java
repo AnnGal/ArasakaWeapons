@@ -32,7 +32,7 @@ public class StoreListFragment extends Fragment
     private static final String CATALOG_TYPE = "catalog_type";
 
     private CatalogType catalogType;
-    private Context mContex;
+    private Context mContext;
 
     private ViewGroup mViewGroup;
 
@@ -49,7 +49,6 @@ public class StoreListFragment extends Fragment
      */
     // TODO: Rename and change types and number of parameters
     public static StoreListFragment newInstance(CatalogType catalogType){
-    //(String param1, String param2) {
         StoreListFragment fragment = new StoreListFragment();
         Bundle args = new Bundle();
         args.putString(CATALOG_TYPE, String.valueOf(catalogType));
@@ -73,13 +72,12 @@ public class StoreListFragment extends Fragment
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_list, container, false);
 
         mViewGroup = container;
-        mContex = getContext();
+        mContext = getContext();
 
         // add adapter
-        CardAdapter adapter;
-        adapter = new CardAdapter(catalogType, this);
-
+        CardAdapter adapter = new CardAdapter(catalogType, this);
         recyclerView.setAdapter(adapter);
+
         // connect data and view
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerView.setLayoutManager(layoutManager);
@@ -93,7 +91,7 @@ public class StoreListFragment extends Fragment
      * */
     @Override
     public void onListItemClick(int position, Product product) {
-        Intent intent = new Intent(mContex, CardDetailActivity.class);
+        Intent intent = new Intent(mContext, CardDetailActivity.class);
         intent.putExtra(Product.class.getSimpleName(), product);
         startActivity(intent);
     }
@@ -107,7 +105,7 @@ public class StoreListFragment extends Fragment
             //item.findViewById(R.id.ll_add_position_in_cart).setVisibility(View.GONE);
             //item.findViewById(R.id.tv_move_to_cart_from_card).setVisibility(View.VISIBLE);
             Order.getCurrentOrder().placeOrderToCart(product, 1);
-            ((MainActivity) mContex).CheckCartImage();
+            ((MainActivity) mContext).CheckCartImage();
 
             // Snackbar interaction
             String snackMessage = "\"" + ((TextView) item.findViewById(R.id.product_name)).getText() + "\" added to your cart";
@@ -116,7 +114,7 @@ public class StoreListFragment extends Fragment
                     .setAction(getString(R.string.go_to_cart), new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            startActivity(new Intent(getContext(), CartActivity.class));
+                            startActivity(new Intent(getContext(), OrderActivity.class));
                         }
                     });
             //change snackbar colors
@@ -132,7 +130,7 @@ public class StoreListFragment extends Fragment
 
         } else if (v.getId() == R.id.tv_move_to_cart_from_card){
             // Do your stuff here
-            Intent intent = new Intent(mContex, CartActivity.class);
+            Intent intent = new Intent(mContext, OrderActivity.class);
             startActivity(intent);
         }
     }

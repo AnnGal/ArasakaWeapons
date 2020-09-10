@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         (findViewById(R.id.tv_to_cart_from_main)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CartActivity.class));
+                startActivity(new Intent(MainActivity.this, OrderActivity.class));
             }
         });
 

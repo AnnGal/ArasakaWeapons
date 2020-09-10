@@ -61,7 +61,7 @@ public class CardDetailActivity extends AppCompatActivity {
 
         // Buttons Listeners -->
         /** increase items count */
-        ((ImageButton) findViewById(R.id.btn_inc_count)).setOnClickListener(new View.OnClickListener() {
+        ((ImageButton) findViewById(R.id.action_increase_count)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // if we still can increase - do it
@@ -75,7 +75,7 @@ public class CardDetailActivity extends AppCompatActivity {
         });
 
         /** decrease items count */
-        ((ImageButton) findViewById(R.id.btn_dec_count)).setOnClickListener(new View.OnClickListener() {
+        ((ImageButton) findViewById(R.id.action_decrease_count)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // if we still can decrease - do it
@@ -100,7 +100,7 @@ public class CardDetailActivity extends AppCompatActivity {
         (findViewById(R.id.tv_move_to_cart)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), CartActivity.class));
+                startActivity(new Intent(getBaseContext(), OrderActivity.class));
             }
         });
 

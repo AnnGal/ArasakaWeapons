@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ArasakaMainTheme">
-        <activity android:name=".CartActivity"
+        <activity android:name=".OrderActivity"
             android:theme="@style/ArasakaTheme"/>
         <activity android:name=".CardDetailActivity"
             android:theme="@style/ArasakaBlackToolbarTheme"/>
