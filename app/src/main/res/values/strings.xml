@@ -7,7 +7,8 @@
     <string name="weapons_tab">Weapon</string>
     <string name="services_tab">Service</string>
     <string name="currency_2077">E$</string>
-    <string name="go_to_cart">go to cart</string>
+    <string name="go_to_cart">to cart</string>
+    <string name="warning_max_items">Maximum number of items in one order has been reached</string>
 
 
 </resources>

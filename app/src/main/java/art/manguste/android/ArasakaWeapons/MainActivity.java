@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabs_shop);
         tabLayout.setupWithViewPager(pager);
 
-        // set to cart intent
+        // move to cart activity
         (findViewById(R.id.tv_to_cart_from_main)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

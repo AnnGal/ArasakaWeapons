@@ -88,11 +88,13 @@ public class StoreListFragment extends Fragment
     }
 
 
-
+    /**
+     * After click on whole ViewCard from RecyclerView
+     * */
     @Override
     public void onListItemClick(int position, Product product) {
         Intent intent = new Intent(mContex, CardDetailActivity.class);
-        intent.putExtra(Intent.EXTRA_TEXT, CatalogType.WEAPON+"_#"+String.valueOf(position));
+        intent.putExtra(Product.class.getSimpleName(), product);
         startActivity(intent);
     }
 
@@ -104,6 +106,8 @@ public class StoreListFragment extends Fragment
             //item.findViewById(R.id.ib_add_position_in_cart).setVisibility(View.GONE);
             //item.findViewById(R.id.ll_add_position_in_cart).setVisibility(View.GONE);
             //item.findViewById(R.id.tv_move_to_cart_from_card).setVisibility(View.VISIBLE);
+            Order.getCurrentOrder().placeOrderToCart(product, 1);
+            ((MainActivity) mContex).CheckCartImage();
 
             // Snackbar interaction
             String snackMessage = "\"" + ((TextView) item.findViewById(R.id.product_name)).getText() + "\" added to your cart";
@@ -124,8 +128,6 @@ public class StoreListFragment extends Fragment
             tvSnackbar.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             snackbar.show();
 
-            Order.getCurrentOrder().placeOrderToCart(product, 1);
-            ((MainActivity) mContex).CheckCartImage();
 
 
         } else if (v.getId() == R.id.tv_move_to_cart_from_card){
