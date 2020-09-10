@@ -9,12 +9,16 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
 import art.manguste.android.ArasakaWeapons.data.CatalogType;
+import art.manguste.android.ArasakaWeapons.data.Order;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView mCartImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +35,25 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(pager);
 
         // set to cart intent
-        (findViewById(R.id.tv_to_cart)).setOnClickListener(new View.OnClickListener() {
+        (findViewById(R.id.tv_to_cart_from_main)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, CartActivity.class));
             }
         });
+
+        mCartImage = findViewById(R.id.tv_to_cart_from_main);
+        CheckCartImage();
+    }
+
+    public void CheckCartImage() {
+        Order order = Order.getCurrentOrder();
+        if (order.isAnyProductInCart()){
+            mCartImage.setBackground(getResources().getDrawable(R.drawable.ic_cart));
+        } else {
+            mCartImage.setBackground(getResources().getDrawable(R.drawable.ic_empty_cart));
+        }
+
     }
 
     private class SectionPagerAdapter extends FragmentPagerAdapter {
@@ -68,5 +85,6 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
+
 
 }

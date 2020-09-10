@@ -12,11 +12,10 @@
         <activity android:name=".CartActivity"
             android:theme="@style/ArasakaTheme"/>
         <activity android:name=".CardDetailActivity"
-            android:theme="@style/ArasakaTheme"/>
+            android:theme="@style/ArasakaBlackToolbarTheme"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

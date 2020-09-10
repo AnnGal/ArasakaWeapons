@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 
 import art.manguste.android.ArasakaWeapons.data.CatalogType;
+import art.manguste.android.ArasakaWeapons.data.Product;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
 
@@ -36,8 +37,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     }
 
     interface ListItemClickListener{
-        void onListItemClick(int position);
-        void onViewClick(View v, int position, MaterialCardView item);
+        void onListItemClick(int position, Product product);
+        void onViewClick(View v, int position, MaterialCardView item, Product product);
     }
 
     @NonNull
@@ -49,40 +50,30 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CardViewHolder holder, final int position) {
-        //MaterialCardView cardView = holder.item;
+        Product product = null;
+        if (mCatalogType.equals(CatalogType.SERVICE)) {
+            product = Product.services[position];
+        } else if  (mCatalogType.equals(CatalogType.WEAPON)) {
+            product = Product.weapons[position];
+        }
 
-        // set data
-        /*TextView productName = cardView.findViewById(R.id.product_name);
-        productName.setText(mCatalogType.toString());*/
-        holder.bind(position);
-
-
-/*
-        cardView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if (listener != null){
-                    listener.onClick(position);
-                }
-            }
-        });*/
-
-        // TODO: make Listener alive
+        holder.bind(position, product);
     }
 
     @Override
     public int getItemCount() {
-        //TODO: replace with ArrayLength
         if (mCatalogType.equals(CatalogType.WEAPON)){
-            return 8;
-        } else  if (mCatalogType.equals(CatalogType.SERVICE)){
-            return 5;
+            return Product.weapons.length;
+        } else if (mCatalogType.equals(CatalogType.SERVICE)){
+            return Product.services.length;
         }
+
         return 0;
     }
 
     class CardViewHolder extends RecyclerView.ViewHolder  {
         private MaterialCardView item;
+        private Product product;
 
         public CardViewHolder(@NonNull MaterialCardView itemView) {
             super(itemView);
@@ -97,7 +88,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                 @Override
                 public void onClick(View v) {
                     if(mOnClickListener != null)
-                        mOnClickListener.onListItemClick(getAdapterPosition());
+                        mOnClickListener.onListItemClick(getAdapterPosition(), product);
                 }
             });
 
@@ -106,7 +97,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                 @Override
                 public void onClick(View v) {
                     if(mOnClickListener != null)
-                        mOnClickListener.onViewClick(v, getAdapterPosition(), item);
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, product);
                 }
             });
             // on the linear layout which contains cart icon click
@@ -114,7 +105,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                 @Override
                 public void onClick(View v) {
                     if(mOnClickListener != null)
-                        mOnClickListener.onViewClick(v, getAdapterPosition(), item);
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, product);
                 }
             });
 
@@ -123,14 +114,22 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                 @Override
                 public void onClick(View v) {
                     if(mOnClickListener != null)
-                        mOnClickListener.onViewClick(v, getAdapterPosition(), item);
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, product);
                 }
             });
         }
 
-        void bind(int listIndex) {
-            TextView productName = item.findViewById(R.id.product_name);
-            productName.setText(mCatalogType.toString() + " #"+listIndex);
+        void bind(int listIndex, Product product) {
+            this.product = product;
+
+            if (product != null) {
+                ((TextView) item.findViewById(R.id.product_name)).setText(product.getTitle());
+            }
+            
+
+
+
+
         }
 
     }

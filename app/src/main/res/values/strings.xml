@@ -2,10 +2,12 @@
     <string name="app_name">Arasaka Weapons</string>
 
     <!--behavior-->
-    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+
     <string name="arasaka_title_logo">Arasaka Logotype</string>
     <string name="weapons_tab">Weapon</string>
     <string name="services_tab">Service</string>
     <string name="currency_2077">E$</string>
     <string name="go_to_cart">go to cart</string>
+
+
 </resources>
