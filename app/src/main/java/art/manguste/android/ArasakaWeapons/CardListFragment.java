@@ -23,10 +23,10 @@ import art.manguste.android.ArasakaWeapons.data.Product;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link StoreListFragment#newInstance} factory method to
+ * Use the {@link CardListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StoreListFragment extends Fragment
+public class CardListFragment extends Fragment
         implements CardAdapter.ListItemClickListener {
 
     private static final String CATALOG_TYPE = "catalog_type";
@@ -36,7 +36,7 @@ public class StoreListFragment extends Fragment
 
     private ViewGroup mViewGroup;
 
-    public StoreListFragment() {
+    public CardListFragment() {
         // Required empty public constructor
     }
 
@@ -48,8 +48,8 @@ public class StoreListFragment extends Fragment
      * @return A new instance of fragment StoreListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static StoreListFragment newInstance(CatalogType catalogType){
-        StoreListFragment fragment = new StoreListFragment();
+    public static CardListFragment newInstance(CatalogType catalogType){
+        CardListFragment fragment = new CardListFragment();
         Bundle args = new Bundle();
         args.putString(CATALOG_TYPE, String.valueOf(catalogType));
         fragment.setArguments(args);

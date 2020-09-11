@@ -27,7 +27,6 @@
                 android:textSize="18sp"
                 android:text="card title"
                 android:textColor="@color/colorDarkBackground"
-                android:textStyle="bold"
                 android:textAllCaps="true"
                 android:layout_width="match_parent"/>
 
@@ -41,7 +40,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/ic_button_remove_dark"
+                    android:background="@drawable/ic_button_remove_dark_empty"
                     android:layout_marginHorizontal="4dp"
                     android:gravity="center"
                     android:visibility="visible"/>
@@ -54,14 +53,14 @@
                     android:text="1"
                     android:textColor="@color/colorDarkBackground"
                     android:gravity="center"
-                    android:textSize="20sp"/>
+                    android:textSize="18sp"/>
 
                 <ImageButton
                     android:id="@+id/action_increase_count"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_button_add_dark"
+                    android:src="@drawable/ic_button_add_dark_empty"
                     android:gravity="center"
                     android:background="@color/colorArasakaBackground"
                     android:layout_marginHorizontal="4dp"
@@ -125,13 +124,13 @@
                     android:layout_weight="1" />
 
                 <LinearLayout
-                    android:id="@+id/ll_add_position_in_cart"
+                    android:id="@+id/ll_action_delete_from_cart"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/action_delete"
+                        android:id="@+id/action_delete_from_cart"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:scaleType="center"

@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             switch (position) {
-                case 0: return StoreListFragment.newInstance(CatalogType.WEAPON);
-                case 1: return StoreListFragment.newInstance(CatalogType.SERVICE);
+                case 0: return CardListFragment.newInstance(CatalogType.WEAPON);
+                case 1: return CardListFragment.newInstance(CatalogType.SERVICE);
             }
             return null;
         }
