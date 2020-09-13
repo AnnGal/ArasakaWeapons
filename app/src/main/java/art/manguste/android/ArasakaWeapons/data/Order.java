@@ -1,12 +1,8 @@
 package art.manguste.android.ArasakaWeapons.data;
 
-import android.nfc.Tag;
 import android.util.Log;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+
 
 public class Order {
     private Integer number;
@@ -18,12 +14,7 @@ public class Order {
 
     private static final String TAG = Order.class.getSimpleName();
 
-    //LinkedHashMap<Product, Integer> ordersMap = new LinkedHashMap<Product, Integer>();
     ArrayList<ProductInOrder> productList = new ArrayList<>();
-
-    public ArrayList<ProductInOrder> getProductList() {
-        return productList;
-    }
 
     private Order() {}
 
@@ -33,6 +24,10 @@ public class Order {
 
     public static Order getCurrentOrder()  {
         return SingletonHolder.instance;
+    }
+
+    public ArrayList<ProductInOrder> getProductList() {
+        return productList;
     }
 
     public Integer getNumber() {
@@ -47,18 +42,8 @@ public class Order {
         return droneAccessNumber;
     }
 
-    /*public LinkedHashMap<Product, Integer> getOrdersMap() {
-        return ordersMap;
-    }*/
-
     public void placeOrderToCart(Product product, Integer count) {
-        // should be more than 0 and should be added to prev value
-/*        Integer countProduct = (count > 0) ? count : 1;
-        if (ordersMap.containsKey(product)){
-            countProduct += ordersMap.get(product);
-        }
 
-        ordersMap.put(product, countProduct);*/
         Log.d(TAG, "placeOrderToCart: adding id=" + product.getId());
         // ProductInOrder
         boolean hasMatch = false;
@@ -95,7 +80,7 @@ public class Order {
     }
 
     public String getItemsCount(){
-        String orderSize = "";
+        String orderSize;
         if (productList.size() > 99){
             orderSize = "*";
         } else {
@@ -103,5 +88,10 @@ public class Order {
         }
         return orderSize;
     }
+
+    public void removeProduct(ProductInOrder product) {
+        productList.remove(product);
+    }
+
 
 }

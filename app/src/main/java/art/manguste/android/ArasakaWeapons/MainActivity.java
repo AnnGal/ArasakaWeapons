@@ -63,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
         CheckCartImage();
     }
 
+    @Override
+    protected void onResume() {
+        CheckCartImage();
+        super.onResume();
+    }
+
     public void CheckCartImage() {
         Order order = Order.getCurrentOrder();
         if (order.isAnyProductInCart()){

@@ -9,6 +9,9 @@
     <string name="currency_2077">E$</string>
     <string name="go_to_cart">to cart</string>
     <string name="warning_max_items">Maximum number of this item in one order has been reached</string>
+    <string name="dlg_q_delete_from_order">Remove this item from the order?</string>
+    <string name="dlg_yes_delete">Delete</string>
+    <string name="dlg_no_chancel">Chancel</string>
 
 
 </resources>

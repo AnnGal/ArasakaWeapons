@@ -125,6 +125,11 @@ public class CardDetailActivity extends AppCompatActivity {
         // TODO save items count on device rotation
     }
 
+    protected void onResume() {
+        CheckCartImage();
+        super.onResume();
+    }
+
     private void setCardData() {
         if (product != null) {
             mProductName.setText(product.getTitle());
@@ -155,7 +160,6 @@ public class CardDetailActivity extends AppCompatActivity {
         } else {
             mItemImage.setVisibility(View.INVISIBLE);
         }
-        // TODO refresh on resume
     }
 
     @Override

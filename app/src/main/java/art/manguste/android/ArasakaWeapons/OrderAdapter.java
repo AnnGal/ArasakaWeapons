@@ -12,9 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import art.manguste.android.ArasakaWeapons.data.Order;
 import art.manguste.android.ArasakaWeapons.data.Product;
 import art.manguste.android.ArasakaWeapons.data.ProductInOrder;
@@ -28,7 +25,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     }
 
     public interface OrderClickListener{
-        void onViewClick(View v, int position, MaterialCardView item, Product product);
+        void onViewClick(View v, int position, MaterialCardView item, ProductInOrder product);
     }
 
     @NonNull
@@ -55,6 +52,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         }*/
     }
 
+
+
     @Override
     public int getItemCount() {
         return Order.getCurrentOrder().getOrderSize();
@@ -62,8 +61,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     class OrderViewHolder extends RecyclerView.ViewHolder{
         private MaterialCardView item;
-        private Product product;
-        private Integer count;
+        private ProductInOrder productInOrder;
+
 
         public OrderViewHolder(@NonNull MaterialCardView itemView) {
             super(itemView);
@@ -80,7 +79,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
                 @Override
                 public void onClick(View v) {
                     if(mOnClickListener != null)
-                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, product);
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, productInOrder);
                 }
             });
 
@@ -89,7 +88,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
                 @Override
                 public void onClick(View v) {
                     if(mOnClickListener != null)
-                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, product);
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, productInOrder);
                 }
             });
 
@@ -98,7 +97,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
                 @Override
                 public void onClick(View v) {
                     if(mOnClickListener != null)
-                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, product);
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, productInOrder);
                 }
             });
 
@@ -107,19 +106,17 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
                 @Override
                 public void onClick(View v) {
                     if(mOnClickListener != null)
-                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, product);
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, productInOrder);
                 }
             });
 
         }
 
         void bind(ProductInOrder productInOrder){
-            this.product = productInOrder.getProduct();
-            this.count = productInOrder.getItemsInOrder();
+            this.productInOrder = productInOrder;
 
-            ((TextView) item.findViewById(R.id.product_name)).setText(product.getTitle());
-            ((TextView) item.findViewById(R.id.tv_items_count)).setText(String.valueOf(count));
-
+            ((TextView) item.findViewById(R.id.product_name)).setText(productInOrder.getProduct().getTitle());
+            ((TextView) item.findViewById(R.id.tv_items_count)).setText(String.valueOf(productInOrder.getItemsInOrder()));
         }
 
 
