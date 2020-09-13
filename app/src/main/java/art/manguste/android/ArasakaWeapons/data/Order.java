@@ -94,5 +94,14 @@ public class Order {
         return !productList.isEmpty();
     }
 
+    public String getItemsCount(){
+        String orderSize = "";
+        if (productList.size() > 99){
+            orderSize = "*";
+        } else {
+            orderSize = String.valueOf(productList.size());
+        }
+        return orderSize;
+    }
 
 }
