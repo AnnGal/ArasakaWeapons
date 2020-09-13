@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:id="@+id/card_view"
+    android:layout_margin="4dp"
+    card_view:cardElevation="2dp"
+    card_view:cardCornerRadius="4dp">
+    <!--android:theme="@style/Theme.MaterialComponents.Light"-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="card title"
+                android:textColor="@color/colorDarkBackground"
+                android:textAllCaps="true"
+                android:layout_width="match_parent"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/action_decrease_count"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ic_button_remove_dark_empty"
+                    android:layout_marginHorizontal="4dp"
+                    android:gravity="center"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/tv_items_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/TextBottomToolbar"
+                    android:text="1"
+                    android:textColor="@color/colorDarkBackground"
+                    android:gravity="center"
+                    android:textSize="18sp"/>
+
+                <ImageButton
+                    android:id="@+id/action_increase_count"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_button_add_dark_empty"
+                    android:gravity="center"
+                    android:background="@color/colorArasakaBackground"
+                    android:layout_marginHorizontal="4dp"
+                    android:paddingHorizontal="4dp"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/label_multiplication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center_vertical"
+
+                    android:text="x"/>
+
+                <TextView
+                    android:id="@+id/price_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="4dp"
+                    android:gravity="center_vertical"
+                    android:text="7500"/>
+
+                <TextView
+                    android:id="@+id/label_equals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center_vertical"
+                    android:text="="/>
+
+                <TextView
+                    android:id="@+id/price_card_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="4dp"
+                    android:gravity="center_vertical"
+                    android:text="7500"/>
+
+                <TextView
+                    android:id="@+id/label_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="4dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/currency_2077"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/ll_action_delete_from_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/action_delete_from_cart"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:scaleType="center"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="4dp"
+                        android:visibility="visible"
+                        android:gravity="center"
+                        android:background="@color/colorArasakaBackground"
+                        android:src="@drawable/ic_remove_from_order"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_move_to_cart_from_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:scaleType="center"
+                    android:layout_marginHorizontal="8dp"
+                    android:text="@string/go_to_cart"
+                    android:layout_marginVertical="4dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorArasakaRed"
+                    android:fontFamily="sans-serif"
+                    android:textSize="10sp"
+                    android:visibility="gone"
+                    android:paddingHorizontal="7dp"
+                    android:background="@drawable/frame_for_letters"
+                    android:gravity="center_vertical" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

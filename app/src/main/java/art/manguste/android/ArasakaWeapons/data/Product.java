@@ -1,23 +1,46 @@
 package art.manguste.android.ArasakaWeapons.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import art.manguste.android.ArasakaWeapons.R;
 
-public class Product {
+public class Product implements Parcelable {
+
+    private Integer id;
     private String title;
     private String shortDescription;
     private String fullDescription;
     private Double price;
     private CatalogType type;
     private int imageResourceId;
-    //TODO enum WeaponType
+    private WeaponType weaponType;
 
-    public Product(String title, String shortDescription, String fullDescription, Double price, CatalogType type, int imageResourceId) {
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Product(Integer id, String title, String shortDescription, String fullDescription, Double price, CatalogType type, int imageResourceId, WeaponType weaponType) {
+        this.id = id;
         this.title = title;
         this.shortDescription = shortDescription;
         this.fullDescription = fullDescription;
         this.price = price;
         this.type = type;
         this.imageResourceId = imageResourceId;
+        this.weaponType = weaponType;
+    }
+
+    public Product(Integer id, String title, String shortDescription, String fullDescription, Double price, CatalogType type, int imageResourceId) {
+        this.id = id;
+        this.title = title;
+        this.shortDescription = shortDescription;
+        this.fullDescription = fullDescription;
+        this.price = price;
+        this.type = type;
+        this.imageResourceId = imageResourceId;
+        this.weaponType = WeaponType.NONE;
     }
 
 
@@ -30,22 +53,18 @@ public class Product {
     // alert team for rent
 
     public static final Product[] weapons = {
-            new Product("TestWeaponTitle", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo),
-            new Product("TestWeaponTitle1", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo),
-            new Product("TestWeaponTitle2", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo),
-            new Product("TestWeaponTitle3", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo),
-            new Product("TestWeaponTitle4", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo),
-            new Product("TestWeaponTitle5", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo)/*,
-            new Product("TestWeaponTitle6", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo),
-            new Product("TestWeaponTitle7", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo),
-            new Product("TestWeaponTitle8", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo),
-            new Product("TestWeaponTitle9", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo)*/
+            new Product(10101,"TestWeaponTitle", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.MELEE),
+            new Product(10102,"TestWeaponTitle1", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.ic_cart, WeaponType.HEAVY),
+            new Product(10103,"TestWeaponTitle2", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.NONE),
+            new Product(10104,"TestWeaponTitle3", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.MELEE),
+            new Product(10105,"TestWeaponTitle4", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.MELEE),
+            new Product(10106,"TestWeaponTitle5", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.MELEE)
     };
 
     public static final Product[] services = {
-            new Product("TestServiceTitle", "TestServiceDesc", "TestServiceDescFull", 75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
-            new Product("TestServiceTitle", "TestServiceDesc", "TestServiceDescFull", 75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
-            new Product("TestServiceTitle", "TestServiceDesc", "TestServiceDescFull", 75500d, CatalogType.SERVICE, R.drawable.arasaka_logo)
+            new Product(20001,"TestServiceTitle", "TestServiceDesc", "TestServiceDescFull", 75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
+            new Product(20002,"TestServiceTitle", "TestServiceDesc", "TestServiceDescFull", 75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
+            new Product(20003,"TestServiceTitle", "TestServiceDesc", "TestServiceDescFull", 75500d, CatalogType.SERVICE, R.drawable.arasaka_logo)
     };
 
     public String getTitle() {
@@ -68,7 +87,54 @@ public class Product {
         return type;
     }
 
+    public WeaponType getWeaponType() {
+        return weaponType;
+    }
+
     public int getImageResourceId() {
         return imageResourceId;
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeString(this.title);
+        dest.writeString(this.shortDescription);
+        dest.writeString(this.fullDescription);
+        dest.writeValue(this.price);
+        dest.writeInt(this.type == null ? -1 : this.type.ordinal());
+        dest.writeInt(this.imageResourceId);
+        dest.writeInt(this.weaponType == null ? -1 : this.weaponType.ordinal());
+    }
+
+    protected Product(Parcel in) {
+        this.id = in.readInt();
+        this.title = in.readString();
+        this.shortDescription = in.readString();
+        this.fullDescription = in.readString();
+        this.price = (Double) in.readValue(Double.class.getClassLoader());
+        int tmpType = in.readInt();
+        this.type = tmpType == -1 ? null : CatalogType.values()[tmpType];
+        this.imageResourceId = in.readInt();
+        int tmpWeaponType = in.readInt();
+        this.weaponType = tmpWeaponType == -1 ? null : WeaponType.values()[tmpWeaponType];
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel source) {
+            return new Product(source);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 }

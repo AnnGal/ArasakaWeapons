@@ -23,20 +23,20 @@ import art.manguste.android.ArasakaWeapons.data.Product;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link StoreListFragment#newInstance} factory method to
+ * Use the {@link CardListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StoreListFragment extends Fragment
+public class CardListFragment extends Fragment
         implements CardAdapter.ListItemClickListener {
 
     private static final String CATALOG_TYPE = "catalog_type";
 
     private CatalogType catalogType;
-    private Context mContex;
+    private Context mContext;
 
     private ViewGroup mViewGroup;
 
-    public StoreListFragment() {
+    public CardListFragment() {
         // Required empty public constructor
     }
 
@@ -48,9 +48,8 @@ public class StoreListFragment extends Fragment
      * @return A new instance of fragment StoreListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static StoreListFragment newInstance(CatalogType catalogType){
-    //(String param1, String param2) {
-        StoreListFragment fragment = new StoreListFragment();
+    public static CardListFragment newInstance(CatalogType catalogType){
+        CardListFragment fragment = new CardListFragment();
         Bundle args = new Bundle();
         args.putString(CATALOG_TYPE, String.valueOf(catalogType));
         fragment.setArguments(args);
@@ -73,13 +72,12 @@ public class StoreListFragment extends Fragment
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_list, container, false);
 
         mViewGroup = container;
-        mContex = getContext();
+        mContext = getContext();
 
         // add adapter
-        CardAdapter adapter;
-        adapter = new CardAdapter(catalogType, this);
-
+        CardAdapter adapter = new CardAdapter(catalogType, this);
         recyclerView.setAdapter(adapter);
+
         // connect data and view
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerView.setLayoutManager(layoutManager);
@@ -88,11 +86,13 @@ public class StoreListFragment extends Fragment
     }
 
 
-
+    /**
+     * After click on whole ViewCard from RecyclerView
+     * */
     @Override
     public void onListItemClick(int position, Product product) {
-        Intent intent = new Intent(mContex, CardDetailActivity.class);
-        intent.putExtra(Intent.EXTRA_TEXT, CatalogType.WEAPON+"_#"+String.valueOf(position));
+        Intent intent = new Intent(mContext, CardDetailActivity.class);
+        intent.putExtra(Product.class.getSimpleName(), product);
         startActivity(intent);
     }
 
@@ -104,6 +104,8 @@ public class StoreListFragment extends Fragment
             //item.findViewById(R.id.ib_add_position_in_cart).setVisibility(View.GONE);
             //item.findViewById(R.id.ll_add_position_in_cart).setVisibility(View.GONE);
             //item.findViewById(R.id.tv_move_to_cart_from_card).setVisibility(View.VISIBLE);
+            Order.getCurrentOrder().placeOrderToCart(product, 1);
+            ((MainActivity) mContext).CheckCartImage();
 
             // Snackbar interaction
             String snackMessage = "\"" + ((TextView) item.findViewById(R.id.product_name)).getText() + "\" added to your cart";
@@ -112,7 +114,7 @@ public class StoreListFragment extends Fragment
                     .setAction(getString(R.string.go_to_cart), new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            startActivity(new Intent(getContext(), CartActivity.class));
+                            startActivity(new Intent(getContext(), OrderActivity.class));
                         }
                     });
             //change snackbar colors
@@ -124,13 +126,11 @@ public class StoreListFragment extends Fragment
             tvSnackbar.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             snackbar.show();
 
-            Order.getCurrentOrder().placeOrderToCart(product, 1);
-            ((MainActivity) mContex).CheckCartImage();
 
 
         } else if (v.getId() == R.id.tv_move_to_cart_from_card){
             // Do your stuff here
-            Intent intent = new Intent(mContex, CartActivity.class);
+            Intent intent = new Intent(mContext, OrderActivity.class);
             startActivity(intent);
         }
     }

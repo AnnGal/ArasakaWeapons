@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,24 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
 
+import java.text.DecimalFormat;
+
 import art.manguste.android.ArasakaWeapons.data.CatalogType;
 import art.manguste.android.ArasakaWeapons.data.Product;
+import art.manguste.android.ArasakaWeapons.data.WeaponType;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
 
-
-    private static final String TAG = CardAdapter.class.getSimpleName();
+    //private static final String TAG = CardAdapter.class.getSimpleName();
 
     final private ListItemClickListener mOnClickListener;
     private CatalogType mCatalogType;
 
-    // TODO: add ArrayList with weapon data
-    // TODO: add ArrayList with service data
-
-    public CardAdapter(CatalogType catalogType) {
-        mCatalogType = catalogType;
-        mOnClickListener = null;
-    }
 
     public CardAdapter(CatalogType catalogType, ListItemClickListener listener) {
         mCatalogType = catalogType;
@@ -44,7 +40,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     @NonNull
     @Override
     public CardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        MaterialCardView cv = (MaterialCardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view, parent, false);
+        MaterialCardView cv = (MaterialCardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.product_card_view, parent, false);
         return new CardViewHolder(cv);
     }
 
@@ -124,12 +120,16 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
             if (product != null) {
                 ((TextView) item.findViewById(R.id.product_name)).setText(product.getTitle());
+                if (product.getWeaponType().equals(WeaponType.NONE)) {
+                    ((TextView) item.findViewById(R.id.product_type)).setVisibility(View.GONE);
+                } else {
+                    ((TextView) item.findViewById(R.id.product_type)).setText(product.getWeaponType().toString());
+                }
+
+                ((TextView) item.findViewById(R.id.product_description)).setText(product.getShortDescription());
+                ((ImageView) item.findViewById(R.id.product_image)).setImageResource(product.getImageResourceId());
+                ((TextView) item.findViewById(R.id.price)).setText(String.valueOf(new DecimalFormat("##.##").format(product.getPrice())));
             }
-            
-
-
-
-
         }
 
     }

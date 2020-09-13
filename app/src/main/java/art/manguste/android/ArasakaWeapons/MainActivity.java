@@ -34,11 +34,11 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabs_shop);
         tabLayout.setupWithViewPager(pager);
 
-        // set to cart intent
+        // move to cart activity
         (findViewById(R.id.tv_to_cart_from_main)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CartActivity.class));
+                startActivity(new Intent(MainActivity.this, OrderActivity.class));
             }
         });
 
@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             switch (position) {
-                case 0: return StoreListFragment.newInstance(CatalogType.WEAPON);
-                case 1: return StoreListFragment.newInstance(CatalogType.SERVICE);
+                case 0: return CardListFragment.newInstance(CatalogType.WEAPON);
+                case 1: return CardListFragment.newInstance(CatalogType.SERVICE);
             }
             return null;
         }
