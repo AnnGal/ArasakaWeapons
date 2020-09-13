@@ -6,6 +6,8 @@ import android.os.Parcelable;
 import art.manguste.android.ArasakaWeapons.R;
 
 public class Product implements Parcelable {
+
+    private Integer id;
     private String title;
     private String shortDescription;
     private String fullDescription;
@@ -14,7 +16,13 @@ public class Product implements Parcelable {
     private int imageResourceId;
     private WeaponType weaponType;
 
-    public Product(String title, String shortDescription, String fullDescription, Double price, CatalogType type, int imageResourceId, WeaponType weaponType) {
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Product(Integer id, String title, String shortDescription, String fullDescription, Double price, CatalogType type, int imageResourceId, WeaponType weaponType) {
+        this.id = id;
         this.title = title;
         this.shortDescription = shortDescription;
         this.fullDescription = fullDescription;
@@ -24,7 +32,8 @@ public class Product implements Parcelable {
         this.weaponType = weaponType;
     }
 
-    public Product(String title, String shortDescription, String fullDescription, Double price, CatalogType type, int imageResourceId) {
+    public Product(Integer id, String title, String shortDescription, String fullDescription, Double price, CatalogType type, int imageResourceId) {
+        this.id = id;
         this.title = title;
         this.shortDescription = shortDescription;
         this.fullDescription = fullDescription;
@@ -44,18 +53,18 @@ public class Product implements Parcelable {
     // alert team for rent
 
     public static final Product[] weapons = {
-            new Product("TestWeaponTitle", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.MELEE),
-            new Product("TestWeaponTitle1", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.ic_cart, WeaponType.HEAVY),
-            new Product("TestWeaponTitle2", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.NONE),
-            new Product("TestWeaponTitle3", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.MELEE),
-            new Product("TestWeaponTitle4", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.MELEE),
-            new Product("TestWeaponTitle5", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.MELEE)
+            new Product(10101,"TestWeaponTitle", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.MELEE),
+            new Product(10102,"TestWeaponTitle1", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.ic_cart, WeaponType.HEAVY),
+            new Product(10103,"TestWeaponTitle2", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.NONE),
+            new Product(10104,"TestWeaponTitle3", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.MELEE),
+            new Product(10105,"TestWeaponTitle4", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.MELEE),
+            new Product(10106,"TestWeaponTitle5", "TestWeaponDesc", "TestWeaponDescFull", 5500d, CatalogType.WEAPON, R.drawable.arasaka_logo, WeaponType.MELEE)
     };
 
     public static final Product[] services = {
-            new Product("TestServiceTitle", "TestServiceDesc", "TestServiceDescFull", 75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
-            new Product("TestServiceTitle", "TestServiceDesc", "TestServiceDescFull", 75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
-            new Product("TestServiceTitle", "TestServiceDesc", "TestServiceDescFull", 75500d, CatalogType.SERVICE, R.drawable.arasaka_logo)
+            new Product(20001,"TestServiceTitle", "TestServiceDesc", "TestServiceDescFull", 75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
+            new Product(20002,"TestServiceTitle", "TestServiceDesc", "TestServiceDescFull", 75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
+            new Product(20003,"TestServiceTitle", "TestServiceDesc", "TestServiceDescFull", 75500d, CatalogType.SERVICE, R.drawable.arasaka_logo)
     };
 
     public String getTitle() {
@@ -94,6 +103,7 @@ public class Product implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
         dest.writeString(this.title);
         dest.writeString(this.shortDescription);
         dest.writeString(this.fullDescription);
@@ -104,6 +114,7 @@ public class Product implements Parcelable {
     }
 
     protected Product(Parcel in) {
+        this.id = in.readInt();
         this.title = in.readString();
         this.shortDescription = in.readString();
         this.fullDescription = in.readString();

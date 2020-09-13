@@ -1,22 +1,17 @@
 package art.manguste.android.ArasakaWeapons;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.snackbar.Snackbar;
 
-import art.manguste.android.ArasakaWeapons.data.Order;
 import art.manguste.android.ArasakaWeapons.data.Product;
 
 public class OrderActivity extends AppCompatActivity
@@ -82,7 +77,7 @@ public class OrderActivity extends AppCompatActivity
 
     public void onPlaceOrder(View view) {
 
-        startActivity(new Intent(this, OrderCreated.class));
+        startActivity(new Intent(this, PlacedOrderActivity.class));
     }
 /*
     @Override

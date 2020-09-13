@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ArasakaMainTheme">
-        <activity android:name=".OrderCreated"></activity>
+        <activity android:name=".PlacedOrderActivity"></activity>
         <activity
             android:name=".OrderActivity"
             android:theme="@style/ArasakaTheme" />

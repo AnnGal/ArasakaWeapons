@@ -17,6 +17,7 @@ import java.util.Map;
 
 import art.manguste.android.ArasakaWeapons.data.Order;
 import art.manguste.android.ArasakaWeapons.data.Product;
+import art.manguste.android.ArasakaWeapons.data.ProductInOrder;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
 
@@ -41,8 +42,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
-        //holder.bind(Order.getCurrentOrder().ordersList[position]);
-        LinkedHashMap<Product, Integer> order = Order.getCurrentOrder().getOrdersMap();
+        holder.bind(Order.getCurrentOrder().getProductList().get(position));
+/*        LinkedHashMap<Product, Integer> order = Order.getCurrentOrder().getOrdersMap();
 
         int i = Order.getCurrentOrder().getOrderSize() -1;
         for (Map.Entry<Product, Integer> pair : order.entrySet()) {
@@ -51,7 +52,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
                 break;
             }
             i--;
-        }
+        }*/
     }
 
     @Override
@@ -112,9 +113,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
         }
 
-        void bind(Product product, Integer count){
-            this.product = product;
-            this.count = count;
+        void bind(ProductInOrder productInOrder){
+            this.product = productInOrder.getProduct();
+            this.count = productInOrder.getItemsInOrder();
 
             ((TextView) item.findViewById(R.id.product_name)).setText(product.getTitle());
             ((TextView) item.findViewById(R.id.tv_items_count)).setText(String.valueOf(count));

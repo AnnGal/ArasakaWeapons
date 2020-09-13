@@ -1,5 +1,8 @@
 package art.manguste.android.ArasakaWeapons.data;
 
+import android.nfc.Tag;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -13,8 +16,14 @@ public class Order {
     private static final int MAX_NUM_PER_ITEM = 7;
     private static final int MIN_NUM_PER_ITEM = 0;
 
-    LinkedHashMap<Product, Integer> ordersMap = new LinkedHashMap<Product, Integer>();
-    //ArrayList<Product> ordersList = new ArrayList<>();
+    private static final String TAG = Order.class.getSimpleName();
+
+    //LinkedHashMap<Product, Integer> ordersMap = new LinkedHashMap<Product, Integer>();
+    ArrayList<ProductInOrder> productList = new ArrayList<>();
+
+    public ArrayList<ProductInOrder> getProductList() {
+        return productList;
+    }
 
     private Order() {}
 
@@ -38,18 +47,35 @@ public class Order {
         return droneAccessNumber;
     }
 
-    public LinkedHashMap<Product, Integer> getOrdersMap() {
+    /*public LinkedHashMap<Product, Integer> getOrdersMap() {
         return ordersMap;
-    }
+    }*/
 
     public void placeOrderToCart(Product product, Integer count) {
         // should be more than 0 and should be added to prev value
-        Integer countProduct = (count > 0) ? count : 1;
+/*        Integer countProduct = (count > 0) ? count : 1;
         if (ordersMap.containsKey(product)){
             countProduct += ordersMap.get(product);
         }
 
-        ordersMap.put(product, countProduct);
+        ordersMap.put(product, countProduct);*/
+        Log.d(TAG, "placeOrderToCart: adding id=" + product.getId());
+        // ProductInOrder
+        boolean hasMatch = false;
+        for (ProductInOrder productInOrder : productList) {
+            Log.d(TAG, "placeOrderToCart: "+product.getId() + " compare to id=" + productInOrder.getProduct().getId());
+            if (productInOrder.getProduct().getId().intValue() == product.getId().intValue()){
+                hasMatch = true;
+                Log.d(TAG, "placeOrderToCart: got match for id=" + product.getId());
+                // add total count
+                productInOrder.addItemsInOrder(count);
+                break;
+            }
+        }
+
+        if (!hasMatch){
+            productList.add(new ProductInOrder(product, count));
+        }
     }
 
     public static int getMaxNumPerItem() {
@@ -61,11 +87,11 @@ public class Order {
     }
 
     public Integer getOrderSize() {
-        return ordersMap.size();
+        return productList.size();
     }
 
     public boolean isAnyProductInCart(){
-        return !ordersMap.isEmpty(); // (ordersMap.size() > 0);
+        return !productList.isEmpty();
     }
 
 
