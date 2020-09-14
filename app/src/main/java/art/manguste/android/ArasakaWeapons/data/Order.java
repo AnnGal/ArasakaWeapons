@@ -111,7 +111,7 @@ public class Order {
     }
 
     public Double getTotalPrice() {
-        Double totalPrice = 0d;
+        double totalPrice = 0d;
         for (ProductInOrder productInOrder : productList) {
             totalPrice += productInOrder.getProduct().getPrice() * productInOrder.getItemsInOrder();
         }

@@ -18,6 +18,6 @@
     <string name="label_return_to_main_page">Return to Main Page</string>
     <string name="info_ty_for_choosing">Thank you for choosing our company!</string>
     <string name="drone_image">drone image</string>
-
+    <string name="label_empty_cart">No products in the Cart yet</string>
 
 </resources>

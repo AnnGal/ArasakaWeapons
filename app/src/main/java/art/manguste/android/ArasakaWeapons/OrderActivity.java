@@ -26,6 +26,8 @@ public class OrderActivity extends AppCompatActivity
 
     OrderAdapter mAdapter;
     TextView mTotalPriceTextView;
+    View mLayoutFullCart;
+    View mLayoutEmptyCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class OrderActivity extends AppCompatActivity
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Cart");
 
+        mLayoutFullCart = findViewById(R.id.layout_full_cart);
+        mLayoutEmptyCart = findViewById(R.id.layout_empty_cart);
         mTotalPriceTextView = findViewById(R.id.tv_total_price);
         mAdapter = new OrderAdapter(this);
 
@@ -59,11 +63,22 @@ public class OrderActivity extends AppCompatActivity
 
     @Override
     protected void onResume() {
+        checkLayoutsVisibility();
         super.onResume();
+    }
+
+    /**
+     * if no products in the cart shows special layout
+     * */
+    private void checkLayoutsVisibility() {
         if (Order.getCurrentOrder().isAnyProductInCart()){
+            mLayoutFullCart.setVisibility(View.VISIBLE);
+            mLayoutEmptyCart.setVisibility(View.GONE);
             refreshTotalPrice();
+        } else {
+            mLayoutFullCart.setVisibility(View.GONE);
+            mLayoutEmptyCart.setVisibility(View.VISIBLE);
         }
-        //TODO if order is empty - show nothing
     }
 
     @Override
@@ -73,6 +88,7 @@ public class OrderActivity extends AppCompatActivity
         if (viewId == R.id.action_delete_from_cart || viewId == R.id.ll_action_delete_from_cart) {
             // remove product from order
             ConfirmationAndDelete(productInOrder, position);
+
         } else if (viewId == R.id.action_increase_count || viewId == R.id.action_decrease_count){
             int diff = (viewId == R.id.action_increase_count)? 1 : -1;
 
@@ -104,7 +120,6 @@ public class OrderActivity extends AppCompatActivity
             Order.getCurrentOrder().resetOrder();
             startActivity(showOrderInfo);
         }
-        // TODO set empty activity icon
     }
 
     /**
@@ -120,6 +135,7 @@ public class OrderActivity extends AppCompatActivity
                 Order.getCurrentOrder().removeProduct(productInOrder);
                 mAdapter.notifyItemRemoved(position);
                 refreshTotalPrice();
+                checkLayoutsVisibility();
             }
         });
         // on chancel
