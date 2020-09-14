@@ -12,6 +12,12 @@
     <string name="dlg_q_delete_from_order">Remove this item from the order?</string>
     <string name="dlg_yes_delete">Delete</string>
     <string name="dlg_no_chancel">Chancel</string>
+    <string name="info_order_num">Order №%s has been created!</string>
+    <string name="info_drone">Drone #%s was sent in your direction. Please add this ID to your home security guest list.</string>
+    <string name="info_contact_manager">Our contact manager text you soon</string>
+    <string name="label_return_to_main_page">Return to Main Page</string>
+    <string name="info_ty_for_choosing">Thank you for choosing our company!</string>
+    <string name="drone_image">drone image</string>
 
 
 </resources>

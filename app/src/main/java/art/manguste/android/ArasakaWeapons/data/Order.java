@@ -3,20 +3,30 @@ package art.manguste.android.ArasakaWeapons.data;
 import android.util.Log;
 import java.util.ArrayList;
 
+import static art.manguste.android.ArasakaWeapons.Util.GetOrderParamsKt.*;
+
 
 public class Order {
-    private Integer number;
-    private Integer droneId;
-    private Integer droneAccessNumber;
+    private String number;
+    private String droneId;
+    //private Integer droneAccessNumber;
 
     private static final int MAX_NUM_PER_ITEM = 7;
     private static final int MIN_NUM_PER_ITEM = 0;
 
     private static final String TAG = Order.class.getSimpleName();
 
-    ArrayList<ProductInOrder> productList = new ArrayList<>();
+    ArrayList<ProductInOrder> productList;
 
-    private Order() {}
+    private Order() {
+        setNewOrderParams();
+    }
+
+    private void setNewOrderParams() {
+        number = getOrderNum();
+        droneId = getAssignedDroneId();
+        productList = new ArrayList<>();
+    }
 
     private static class SingletonHolder {
         public static final Order instance = new Order();
@@ -30,28 +40,23 @@ public class Order {
         return productList;
     }
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public Integer getDroneId() {
+    public String getDroneId() {
         return droneId;
     }
 
-    public Integer getDroneAccessNumber() {
-        return droneAccessNumber;
-    }
-
     public void placeOrderToCart(Product product, Integer count) {
-
         Log.d(TAG, "placeOrderToCart: adding id=" + product.getId());
-        // ProductInOrder
+
         boolean hasMatch = false;
         for (ProductInOrder productInOrder : productList) {
             Log.d(TAG, "placeOrderToCart: "+product.getId() + " compare to id=" + productInOrder.getProduct().getId());
             if (productInOrder.getProduct().getId().intValue() == product.getId().intValue()){
                 hasMatch = true;
-                Log.d(TAG, "placeOrderToCart: got match for id=" + product.getId());
+                Log.d(TAG, "placeOrderToCart: got match for the id=" + product.getId());
                 // add total count
                 productInOrder.addItemsInOrder(count);
                 break;
@@ -93,5 +98,7 @@ public class Order {
         productList.remove(product);
     }
 
-
+    public void resetOrder(){
+        setNewOrderParams();
+    }
 }
