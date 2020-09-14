@@ -1,11 +1,16 @@
 package art.manguste.android.ArasakaWeapons.data;
 
+import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import java.text.DecimalFormat;
 
 import art.manguste.android.ArasakaWeapons.R;
 
 public class Product implements Parcelable {
+
+    private final String decimalPattern = "##.##";
 
     private Integer id;
     private String title;
@@ -15,7 +20,6 @@ public class Product implements Parcelable {
     private CatalogType type;
     private int imageResourceId;
     private WeaponType weaponType;
-
 
     public Integer getId() {
         return id;
@@ -83,6 +87,10 @@ public class Product implements Parcelable {
         return price;
     }
 
+    public String getPriceString() {
+        return new DecimalFormat(decimalPattern).format(price);
+    }
+
     public CatalogType getType() {
         return type;
     }
@@ -137,4 +145,8 @@ public class Product implements Parcelable {
             return new Product[size];
         }
     };
+
+    public String getTotalPriceString(int count) {
+        return new DecimalFormat(decimalPattern).format(price * count);
+    }
 }

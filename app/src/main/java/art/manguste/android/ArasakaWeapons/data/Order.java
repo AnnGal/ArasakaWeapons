@@ -11,8 +11,8 @@ public class Order {
     private String droneId;
     //private Integer droneAccessNumber;
 
-    private static final int MAX_NUM_PER_ITEM = 7;
-    private static final int MIN_NUM_PER_ITEM = 0;
+    private static final int MAX_NUM_PER_ITEM = 99;
+    private static final int MIN_NUM_PER_ITEM = 1;
 
     private static final String TAG = Order.class.getSimpleName();
 
@@ -58,7 +58,7 @@ public class Order {
                 hasMatch = true;
                 Log.d(TAG, "placeOrderToCart: got match for the id=" + product.getId());
                 // add total count
-                productInOrder.addItemsInOrder(count);
+                productInOrder.changeItemsInOrder(count);
                 break;
             }
         }
@@ -98,7 +98,23 @@ public class Order {
         productList.remove(product);
     }
 
+    public boolean placeOrderForExecution(){
+        // if it was a real order ->
+        // go to DB and confirm an order
+        // find deliver drone - put deliver task + get it number
+        // send drone
+        return true;
+    }
+
     public void resetOrder(){
         setNewOrderParams();
+    }
+
+    public Double getTotalPrice() {
+        Double totalPrice = 0d;
+        for (ProductInOrder productInOrder : productList) {
+            totalPrice += productInOrder.getProduct().getPrice() * productInOrder.getItemsInOrder();
+        }
+        return totalPrice;
     }
 }

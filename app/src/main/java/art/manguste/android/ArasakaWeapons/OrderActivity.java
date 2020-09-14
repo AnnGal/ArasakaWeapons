@@ -14,13 +14,18 @@ import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
 
+import java.text.DecimalFormat;
+
 import art.manguste.android.ArasakaWeapons.data.Order;
 import art.manguste.android.ArasakaWeapons.data.ProductInOrder;
 
 public class OrderActivity extends AppCompatActivity
             implements OrderAdapter.OrderClickListener{
-    RecyclerView mRecyclerView;
+
+    //private static final String TAG = OrderActivity.class.getSimpleName();
+
     OrderAdapter mAdapter;
+    TextView mTotalPriceTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +35,13 @@ public class OrderActivity extends AppCompatActivity
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Cart");
 
-        RecyclerView recyclerView =  findViewById(R.id.recyclerView);
-
-        // add adapter
+        mTotalPriceTextView = findViewById(R.id.tv_total_price);
         mAdapter = new OrderAdapter(this);
-        recyclerView.setAdapter(mAdapter);
 
+        //set recycler view stuff
+        RecyclerView recyclerView =  findViewById(R.id.recyclerView);
+        // add adapter
+        recyclerView.setAdapter(mAdapter);
         // connect data and view
         GridLayoutManager layoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(layoutManager);
@@ -51,49 +57,72 @@ public class OrderActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (Order.getCurrentOrder().isAnyProductInCart()){
+            refreshTotalPrice();
+        }
+        //TODO if order is empty - show nothing
+    }
 
     @Override
     public void onViewClick(View v, int position, MaterialCardView item, ProductInOrder productInOrder) {
         int viewId = v.getId();
 
         if (viewId == R.id.action_delete_from_cart || viewId == R.id.ll_action_delete_from_cart) {
-            // set order off
-            showDeleteConfirmationDialog(productInOrder, position);
-            // TODO recalculate price & order
-        } else if (viewId == R.id.action_increase_count){
-            TextView tvCount = item.findViewById(R.id.tv_items_count);
+            // remove product from order
+            ConfirmationAndDelete(productInOrder, position);
+        } else if (viewId == R.id.action_increase_count || viewId == R.id.action_decrease_count){
+            int diff = (viewId == R.id.action_increase_count)? 1 : -1;
 
-            Integer count = Integer.valueOf((String) tvCount.getText());
-            count ++;
-            tvCount.setText(String.valueOf(count));
-            // TODO recalculate price, order and total price
-        }  else if (viewId == R.id.action_decrease_count){
-            TextView tvCount = item.findViewById(R.id.tv_items_count);
-
-            Integer count = Integer.valueOf((String) tvCount.getText());
-            count --;
-            tvCount.setText(String.valueOf(count));
-            // TODO recalculate price, order and total price
+            // change items count
+            productInOrder.changeItemsInOrder(diff);
+            // get actual info
+            int itemsCount = productInOrder.getItemsInOrder();
+            String priceString = productInOrder.getProduct().getPriceString();
+            String totalPriceString = productInOrder.getProduct().getTotalPriceString(itemsCount);
+            // set actual information
+            ((TextView) item.findViewById(R.id.tv_items_count)).setText(String.valueOf(itemsCount));
+            ((TextView) item.findViewById(R.id.tv_price_card)).setText(priceString);
+            ((TextView) item.findViewById(R.id.tv_price_card_total)).setText(totalPriceString);
+            // change order total cost
+            refreshTotalPrice();
         }
     }
 
     public void onPlaceOrder(View view) {
-        startActivity(new Intent(this, PlacedOrderActivity.class));
+        if (Order.getCurrentOrder().placeOrderForExecution()){
+            Intent showOrderInfo = new Intent(this, PlacedOrderActivity.class);
+            String orderNum = String.valueOf(Order.getCurrentOrder().getNumber());
+
+            // send orders data, because it will be erased later
+            showOrderInfo.putExtra(PlacedOrderActivity.EXTRA_ORDER_NUM, orderNum);
+            showOrderInfo.putExtra(PlacedOrderActivity.EXTRA_DRONE_ID, String.valueOf(Order.getCurrentOrder().getDroneId()));
+
+            // reset order params
+            Order.getCurrentOrder().resetOrder();
+            startActivity(showOrderInfo);
+        }
+        // TODO set empty activity icon
     }
 
     /**
+     *
      * Prompt the user to confirm that they want to delete this pet.
      */
-    private void showDeleteConfirmationDialog(final ProductInOrder productInOrder, final int position) {
+    private void ConfirmationAndDelete(final ProductInOrder productInOrder, final int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.dlg_q_delete_from_order);
+        // on delete from order
         builder.setPositiveButton(R.string.dlg_yes_delete, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Order.getCurrentOrder().removeProduct(productInOrder);
                 mAdapter.notifyItemRemoved(position);
+                refreshTotalPrice();
             }
         });
+        // on chancel
         builder.setNegativeButton(R.string.dlg_no_chancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 if (dialog != null) {
@@ -102,8 +131,15 @@ public class OrderActivity extends AppCompatActivity
             }
         });
 
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+        builder.create().show();
+    }
+
+    /**
+     * Refresh actual order cost  
+     */
+    private void refreshTotalPrice() {
+        String priceString = String.valueOf(new DecimalFormat("##.##").format(Order.getCurrentOrder().getTotalPrice()));
+        mTotalPriceTextView.setText(priceString);
     }
 
 /*

@@ -45,9 +45,8 @@ public class CardListFragment extends Fragment
      * this fragment using the provided parameters.
      *
      * @param catalogType sets fragment type.
-     * @return A new instance of fragment StoreListFragment.
+     * @return a the new instance of fragment StoreListFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static CardListFragment newInstance(CatalogType catalogType){
         CardListFragment fragment = new CardListFragment();
         Bundle args = new Bundle();
@@ -99,7 +98,6 @@ public class CardListFragment extends Fragment
     @Override
     public void onViewClick(View v, int position, MaterialCardView item, Product product) {
         if (v.getId() == R.id.ib_add_position_in_cart || v.getId() == R.id.ll_add_position_in_cart){
-
             // Change visibility
             //item.findViewById(R.id.ib_add_position_in_cart).setVisibility(View.GONE);
             //item.findViewById(R.id.ll_add_position_in_cart).setVisibility(View.GONE);
@@ -126,10 +124,8 @@ public class CardListFragment extends Fragment
             tvSnackbar.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             snackbar.show();
 
-
-
         } else if (v.getId() == R.id.tv_move_to_cart_from_card){
-            // Do your stuff here
+            // move to cart
             Intent intent = new Intent(mContext, OrderActivity.class);
             startActivity(intent);
         }
