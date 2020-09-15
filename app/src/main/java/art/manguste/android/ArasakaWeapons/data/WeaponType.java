@@ -7,7 +7,7 @@ public enum WeaponType {
     HEAVY("heavy weapon"),
     SUBMACHINE("submachine gun"),
     AUTOPISTOL("auto pistol"),
-    ASSAULTRIFLE("Assault rifle"),
+    ASSAULTRIFLE("assault rifle"),
     NONE("");
 
     private String label;

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="arasaka_title_logo">логотип Arasaka</string>
+    <string name="weapons_tab">Оружие</string>
+    <string name="services_tab">Услуги</string>
+    <string name="currency_2077">E$</string>
+    <string name="go_to_cart">в корзину</string>
+    <string name="warning_max_items">Достигнуто максимальное количество позиций в корзине</string>
+    <string name="dlg_q_delete_from_order">Удалить из заказа?</string>
+    <string name="dlg_yes_delete">Удалить</string>
+    <string name="dlg_no_chancel">Отмена</string>
+    <string name="info_order_num">Заказ №%s был создан!</string>
+    <string name="info_drone">Дрон #%s был направлен по вашим координатам. Пожалуйста, добавьте этот ID в список гостей вашей системы безопастности.</string>
+    <string name="info_contact_manager">Наш менеджер свяжется с вами в ближайшее время</string>
+    <string name="label_return_to_main_page">Вернуться в магазин</string>
+    <string name="info_ty_for_choosing">Благодарим вас за выбор нашей компании!</string>
+    <string name="drone_image">изображение дрона</string>
+    <string name="label_empty_cart">Нет товара в Корзине</string>
+    <string name="place_order">Сделать заказ</string>
+    <string name="total_price">Всего :</string>
+    <string name="empty_cart_icon">изображение пустой корзины</string>
+    <string name="add">добавить</string>
+    <string name="price">Цена :</string>
+    <string name="product_image">изображение продукта</string>
+    <string name="cart_icon">иконка корзины</string>
+</resources>

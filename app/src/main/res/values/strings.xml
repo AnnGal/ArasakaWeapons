@@ -13,11 +13,18 @@
     <string name="dlg_yes_delete">Delete</string>
     <string name="dlg_no_chancel">Chancel</string>
     <string name="info_order_num">Order №%s has been created!</string>
-    <string name="info_drone">Drone #%s was sent in your direction. Please add this ID to your home security guest list.</string>
+    <string name="info_drone">Drone #%s was sent by your coordinates. Please add this ID to your home security guest list.</string>
     <string name="info_contact_manager">Our contact manager text you soon</string>
-    <string name="label_return_to_main_page">Return to Main Page</string>
+    <string name="label_return_to_main_page">Return to Shop</string>
     <string name="info_ty_for_choosing">Thank you for choosing our company!</string>
     <string name="drone_image">drone image</string>
     <string name="label_empty_cart">No products in the Cart yet</string>
+    <string name="place_order">Place Order</string>
+    <string name="total_price">Total Price :</string>
+    <string name="empty_cart_icon">empty cart icon</string>
+    <string name="add">add</string>
+    <string name="price">Price :</string>
+    <string name="product_image">product image</string>
+    <string name="cart_icon">cart icon</string>
 
 </resources>
