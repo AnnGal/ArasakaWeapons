@@ -123,8 +123,7 @@ public class OrderActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * Prompt the user to confirm that they want to delete this pet.
+     * Dialog which confirm and del product from the cart
      */
     private void ConfirmationAndDelete(final ProductInOrder productInOrder, final int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

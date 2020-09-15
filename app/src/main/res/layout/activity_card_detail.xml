@@ -30,7 +30,7 @@
                     android:layout_height="match_parent"
                     android:contentDescription="none"
                     android:background="@color/colorArasakaBackground"
-                    android:scaleType="fitCenter"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/arasaka_logo"
                     app:layout_collapseMode="parallax" />
 

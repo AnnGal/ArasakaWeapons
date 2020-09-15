@@ -5,6 +5,9 @@ public enum WeaponType {
     MELEE("melee weapon"),
     CYBERWARE("cyberware"),
     HEAVY("heavy weapon"),
+    SUBMACHINE("submachine gun"),
+    AUTOPISTOL("auto pistol"),
+    ASSAULTRIFLE("Assault rifle"),
     NONE("");
 
     private String label;
