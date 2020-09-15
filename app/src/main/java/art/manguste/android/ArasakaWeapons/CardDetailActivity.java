@@ -3,6 +3,7 @@ package art.manguste.android.ArasakaWeapons;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,13 +22,14 @@ import art.manguste.android.ArasakaWeapons.data.WeaponType;
 
 
 public class CardDetailActivity extends AppCompatActivity {
-    TextView mCartImage;
+    ImageButton mCartImage;
     TextView mItemsCount;
     TextView mProductName;
     TextView mProductType;
     TextView mProductDescription;
     ImageView mImage;
     TextView mPrice;
+    TextView mItemImage;
 
     private Integer itemsCount = 1;
     private Product product;
@@ -43,13 +45,14 @@ public class CardDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("");
 
-        mCartImage = findViewById(R.id.tv_move_to_cart);
+        mCartImage = findViewById(R.id.tv_to_cart);
         mItemsCount = findViewById(R.id.tv_items_count);
         mProductName = findViewById(R.id.product_name);
         mProductType = findViewById(R.id.product_type);
         mProductDescription = findViewById(R.id.product_description);
         mPrice = findViewById(R.id.price);
         mImage = findViewById(R.id.image);
+        mItemImage = findViewById(R.id.tv_number_items_in_cart);
 
         // Get parcelable object
         Bundle arguments = getIntent().getExtras();
@@ -97,16 +100,34 @@ public class CardDetailActivity extends AppCompatActivity {
         });
 
         /** move to cart activity */
-        (findViewById(R.id.tv_move_to_cart)).setOnClickListener(new View.OnClickListener() {
+        (findViewById(R.id.tv_to_cart)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), OrderActivity.class));
+            }
+        });
+        (findViewById(R.id.layout_to_cart)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), OrderActivity.class));
+            }
+        });
+        (findViewById(R.id.tv_number_items_in_cart)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getBaseContext(), OrderActivity.class));
             }
         });
 
+
         CheckCartImage();
 
         // TODO save items count on device rotation
+    }
+
+    protected void onResume() {
+        CheckCartImage();
+        super.onResume();
     }
 
     private void setCardData() {
@@ -134,11 +155,11 @@ public class CardDetailActivity extends AppCompatActivity {
     public void CheckCartImage() {
         Order order = Order.getCurrentOrder();
         if (order.isAnyProductInCart()){
-            mCartImage.setBackground(getResources().getDrawable(R.drawable.ic_cart));
+            mItemImage.setText(order.getItemsCount());
+            mItemImage.setVisibility(View.VISIBLE);
         } else {
-            mCartImage.setBackground(getResources().getDrawable(R.drawable.ic_empty_cart));
+            mItemImage.setVisibility(View.INVISIBLE);
         }
-        // TODO refresh on resume
     }
 
     @Override

@@ -19,7 +19,7 @@ public class ProductInOrder{
         checkNumInRange();
     }
 
-    public void addItemsInOrder(int itemsInOrder) {
+    public void changeItemsInOrder(int itemsInOrder) {
         this.itemsInOrder += itemsInOrder;
         checkNumInRange();
     }

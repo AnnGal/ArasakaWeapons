@@ -79,7 +79,7 @@
                     android:text="x"/>
 
                 <TextView
-                    android:id="@+id/price_card"
+                    android:id="@+id/tv_price_card"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textStyle="bold"
@@ -99,7 +99,7 @@
                     android:text="="/>
 
                 <TextView
-                    android:id="@+id/price_card_total"
+                    android:id="@+id/tv_price_card_total"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textStyle="bold"

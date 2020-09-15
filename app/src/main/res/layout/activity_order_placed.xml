@@ -14,22 +14,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/drone_cut" />
+        app:srcCompat="@drawable/drone_cut"
+        android:contentDescription="@string/drone_image"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_order_created_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
         android:gravity="center"
-        android:text="Order has been created!"
+        android:text="@string/info_order_num"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_drone_send_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -38,13 +39,13 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:gravity="center"
-        android:text="Drone #1111 has been sent to your direction. Please add this ID to guest list you home security"
+        android:text="@string/info_drone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_created_info" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_manager_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -53,25 +54,25 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:gravity="center"
-        android:text="Our contact manager text your soon"
+        android:text="@string/info_contact_manager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_drone_send_info" />
 
     <Button
         android:id="@+id/action_return_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Return to Main Page"
+        android:text="@string/label_return_to_main_page"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/ty_info"
         android:onClick="OnReturnClick"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/ty_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -80,8 +81,9 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:gravity="center|center_horizontal"
-        android:text="Thank you for choosing our company!"
+        android:text="@string/info_ty_for_choosing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_manager_info" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,12 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import art.manguste.android.ArasakaWeapons.data.Order;
-import art.manguste.android.ArasakaWeapons.data.Product;
 import art.manguste.android.ArasakaWeapons.data.ProductInOrder;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
@@ -28,7 +23,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     }
 
     public interface OrderClickListener{
-        void onViewClick(View v, int position, MaterialCardView item, Product product);
+        void onViewClick(View v, int position, MaterialCardView item, ProductInOrder product);
     }
 
     @NonNull
@@ -43,16 +38,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         holder.bind(Order.getCurrentOrder().getProductList().get(position));
-/*        LinkedHashMap<Product, Integer> order = Order.getCurrentOrder().getOrdersMap();
-
-        int i = Order.getCurrentOrder().getOrderSize() -1;
-        for (Map.Entry<Product, Integer> pair : order.entrySet()) {
-            if (i == position) {
-                holder.bind(pair.getKey(), pair.getValue());
-                break;
-            }
-            i--;
-        }*/
     }
 
     @Override
@@ -60,11 +45,16 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         return Order.getCurrentOrder().getOrderSize();
     }
 
+    /**
+     * Holder for a card
+     * */
     class OrderViewHolder extends RecyclerView.ViewHolder{
         private MaterialCardView item;
-        private Product product;
-        private Integer count;
+        private ProductInOrder productInOrder;
 
+        /**
+         * set data params and listeners
+         * */
         public OrderViewHolder(@NonNull MaterialCardView itemView) {
             super(itemView);
             item = itemView;
@@ -80,7 +70,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
                 @Override
                 public void onClick(View v) {
                     if(mOnClickListener != null)
-                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, product);
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, productInOrder);
                 }
             });
 
@@ -89,16 +79,16 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
                 @Override
                 public void onClick(View v) {
                     if(mOnClickListener != null)
-                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, product);
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, productInOrder);
                 }
             });
 
-            // on the linear layout which contains cart icon click
+            // action - remove order from cart (linear layout which contains cart icon)
             removeProductLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(mOnClickListener != null)
-                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, product);
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, productInOrder);
                 }
             });
 
@@ -107,21 +97,27 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
                 @Override
                 public void onClick(View v) {
                     if(mOnClickListener != null)
-                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, product);
+                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, productInOrder);
                 }
             });
-
         }
 
+        /**
+         * place product info on a view card
+         */
         void bind(ProductInOrder productInOrder){
-            this.product = productInOrder.getProduct();
-            this.count = productInOrder.getItemsInOrder();
+            this.productInOrder = productInOrder;
+            // get data
+            int itemsCount = productInOrder.getItemsInOrder();
+            String priceString = productInOrder.getProduct().getPriceString();
+            String totalPriceString = productInOrder.getProduct().getTotalPriceString(itemsCount);
 
-            ((TextView) item.findViewById(R.id.product_name)).setText(product.getTitle());
-            ((TextView) item.findViewById(R.id.tv_items_count)).setText(String.valueOf(count));
+            //set data
+            ((TextView) item.findViewById(R.id.product_name)).setText(productInOrder.getProduct().getTitle());
+            ((TextView) item.findViewById(R.id.tv_items_count)).setText(String.valueOf(itemsCount));
 
+            ((TextView) item.findViewById(R.id.tv_price_card)).setText(priceString);
+            ((TextView) item.findViewById(R.id.tv_price_card_total)).setText(totalPriceString);
         }
-
-
     }
 }
