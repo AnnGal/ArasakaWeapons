@@ -30,8 +30,8 @@
 
             <TextView
                 android:id="@+id/tv_number_items_in_cart"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="9dp"
                 android:layout_marginLeft="9dp"

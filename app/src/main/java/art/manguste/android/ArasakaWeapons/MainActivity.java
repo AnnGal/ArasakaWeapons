@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void CheckCartImage() {
         Order order = Order.getCurrentOrder();
+        //TODO think what to do for elevation and API < level 21
         if (order.isAnyProductInCart()){
             mItemImage.setText(order.getItemsCount());
             mItemImage.setVisibility(View.VISIBLE);

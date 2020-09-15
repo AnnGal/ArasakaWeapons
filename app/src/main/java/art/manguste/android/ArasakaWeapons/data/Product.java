@@ -45,6 +45,7 @@ public class Product implements Parcelable {
         this.imageResourceId = imageResourceId;
         this.weaponType = WeaponType.NONE;
     }
+    // TODO make ru localization
 
     public static final Product[] weapons = {
             new Product(10104,"Gorilla arms",
@@ -87,9 +88,7 @@ public class Product implements Parcelable {
                     5500d, CatalogType.WEAPON, R.drawable.pms, WeaponType.SUBMACHINE)
     };
 
-
-
-
+    // TODO add pics
     public static final Product[] services = {
             new Product(20001,"Rebalancing implants",
                     "Within two hours we will conduct a full analysis of your implants and correct their behavior",
