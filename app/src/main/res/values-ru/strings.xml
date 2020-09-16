@@ -19,8 +19,22 @@
     <string name="place_order">Сделать заказ</string>
     <string name="total_price">Всего :</string>
     <string name="empty_cart_icon">изображение пустой корзины</string>
-    <string name="add">добавить</string>
+    <string name="add">в корзину</string>
     <string name="price">Цена :</string>
     <string name="product_image">изображение продукта</string>
     <string name="cart_icon">иконка корзины</string>
+    <string name="weapon_gorilla_title">Руки гориллы</string>
+    <string name="weapon_m122_title">Cyberdyn M122</string>
+    <string name="weapon_launch_title">Пусковая установка</string>
+    <string name="weapon_kit_title">\"Новичок в городе\"</string>
+    <string name="weapon_katana_title">Термальная катана</string>
+    <string name="weapon_mantis_title">Лезвия Богомола</string>
+    <string name="weapon_tki20_title">TKI-20 Shingen</string>
+    <string name="weapon_setsuko_title">Setsuko-Arasaka \"P.M.S.\"</string>
+    <string name="service_implants_title">Перебалансировка имплантов</string>
+    <string name="service_guard_title">Аренда охранника</string>
+    <string name="service_consult_title">Построение системы домашней безопасности</string>
+    <string name="service_install_title">Установка имплантов</string>
+    <string name="service_train_title">Тренировка команды</string>
+    <string name="service_control_title">Зона контроля</string>
 </resources>
