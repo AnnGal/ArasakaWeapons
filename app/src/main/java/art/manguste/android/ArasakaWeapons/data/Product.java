@@ -81,7 +81,7 @@ public class Product implements Parcelable {
                     "Two mode - burst fire and micro guided missile.\n" +
                             "Smart weapons require a smart link to unlock the full potential of their targeting systems",
                     5500d, CatalogType.WEAPON, R.drawable.tki_20_shingen, WeaponType.SUBMACHINE),
-            new Product(10108,"Setsuko-Arasaka \"PMS\"",
+            new Product(10108,"Setsuko-Arasaka \"P.M.S.\"",
                     "Fires a subsonic, caseless 7mm bullet paired with a built-in Sonex suppressor",
                     "Designed for low-profile corporate security and paramilitary forces where discretion is valued over raw firepower.\n"+
                             "The PMS fires a subsonic, caseless 7mm bullet paired with a built-in Sonex suppressor",

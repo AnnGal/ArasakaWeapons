@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Arasaka Weapons</string>
+    <string name="app_name" translatable="false">Arasaka Weapons</string>
 
     <!--behavior-->
 
@@ -26,5 +26,8 @@
     <string name="price">Price :</string>
     <string name="product_image">product image</string>
     <string name="cart_icon">cart icon</string>
+    <string name="test" translatable="false">test</string>
+
+    <!--card-info-->
 
 </resources>

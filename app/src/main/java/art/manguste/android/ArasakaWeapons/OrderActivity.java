@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.google.android.material.card.MaterialCardView;
 
 import java.text.DecimalFormat;
-
 import art.manguste.android.ArasakaWeapons.data.Order;
 import art.manguste.android.ArasakaWeapons.data.ProductInOrder;
 

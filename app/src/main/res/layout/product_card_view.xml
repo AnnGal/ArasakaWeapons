@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="124dp"
     android:id="@+id/card_view"
-    android:layout_margin="4dp"
+    android:layout_marginTop="4dp"
     card_view:cardElevation="2dp"
     card_view:cardCornerRadius="4dp">
     <!--android:theme="@style/Theme.MaterialComponents.Light"-->
@@ -36,8 +36,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="card title"
-                android:textColor="@color/colorArasakaRed"
-                android:textStyle="bold"
+                android:textColor="@color/colorRed"
                 android:textAllCaps="true"
                 android:layout_width="match_parent"/>
 
@@ -45,17 +44,16 @@
                 android:id="@+id/product_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:textColor="@color/colorDarkBackground"
                 android:text="test" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/product_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_weight="1"
-                android:text="description full of worlds and phrases can be longdescription full of worlds and phrases can be long" />
+                android:text="@string/test" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -84,7 +82,7 @@
 
                 <View
                     android:layout_width="0dp"
-                    android:layout_height="32dp"
+                    android:layout_height="28dp"
                     android:layout_weight="1" />
 
                 <LinearLayout
