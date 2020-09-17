@@ -3,7 +3,6 @@ package art.manguste.android.ArasakaWeapons;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +17,7 @@ import java.text.DecimalFormat;
 
 import art.manguste.android.ArasakaWeapons.data.Order;
 import art.manguste.android.ArasakaWeapons.data.Product;
-import art.manguste.android.ArasakaWeapons.data.WeaponType;
+import art.manguste.android.ArasakaWeapons.Util.WeaponType;
 
 
 public class CardDetailActivity extends AppCompatActivity {

@@ -14,8 +14,10 @@ import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
-import art.manguste.android.ArasakaWeapons.data.CatalogType;
+import art.manguste.android.ArasakaWeapons.Util.CatalogType;
 import art.manguste.android.ArasakaWeapons.data.Order;
+import art.manguste.android.ArasakaWeapons.data.Product;
+import art.manguste.android.ArasakaWeapons.Util.WeaponType;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initTestData();
 
         //set scroller
         SectionPagerAdapter pagerAdapter = new SectionPagerAdapter(getSupportFragmentManager());
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         CheckCartImage();
     }
 
+
     @Override
     protected void onResume() {
         CheckCartImage();
@@ -71,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void CheckCartImage() {
         Order order = Order.getCurrentOrder();
+        //TODO think what to do for elevation and API < level 21
         if (order.isAnyProductInCart()){
             mItemImage.setText(order.getItemsCount());
             mItemImage.setVisibility(View.VISIBLE);
@@ -109,5 +115,82 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void initTestData() {
+        Product.weapons = new Product[]{
+                new Product(10104, getString(R.string.weapon_gorilla_title),
+                        getString(R.string.weapon_gorilla_desc),
+                        getString(R.string.weapon_gorilla_desc_full),
+                        5500d, CatalogType.WEAPON, R.drawable.gorilla_arms, WeaponType.CYBERWARE),
+                new Product(10105,
+                        getString(R.string.weapon_m122_title),
+                        getString(R.string.weapon_m122_desc),
+                        getString(R.string.weapon_m122_desc_full),
+                        5500d, CatalogType.WEAPON, R.drawable.cyberdyn, WeaponType.ASSAULTRIFLE),
+                new Product(10106,
+                        getString(R.string.weapon_launch_title),
+                        getString(R.string.weapon_launch_desc),
+                        getString(R.string.weapon_launch_desc_full),
+                        5500d, CatalogType.WEAPON, R.drawable.launch_system, WeaponType.CYBERWARE),
+                new Product(10107,
+                        getString(R.string.weapon_kit_title),
+                        getString(R.string.weapon_kit_desc),
+                        getString(R.string.weapon_kit_desc_full),
+                        5500d, CatalogType.WEAPON, R.drawable.wsa_pistol, WeaponType.AUTOPISTOL),
+                new Product(10103,
+                        getString(R.string.weapon_katana_title),
+                        getString(R.string.weapon_katana_desc),
+                        getString(R.string.weapon_katana_desc_full),
+                        5500d, CatalogType.WEAPON, R.drawable.thermal_katana, WeaponType.MELEE),
+                new Product(10101,
+                        getString(R.string.weapon_mantis_title),
+                        getString(R.string.weapon_mantis_desc),
+                        getString(R.string.weapon_mantis_desc_full),
+                        5500d, CatalogType.WEAPON, R.drawable.mantisblades, WeaponType.CYBERWARE),
+                new Product(10102,
+                        getString(R.string.weapon_tki20_title),
+                        getString(R.string.weapon_tki20_desc),
+                        getString(R.string.weapon_tki20_desc_full),
+                        5500d, CatalogType.WEAPON, R.drawable.tki_20_shingen, WeaponType.SUBMACHINE),
+                new Product(10108,getString(R.string.weapon_setsuko_title),
+                        getString(R.string.weapon_setsuko_desc),
+                        getString(R.string.weapon_setsuko_desc_full),
+                        5500d, CatalogType.WEAPON, R.drawable.pms, WeaponType.SUBMACHINE)
+        };
+
+        // TODO add pics
+        Product.services = new Product[]{
+                new Product(20001,
+                        getString(R.string.service_implants_title),
+                        getString(R.string.service_implants_desc),
+                        getString(R.string.service_implants_desc_full),
+                        75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
+                new Product(20001,
+                        getString(R.string.service_guard_title),
+                        getString(R.string.service_guard_desc),
+                        getString(R.string.service_guard_desc_full),
+                        75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
+                new Product(20001,
+                        getString(R.string.service_consult_title),
+                        getString(R.string.service_consult_desc),
+                        getString(R.string.service_consult_desc_full),
+                        75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
+                new Product(20001,
+                        getString(R.string.service_install_title),
+                        getString(R.string.service_install_desc),
+                        getString(R.string.service_install_desc_full),
+                        75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
+                new Product(20001,
+                        getString(R.string.service_train_title),
+                        getString(R.string.service_train_desc),
+                        getString(R.string.service_train_desc_full),
+                        75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
+                new Product(20001,
+                        getString(R.string.service_control_title),
+                        getString(R.string.service_control_desc),
+                        getString(R.string.service_control_desc_full),
+                        75500d, CatalogType.SERVICE, R.drawable.arasaka_logo)
+        };
+
+    }
 
 }

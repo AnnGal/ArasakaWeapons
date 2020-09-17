@@ -15,9 +15,9 @@ import com.google.android.material.card.MaterialCardView;
 
 import java.text.DecimalFormat;
 
-import art.manguste.android.ArasakaWeapons.data.CatalogType;
+import art.manguste.android.ArasakaWeapons.Util.CatalogType;
 import art.manguste.android.ArasakaWeapons.data.Product;
-import art.manguste.android.ArasakaWeapons.data.WeaponType;
+import art.manguste.android.ArasakaWeapons.Util.WeaponType;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
 
