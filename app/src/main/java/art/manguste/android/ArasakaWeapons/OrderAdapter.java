@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -113,6 +114,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             String totalPriceString = productInOrder.getProduct().getTotalPriceString(itemsCount);
 
             //set data
+            ((ImageView) item.findViewById(R.id.id_image_in_cart)).setImageResource(productInOrder.getProduct().getImageResourceId());
             ((TextView) item.findViewById(R.id.product_name)).setText(productInOrder.getProduct().getTitle());
             ((TextView) item.findViewById(R.id.tv_items_count)).setText(String.valueOf(itemsCount));
 

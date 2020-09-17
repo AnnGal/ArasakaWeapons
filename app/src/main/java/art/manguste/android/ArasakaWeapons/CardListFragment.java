@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.snackbar.Snackbar;
 
-import art.manguste.android.ArasakaWeapons.data.CatalogType;
+import art.manguste.android.ArasakaWeapons.Util.CatalogType;
 import art.manguste.android.ArasakaWeapons.data.Order;
 import art.manguste.android.ArasakaWeapons.data.Product;
 

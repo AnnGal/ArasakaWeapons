@@ -46,7 +46,7 @@ public class PlacedOrderActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.tv_order_created_info)).setText(orderMessage);
 
         // drone info text
-        String droneMessage  = getString(R.string.info_drone, mDroneId);
+        String droneMessage  = getString(R.string.info_drone, mDroneId, mDroneId);
         ((TextView) findViewById(R.id.tv_drone_send_info)).setText(droneMessage);
     }
 

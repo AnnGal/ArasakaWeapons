@@ -1,4 +1,4 @@
-package art.manguste.android.ArasakaWeapons.data;
+package art.manguste.android.ArasakaWeapons.Util;
 
 public enum WeaponType {
     SMART("smart weapon"),

@@ -10,7 +10,7 @@
     <string name="dlg_yes_delete">Удалить</string>
     <string name="dlg_no_chancel">Отмена</string>
     <string name="info_order_num">Заказ №%s был создан!</string>
-    <string name="info_drone">Дрон #%s был направлен по вашим координатам. Пожалуйста, добавьте этот ID в список гостей вашей системы безопастности.</string>
+    <string name="info_drone">Дрон #%1$s был направлен по вашим координатам. Пожалуйста, добавьте его ID "#%2$s" в список гостей вашей системы безопастности.</string>
     <string name="info_contact_manager">Наш менеджер свяжется с вами в ближайшее время</string>
     <string name="label_return_to_main_page">Вернуться в магазин</string>
     <string name="info_ty_for_choosing">Благодарим вас за выбор нашей компании!</string>

@@ -14,10 +14,10 @@ import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
-import art.manguste.android.ArasakaWeapons.data.CatalogType;
+import art.manguste.android.ArasakaWeapons.Util.CatalogType;
 import art.manguste.android.ArasakaWeapons.data.Order;
 import art.manguste.android.ArasakaWeapons.data.Product;
-import art.manguste.android.ArasakaWeapons.data.WeaponType;
+import art.manguste.android.ArasakaWeapons.Util.WeaponType;
 
 public class MainActivity extends AppCompatActivity {
 

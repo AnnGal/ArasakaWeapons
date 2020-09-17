@@ -21,10 +21,12 @@
         android:id="@+id/tv_order_created_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:gravity="center"
+        style="@style/TextMessage"
         android:text="@string/info_order_num"
-        android:textSize="22sp"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -33,12 +35,9 @@
         android:id="@+id/tv_drone_send_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:gravity="center"
+        android:layout_marginVertical="16dp"
+        android:layout_marginHorizontal="16dp"
+        style="@style/TextMessage"
         android:text="@string/info_drone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,22 +47,33 @@
         android:id="@+id/tv_manager_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginHorizontal="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:gravity="center"
+        style="@style/TextMessage"
         android:text="@string/info_contact_manager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_drone_send_info" />
 
+
+    <TextView
+        android:id="@+id/ty_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginVertical="32dp"
+        style="@style/TextMessage"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/info_ty_for_choosing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_manager_info" />
+
     <Button
         android:id="@+id/action_return_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/label_return_to_main_page"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -71,19 +81,5 @@
         app:layout_constraintTop_toBottomOf="@+id/ty_info"
         android:onClick="OnReturnClick"/>
 
-    <TextView
-        android:id="@+id/ty_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:gravity="center|center_horizontal"
-        android:text="@string/info_ty_for_choosing"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_manager_info" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,12 @@
 package art.manguste.android.ArasakaWeapons.data;
 
-import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.text.DecimalFormat;
 
-import art.manguste.android.ArasakaWeapons.R;
+import art.manguste.android.ArasakaWeapons.Util.CatalogType;
+import art.manguste.android.ArasakaWeapons.Util.WeaponType;
 
 public class Product implements Parcelable {
 

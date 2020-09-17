@@ -13,8 +13,8 @@
     <string name="dlg_yes_delete">Delete</string>
     <string name="dlg_no_chancel">Chancel</string>
     <string name="info_order_num">Order №%s has been created!</string>
-    <string name="info_drone">Drone #%s was sent by your coordinates. Please add this ID to your home security guest list.</string>
-    <string name="info_contact_manager">Our contact manager text you soon</string>
+    <string name="info_drone">Drone #%1$s was sent by your coordinates. Please add it ID "#%2$s" to your home security guest list.</string>
+    <string name="info_contact_manager">Our contact manager text you shortly</string>
     <string name="label_return_to_main_page">Return to Shop</string>
     <string name="info_ty_for_choosing">Thank you for choosing our company!</string>
     <string name="drone_image">drone image</string>
@@ -27,8 +27,9 @@
     <string name="product_image">product image</string>
     <string name="cart_icon">cart icon</string>
     <string name="test" translatable="false">test</string>
+    <string name="test_price" translatable="false">7500</string>
 
-    <!--card description-->
+    <!--card-info-->
     <string name="weapon_gorilla_title">Gorilla arms</string>
     <string name="weapon_gorilla_desc">Classic and reliable replacements for natural limbs, improving both strength and endurance</string>
     <string name="weapon_gorilla_desc_full">Outfitted with kinetic energy recovery system.\nClassic and reliable replacements for natural limbs, improving both strength and endurance</string>
@@ -72,6 +73,6 @@
     <string name="service_control_desc">Special trained team for control the area and suppress riots</string>
     <string name="service_control_desc_full">Special trained team for control the area and suppress riots</string>
 
-    <!--card-info-->
+
 
 </resources>
