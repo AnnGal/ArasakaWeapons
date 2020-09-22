@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_text_padding_horizontal">8dp</dimen>
+    <dimen name="card_text_padding_vertical">2dp</dimen>
+    <dimen name="basic_gap">16dp</dimen>
+    <dimen name="horizontal_layout_gap">32dp</dimen>
+</resources>

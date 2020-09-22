@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initTestData();
+        initFakeDBData();
 
         //set scroller
         SectionPagerAdapter pagerAdapter = new SectionPagerAdapter(getSupportFragmentManager());
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void CheckCartImage() {
         Order order = Order.getCurrentOrder();
-        //TODO think what to do for elevation and API < level 21
+
         if (order.isAnyProductInCart()){
             mItemImage.setText(order.getItemsCount());
             mItemImage.setVisibility(View.VISIBLE);
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void initTestData() {
+    private void initFakeDBData() {
         Product.weapons = new Product[]{
                 new Product(10104, getString(R.string.weapon_gorilla_title),
                         getString(R.string.weapon_gorilla_desc),
@@ -164,27 +164,27 @@ public class MainActivity extends AppCompatActivity {
                         getString(R.string.service_implants_desc),
                         getString(R.string.service_implants_desc_full),
                         75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
-                new Product(20001,
+                new Product(20002,
                         getString(R.string.service_guard_title),
                         getString(R.string.service_guard_desc),
                         getString(R.string.service_guard_desc_full),
                         75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
-                new Product(20001,
+                new Product(20003,
                         getString(R.string.service_consult_title),
                         getString(R.string.service_consult_desc),
                         getString(R.string.service_consult_desc_full),
                         75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
-                new Product(20001,
+                new Product(20004,
                         getString(R.string.service_install_title),
                         getString(R.string.service_install_desc),
                         getString(R.string.service_install_desc_full),
                         75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
-                new Product(20001,
+                new Product(20005,
                         getString(R.string.service_train_title),
                         getString(R.string.service_train_desc),
                         getString(R.string.service_train_desc_full),
                         75500d, CatalogType.SERVICE, R.drawable.arasaka_logo),
-                new Product(20001,
+                new Product(20006,
                         getString(R.string.service_control_title),
                         getString(R.string.service_control_desc),
                         getString(R.string.service_control_desc_full),

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/horizontal_layout_gap"
     tools:context=".PlacedOrderActivity">
 
     <ImageView
@@ -15,18 +16,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/drone_cut"
+
         android:contentDescription="@string/drone_image"/>
 
     <TextView
         android:id="@+id/tv_order_created_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextMessage"
+        style="@style/TextOrderTitle"
         android:text="@string/info_order_num"
-        android:textSize="24sp"
-        android:fontFamily="sans-serif-black"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="16dp"
+        android:layout_marginVertical="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -35,25 +34,25 @@
         android:id="@+id/tv_drone_send_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="16dp"
-        android:layout_marginHorizontal="16dp"
-        style="@style/TextMessage"
+        android:layout_marginVertical="24dp"
+        style="@style/TextOrder"
         android:text="@string/info_drone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_order_created_info" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_created_info"
+         />
 
     <TextView
         android:id="@+id/tv_manager_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
         android:layout_marginTop="8dp"
-        style="@style/TextMessage"
+        style="@style/TextOrder"
         android:text="@string/info_contact_manager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_drone_send_info" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_drone_send_info"
+         />
 
 
     <TextView
@@ -62,8 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginVertical="32dp"
-        style="@style/TextMessage"
-        android:fontFamily="sans-serif-black"
+        style="@style/TextOrder"
         android:text="@string/info_ty_for_choosing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
