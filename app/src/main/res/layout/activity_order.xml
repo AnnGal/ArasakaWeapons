@@ -27,7 +27,7 @@
                 android:layout_marginLeft="143dp"
                 android:layout_marginEnd="175dp"
                 android:layout_marginRight="175dp"
-                android:text="Place Order"
+                android:text="@string/btn_place_order"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.139"
                 app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
-                android:text="Total Price :"
+                android:paddingVertical="@dimen/basic_gap"
+                android:text="@string/total_price"
                 android:textAllCaps="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
@@ -62,9 +63,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:text="1000"
                 app:layout_constraintBaseline_toBaselineOf="@+id/label_total_price"
-                app:layout_constraintStart_toEndOf="@+id/label_total_price" />
+                app:layout_constraintStart_toEndOf="@+id/label_total_price"
+                tools:text="1000"/>
 
             <TextView
                 android:id="@+id/label_currency"
@@ -89,11 +90,12 @@
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:src="@drawable/ic_empty_cart_grey"
+            android:contentDescription="@string/image_description_empty_cart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.29000002" />
+            app:layout_constraintVertical_bias="0.42" />
 
         <TextView
             android:id="@+id/textView"
@@ -104,7 +106,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            android:textSize="20dp"/>
+            android:textSize="20sp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

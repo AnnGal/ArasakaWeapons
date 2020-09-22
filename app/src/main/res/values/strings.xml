@@ -6,7 +6,7 @@
     <string name="arasaka_title_logo">Arasaka Logotype</string>
     <string name="weapons_tab">Weapon</string>
     <string name="services_tab">Service</string>
-    <string name="currency_2077">E$</string>
+    <string name="currency_2077" translatable="false">E$</string>
     <string name="go_to_cart">to cart</string>
     <string name="warning_max_items">Maximum number of this item in one order has been reached</string>
     <string name="dlg_q_delete_from_order">Remove this item from the order?</string>
@@ -60,7 +60,7 @@
     <string name="service_guard_title">Rent a guard</string>
     <string name="service_guard_desc">Your personal guard for an evening/day/event</string>
     <string name="service_guard_desc_full">Your personal guard for an evening/day/event</string>
-    <string name="service_consult_title">Building a home security system</string>
+    <string name="service_consult_title">Build home security</string>
     <string name="service_consult_desc">Consult how to build the best protection of your home area</string>
     <string name="service_consult_desc_full">Consult how to build the best protection of your home area</string>
     <string name="service_install_title">Install implants</string>
@@ -72,7 +72,11 @@
     <string name="service_control_title">Control area</string>
     <string name="service_control_desc">Special trained team for control the area and suppress riots</string>
     <string name="service_control_desc_full">Special trained team for control the area and suppress riots</string>
-
+    <string name="image_description_empty_cart">empty cart image</string>
+    <string name="btn_place_order">Place Order</string>
+    <string name="sign_multiplication" translatable="false">x</string>
+    <string name="sign_equality" translatable="false">=</string>
+    <string name="image_description_product_image">product image</string>
 
 
 </resources>

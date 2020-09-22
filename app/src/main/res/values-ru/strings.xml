@@ -3,7 +3,6 @@
     <string name="arasaka_title_logo">логотип Arasaka</string>
     <string name="weapons_tab">Оружие</string>
     <string name="services_tab">Услуги</string>
-    <string name="currency_2077">E$</string>
     <string name="go_to_cart">в корзину</string>
     <string name="warning_max_items">Достигнуто максимальное количество позиций в корзине</string>
     <string name="dlg_q_delete_from_order">Удалить из заказа?</string>
@@ -23,10 +22,10 @@
     <string name="price">Цена :</string>
     <string name="product_image">изображение продукта</string>
     <string name="cart_icon">иконка корзины</string>
-    <string name="weapon_gorilla_title">Руки гориллы</string>
+    <string name="weapon_gorilla_title">Рука гориллы</string>
     <string name="weapon_m122_title">Cyberdyn M122</string>
     <string name="weapon_launch_title">Пусковая установка</string>
-    <string name="weapon_kit_title">\"Новичок в городе\"</string>
+    <string name="weapon_kit_title">Набор \"Впервые в городе\"</string>
     <string name="weapon_katana_title">Термальная катана</string>
     <string name="weapon_mantis_title">Лезвия Богомола</string>
     <string name="weapon_tki20_title">TKI-20 Shingen</string>
@@ -37,4 +36,7 @@
     <string name="service_install_title">Установка имплантов</string>
     <string name="service_train_title">Тренировка команды</string>
     <string name="service_control_title">Зона контроля</string>
+    <string name="image_description_empty_cart">Изображение пустой корзины</string>
+    <string name="btn_place_order">Создать заказ</string>
+    <string name="image_description_product_image">Изображение продукта</string>
 </resources>
