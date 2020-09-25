@@ -52,6 +52,7 @@ public class Order {
         Log.d(TAG, "placeOrderToCart: adding id=" + product.getId());
 
         boolean hasMatch = false;
+
         for (ProductInOrder productInOrder : productList) {
             Log.d(TAG, "placeOrderToCart: "+product.getId() + " compare to id=" + productInOrder.getProduct().getId());
             if (productInOrder.getProduct().getId().intValue() == product.getId().intValue()){

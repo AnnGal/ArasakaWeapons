@@ -93,7 +93,8 @@ public class CardDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Order.getCurrentOrder().placeOrderToCart(product, itemsCount);
-                Toast.makeText(getBaseContext(), "\"" + product.getTitle() + "\" added to your cart", Toast.LENGTH_LONG).show();
+                String message = getString(R.string.snack_message_added_to_cart, product.getTitle());
+                Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG).show();
                 CheckCartImage();
             }
         });

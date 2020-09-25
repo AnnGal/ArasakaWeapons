@@ -106,7 +106,7 @@ public class CardListFragment extends Fragment
             ((MainActivity) mContext).CheckCartImage();
 
             // Snackbar interaction
-            String snackMessage = "\"" + ((TextView) item.findViewById(R.id.product_name)).getText() + "\" added to your cart";
+            String snackMessage = getString(R.string.snack_message_added_to_cart, ((TextView) item.findViewById(R.id.product_name)).getText());
             Snackbar snackbar = Snackbar
                     .make(mViewGroup, snackMessage, Snackbar.LENGTH_LONG)
                     .setAction(getString(R.string.go_to_cart), new View.OnClickListener() {

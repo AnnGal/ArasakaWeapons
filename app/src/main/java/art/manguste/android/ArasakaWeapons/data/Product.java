@@ -3,6 +3,8 @@ package art.manguste.android.ArasakaWeapons.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.core.graphics.drawable.IconCompat;
+
 import java.text.DecimalFormat;
 
 import art.manguste.android.ArasakaWeapons.Util.CatalogType;
@@ -22,12 +24,14 @@ public class Product implements Parcelable {
     private CatalogType type;
     private int imageResourceId;
     private WeaponType weaponType;
+    private int iconResourceId;
 
     public Integer getId() {
         return id;
     }
 
-    public Product(Integer id, String title, String shortDescription, String fullDescription, Double price, CatalogType type, int imageResourceId, WeaponType weaponType) {
+    public Product(Integer id, String title, String shortDescription, String fullDescription, Double price,
+                   CatalogType type, int imageResourceId, WeaponType weaponType, int iconResourceId) {
         this.id = id;
         this.title = title;
         this.shortDescription = shortDescription;
@@ -36,17 +40,21 @@ public class Product implements Parcelable {
         this.type = type;
         this.imageResourceId = imageResourceId;
         this.weaponType = weaponType;
+        // if no special icon - use full image
+        if (iconResourceId == 0){
+            this.iconResourceId = imageResourceId;
+        } else {
+            this.iconResourceId = iconResourceId;
+        }
+    }
+
+    public Product(Integer id, String title, String shortDescription, String fullDescription, Double price,
+                   CatalogType type, int imageResourceId, WeaponType weaponType) {
+        this(id, title, shortDescription, fullDescription, price, type, imageResourceId, weaponType, 0);
     }
 
     public Product(Integer id, String title, String shortDescription, String fullDescription, Double price, CatalogType type, int imageResourceId) {
-        this.id = id;
-        this.title = title;
-        this.shortDescription = shortDescription;
-        this.fullDescription = fullDescription;
-        this.price = price;
-        this.type = type;
-        this.imageResourceId = imageResourceId;
-        this.weaponType = WeaponType.NONE;
+        this(id, title, shortDescription, fullDescription, price, type, imageResourceId, WeaponType.NONE, 0);
     }
 
     public String getTitle() {
@@ -81,6 +89,9 @@ public class Product implements Parcelable {
         return imageResourceId;
     }
 
+    public int getIconResourceId() {
+        return iconResourceId;
+    }
 
     @Override
     public int describeContents() {

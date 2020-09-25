@@ -6,15 +6,15 @@
     <string name="arasaka_title_logo">Arasaka Logotype</string>
     <string name="weapons_tab">Weapon</string>
     <string name="services_tab">Service</string>
-    <string name="currency_2077">E$</string>
+    <string name="currency_2077" translatable="false">E$</string>
     <string name="go_to_cart">to cart</string>
     <string name="warning_max_items">Maximum number of this item in one order has been reached</string>
     <string name="dlg_q_delete_from_order">Remove this item from the order?</string>
     <string name="dlg_yes_delete">Delete</string>
     <string name="dlg_no_chancel">Chancel</string>
     <string name="info_order_num">Order №%s has been created!</string>
-    <string name="info_drone">Drone #%1$s was sent by your coordinates. Please add it ID "#%2$s" to your home security guest list.</string>
-    <string name="info_contact_manager">Our contact manager text you shortly</string>
+    <string name="info_drone">Drone #%1$s was sent by your coordinates. Please add it ID \"#%2$s\" to your home security guest list.</string>
+    <string name="info_contact_manager">Our contact manager text you shortly.</string>
     <string name="label_return_to_main_page">Return to Shop</string>
     <string name="info_ty_for_choosing">Thank you for choosing our company!</string>
     <string name="drone_image">drone image</string>
@@ -32,35 +32,34 @@
     <!--card-info-->
     <string name="weapon_gorilla_title">Gorilla arms</string>
     <string name="weapon_gorilla_desc">Classic and reliable replacements for natural limbs, improving both strength and endurance</string>
-    <string name="weapon_gorilla_desc_full">Outfitted with kinetic energy recovery system.\nClassic and reliable replacements for natural limbs, improving both strength and endurance</string>
     <string name="weapon_m122_title">Cyberdyn M122</string>
     <string name="weapon_m122_desc">An extremely short assault rifle intended for vehicles crews</string>
-    <string name="weapon_m122_desc_full">The great successor of legendary M22. \nAn extremely short assault rifle intended for vehicles crews. \nIt\'s equipped with an integrated laser sight, tactical light, aim point and silencer</string>
+    <string name="weapon_m122_desc_full">The great successor of legendary M22.  An extremely short assault rifle intended for vehicles crews.  It\'s equipped with an integrated laser sight, tactical light, aim point and silencer</string>
     <string name="weapon_launch_title">Projectile Launch System</string>
-    <string name="weapon_launch_desc">A varied warhead selection.</string>
-    <string name="weapon_launch_desc_full">A varied warhead selection.\nA missile launcher in the palm of your hand. More or less literally</string>
+    <string name="weapon_launch_desc">A missile launcher in the palm of your hand. Lliterally</string>
+    <string name="weapon_launch_desc_full">A varied warhead selection. A missile launcher in the palm of your hand. More or less literally</string>
     <string name="weapon_kit_title">\"New-in-town\" KIT</string>
     <string name="weapon_kit_desc">WSA Automatic Pistol plus two types of ammunition, against mechanoids and armored opponents</string>
     <string name="weapon_kit_desc_full">Standard-issue sidearm for all Arasaka troops and executives. WSA Automatic Pistol comes with two types of ammunition, against mechanoids and armored opponents</string>
     <string name="weapon_katana_title">Thermal katana</string>
     <string name="weapon_katana_desc">Nano filament heated blade</string>
-    <string name="weapon_katana_desc_full">Nano filament heated blade. \nThe purest essence of a katana. No add-ons, no modifications, only ripping hot steel</string>
+    <string name="weapon_katana_desc_full">Nano filament heated blade.  The purest essence of a katana. No add-ons, no modifications, only ripping hot steel</string>
     <string name="weapon_mantis_title">Mantis Blades</string>
-    <string name="weapon_mantis_desc">Modular design with swappable blade edges. Arm blades designed with lethality and concealment in mind</string>
-    <string name="weapon_mantis_desc_full">Modular design with swappable blade edges. Arm blades designed with lethality and concealment in mind.\nAs effective as they are flashy</string>
+    <string name="weapon_mantis_desc">Arm blades designed with lethality and concealment in mind</string>
+    <string name="weapon_mantis_desc_full">Modular design with swappable blade edges. Arm blades designed with lethality and concealment in mind. As effective as they are flashy</string>
     <string name="weapon_tki20_title">TKI-20 Shingen</string>
     <string name="weapon_tki20_desc">Two mode - burst fire and micro guided missile.</string>
-    <string name="weapon_tki20_desc_full">Two mode - burst fire and micro guided missile.\nSmart weapons require a smart link to unlock the full potential of their targeting systems</string>
+    <string name="weapon_tki20_desc_full">Two mode - burst fire and micro guided missile. Smart weapons require a smart link to unlock the full potential of their targeting systems</string>
     <string name="weapon_setsuko_title">Setsuko-Arasaka \"P.M.S.\"</string>
     <string name="weapon_setsuko_desc">Fires a subsonic, caseless 7mm bullet paired with a built-in Sonex suppressor</string>
-    <string name="weapon_setsuko_desc_full">Designed for low-profile corporate security and paramilitary forces where discretion is valued over raw firepower.\nThe PMS fires a subsonic, caseless 7mm bullet paired with a built-in Sonex suppressor</string>
+    <string name="weapon_setsuko_desc_full">Designed for low-profile corporate security and paramilitary forces where discretion is valued over raw firepower. The PMS fires a subsonic, caseless 7mm bullet paired with a built-in Sonex suppressor</string>
     <string name="service_implants_title">Rebalancing implants</string>
     <string name="service_implants_desc">Within two hours we will conduct a full analysis of your implants and correct their behavior</string>
     <string name="service_implants_desc_full">Within two hours we will conduct a full analysis of your implants and correct their behavior</string>
     <string name="service_guard_title">Rent a guard</string>
     <string name="service_guard_desc">Your personal guard for an evening/day/event</string>
     <string name="service_guard_desc_full">Your personal guard for an evening/day/event</string>
-    <string name="service_consult_title">Building a home security system</string>
+    <string name="service_consult_title">Home protection design</string>
     <string name="service_consult_desc">Consult how to build the best protection of your home area</string>
     <string name="service_consult_desc_full">Consult how to build the best protection of your home area</string>
     <string name="service_install_title">Install implants</string>
@@ -72,7 +71,13 @@
     <string name="service_control_title">Control area</string>
     <string name="service_control_desc">Special trained team for control the area and suppress riots</string>
     <string name="service_control_desc_full">Special trained team for control the area and suppress riots</string>
-
+    <string name="image_description_empty_cart">empty cart image</string>
+    <string name="btn_place_order">Place Order</string>
+    <string name="sign_multiplication" translatable="false">x</string>
+    <string name="sign_equality" translatable="false">=</string>
+    <string name="image_description_product_image">product image</string>
+    <string name="weapon_gorilla_desc_full">Outfitted with kinetic energy recovery system. Classic and reliable replacements for natural limbs, improving both strength and endurance</string>
+    <string name="snack_message_added_to_cart">Product \"%s\" added</string>
 
 
 </resources>
