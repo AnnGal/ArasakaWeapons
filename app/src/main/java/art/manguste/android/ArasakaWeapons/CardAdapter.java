@@ -127,7 +127,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                 }
 
                 ((TextView) item.findViewById(R.id.product_description)).setText(product.getShortDescription());
-                ((ImageView) item.findViewById(R.id.product_image)).setImageResource(product.getImageResourceId());
+                ((ImageView) item.findViewById(R.id.product_image)).setImageResource(product.getIconResourceId());
                 ((TextView) item.findViewById(R.id.price)).setText(String.valueOf(new DecimalFormat("##.##").format(product.getPrice())));
             }
         }
