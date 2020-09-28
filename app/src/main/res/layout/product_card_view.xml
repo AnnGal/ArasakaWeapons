@@ -43,7 +43,7 @@
 
         <TextView
             android:id="@+id/product_type"
-            style="@style/TextLight"
+            style="@style/TextCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorAccent"
@@ -52,20 +52,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/product_image"
             app:layout_constraintTop_toBottomOf="@+id/product_name"
-            tools:text="@string/test" />
+            tools:text="melee" />
 
         <TextView
             android:id="@+id/product_description"
-            style="@style/TextLight"
+            style="@style/TextCard"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:paddingHorizontal="@dimen/card_text_padding_horizontal"
             android:paddingVertical="@dimen/card_text_padding_vertical"
+            android:textStyle="normal"
             app:layout_constraintBottom_toTopOf="@+id/guideline_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/product_image"
             app:layout_constraintTop_toBottomOf="@+id/product_type"
-            tools:text="@string/test" />
+            tools:text="description" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_main"
@@ -88,11 +89,8 @@
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                style="@style/TextLight"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                style="@style/TextProductCard"
                 android:paddingHorizontal="@dimen/card_text_padding_horizontal"
-                android:gravity="top"
                 android:textColor="@color/colorDarkBackground"
                 tools:text="7500"/>
 
@@ -100,10 +98,7 @@
                 android:id="@+id/label_currency"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                style="@style/TextLight"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:gravity="top"
+                style="@style/TextProductCard"
                 android:textColor="@color/colorDarkBackground"
                 android:text="@string/currency_2077"/>
 
@@ -124,28 +119,11 @@
                     android:layout_height="24dp"
                     android:scaleType="center"
                     android:layout_marginHorizontal="16dp"
-
+                    android:contentDescription="@string/action_add_to_cart"
                     android:visibility="visible"
                     android:gravity="center"
                     android:background="@drawable/ic_action_add_to_card"/>
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_move_to_cart_from_card"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:scaleType="center"
-                android:layout_marginHorizontal="8dp"
-                android:text="@string/go_to_cart"
-                android:layout_marginVertical="4dp"
-                android:textAllCaps="true"
-                android:textColor="@color/colorArasakaRed"
-                android:fontFamily="sans-serif"
-                android:textSize="10sp"
-                android:visibility="gone"
-                android:paddingHorizontal="7dp"
-                android:background="@drawable/frame_for_letters"
-                android:gravity="center_vertical" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline

@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical">
@@ -56,23 +57,24 @@
                             android:visibility="invisible"
                             android:src="@drawable/arasaka_logo_label_cut"/>
 
-<!--                        <TextView
-                            android:id="@+id/tv_move_to_cart"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_gravity="center_vertical"
-                            android:background="@drawable/ic_cart"
-                            android:fontFamily="sans-serif-medium"
-                            android:layout_marginRight="16dp"
-                            android:gravity="center"
-                            android:textColor="@android:color/white"
-                            android:visibility="visible"
-                            android:textSize="10sp" />-->
-
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_to_cart"
                             android:layout_width="40dp"
                             android:layout_height="match_parent">
+
+                            <ImageButton
+                                android:id="@+id/tv_to_cart"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@drawable/ic_cart"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="center"
+                                android:contentDescription="@string/action_go_in_cart"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
                                 android:id="@+id/tv_number_items_in_cart"
@@ -83,7 +85,6 @@
                                 android:layout_marginLeft="9dp"
                                 android:layout_marginBottom="14dp"
                                 android:background="@drawable/ic_cart_item_count_background"
-                                android:elevation="1dp"
                                 android:fontFamily="sans-serif-medium"
                                 android:gravity="center"
                                 android:textAlignment="center"
@@ -92,19 +93,6 @@
                                 android:visibility="invisible"
                                 app:layout_constraintBottom_toBottomOf="@+id/tv_to_cart"
                                 app:layout_constraintStart_toStartOf="@+id/tv_to_cart" />
-
-                            <ImageButton
-                                android:id="@+id/tv_to_cart"
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center_vertical"
-                                android:background="@drawable/ic_cart"
-                                android:fontFamily="sans-serif-medium"
-                                android:gravity="center"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -127,22 +115,21 @@
 
                 <TextView
                     android:id="@+id/product_name"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:text="@string/test"
                     style="@style/TextMessage"
                     android:textColor="@color/colorArasakaRed"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:gravity="start"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Katana"/>
 
                 <TextView
                     android:id="@+id/product_type"
@@ -150,13 +137,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="3dp"
-                    android:text="@string/test"
                     android:textColor="@color/colorAccent"
-                    style="@style/TextLight"
+                    style="@style/TextCard"
                     android:gravity="start"
                     android:textAllCaps="true"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/product_name" />
+                    app:layout_constraintTop_toBottomOf="@+id/product_name"
+                    tools:text="melee"/>
 
                 <TextView
                     android:id="@+id/product_description"
@@ -167,18 +155,13 @@
                     android:layout_weight="1"
                     style="@style/TextMessage"
                     android:gravity="start"
-                    android:text="description full of worlds and phrases can be long description full of worlds and phrases can be long"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/product_type" />
+                    app:layout_constraintTop_toBottomOf="@+id/product_type"
+                    tools:text="description full of words and phrases"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
         </androidx.core.widget.NestedScrollView>
-
-
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <LinearLayout
@@ -193,22 +176,23 @@
             style="@style/TextBottomToolbar"
             android:textStyle="bold"
             android:paddingLeft="16dp"
+            android:paddingStart="16dp"
             android:gravity="center_vertical"
-            android:text="@string/price"/>
+            android:text="@string/price"
+            tools:ignore="RtlSymmetry" />
 
         <TextView
             android:id="@+id/price"
             style="@style/TextBottomToolbar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingLeft="4dp"/>
+            />
 
         <TextView
             android:id="@+id/label_currency"
             style="@style/TextBottomToolbar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingLeft="4dp"
             android:text="@string/currency_2077"/>
 
         <View
@@ -224,6 +208,7 @@
             android:background="@drawable/ic_button_remove_red"
             android:gravity="center"
             android:layout_marginHorizontal="4dp"
+            android:contentDescription="@string/action_increase_count"
             android:visibility="visible"/>
 
         <TextView
@@ -231,7 +216,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             style="@style/TextBottomToolbar"
-            android:text="1"
             android:layout_marginHorizontal="4dp"
             android:textColor="@color/colorArasakaRed"
             android:gravity="center"
@@ -245,6 +229,7 @@
             android:background="@drawable/ic_button_add_red"
             android:layout_marginHorizontal="4dp"
             android:gravity="center"
+            android:contentDescription="@string/action_decrease_count"
             android:visibility="visible"/>
 
 <!--        <View
@@ -269,6 +254,7 @@
             android:textSize="16sp"
             />
 
+        <!--not active-->
         <TextView
             android:id="@+id/tv_move_to_cart_from_card"
             android:layout_width="wrap_content"

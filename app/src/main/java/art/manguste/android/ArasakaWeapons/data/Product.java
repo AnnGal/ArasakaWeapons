@@ -2,14 +2,13 @@ package art.manguste.android.ArasakaWeapons.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import androidx.core.graphics.drawable.IconCompat;
-
 import java.text.DecimalFormat;
-
 import art.manguste.android.ArasakaWeapons.Util.CatalogType;
 import art.manguste.android.ArasakaWeapons.Util.WeaponType;
 
+/**
+ * Class for items in store. Can be different types, depends of {@link WeaponType}.
+ */
 public class Product implements Parcelable {
 
     private final String decimalPattern = "##.##";

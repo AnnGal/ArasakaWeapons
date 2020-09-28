@@ -17,7 +17,7 @@
     <style name="ArasakaMainTheme" parent="ArasakaTheme" >
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-    </style>    
+    </style>
 
     <style name="ArasakaTabTheme" parent="ArasakaMainTheme" >
         <item name="colorPrimary">@color/colorArasakaBackground</item>
@@ -37,6 +37,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">4dp</item>
     </style>
 
     <style name="TextMessage">
@@ -44,9 +45,24 @@
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
-    <style name="TextLight">
+    <style name="TextCard">
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextProductCard" parent="TextCard">
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">top</item>
+    </style>
+
+
+    <style name="TextOrderCard" parent="TextCard">
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
 
     <style name="TextOrder">

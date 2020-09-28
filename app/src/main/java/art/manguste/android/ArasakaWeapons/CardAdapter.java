@@ -7,25 +7,23 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.card.MaterialCardView;
-
 import java.text.DecimalFormat;
-
 import art.manguste.android.ArasakaWeapons.Util.CatalogType;
 import art.manguste.android.ArasakaWeapons.data.Product;
 import art.manguste.android.ArasakaWeapons.Util.WeaponType;
 
+/**
+ * Adapter for main RecyclerView with product cards
+ */
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
 
     //private static final String TAG = CardAdapter.class.getSimpleName();
 
     final private ListItemClickListener mOnClickListener;
     private CatalogType mCatalogType;
-
 
     public CardAdapter(CatalogType catalogType, ListItemClickListener listener) {
         mCatalogType = catalogType;
@@ -53,7 +51,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
             product = Product.weapons[position];
         }
 
-        holder.bind(position, product);
+        holder.bind(product);
     }
 
     @Override
@@ -77,7 +75,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
             ImageButton addCartButton = itemView.findViewById(R.id.ib_add_position_in_cart);
             LinearLayout addCartLinearLayout =  itemView.findViewById(R.id.ll_add_position_in_cart);
-            TextView goCartButton = itemView.findViewById(R.id.tv_move_to_cart_from_card);
 
             // on whole card click
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -105,27 +102,18 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                 }
             });
 
-            // on go to tv click
-            goCartButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(mOnClickListener != null)
-                        mOnClickListener.onViewClick(v, getAdapterPosition(), item, product);
-                }
-            });
         }
 
-        void bind(int listIndex, Product product) {
+        void bind(Product product) {
             this.product = product;
 
             if (product != null) {
                 ((TextView) item.findViewById(R.id.product_name)).setText(product.getTitle());
                 if (product.getWeaponType().equals(WeaponType.NONE)) {
-                    ((TextView) item.findViewById(R.id.product_type)).setVisibility(View.GONE);
+                    (item.findViewById(R.id.product_type)).setVisibility(View.GONE);
                 } else {
                     ((TextView) item.findViewById(R.id.product_type)).setText(product.getWeaponType().toString());
                 }
-
                 ((TextView) item.findViewById(R.id.product_description)).setText(product.getShortDescription());
                 ((ImageView) item.findViewById(R.id.product_image)).setImageResource(product.getIconResourceId());
                 ((TextView) item.findViewById(R.id.price)).setText(String.valueOf(new DecimalFormat("##.##").format(product.getPrice())));

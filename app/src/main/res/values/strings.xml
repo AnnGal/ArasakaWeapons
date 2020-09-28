@@ -26,8 +26,6 @@
     <string name="price">Price :</string>
     <string name="product_image">product image</string>
     <string name="cart_icon">cart icon</string>
-    <string name="test" translatable="false">test</string>
-    <string name="test_price" translatable="false">7500</string>
 
     <!--card-info-->
     <string name="weapon_gorilla_title">Gorilla arms</string>
@@ -78,6 +76,9 @@
     <string name="image_description_product_image">product image</string>
     <string name="weapon_gorilla_desc_full">Outfitted with kinetic energy recovery system. Classic and reliable replacements for natural limbs, improving both strength and endurance</string>
     <string name="snack_message_added_to_cart">Product \"%s\" added</string>
-
-
+    <string name="action_go_in_cart">action go in cart</string>
+    <string name="action_increase_count">action increase count</string>
+    <string name="action_decrease_count">action decrease count</string>
+    <string name="action_add_to_cart">action add to cart</string>
+    <string name="action_remove_from_cart">action remove from cart</string>
 </resources>
