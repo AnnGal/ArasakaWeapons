@@ -122,7 +122,7 @@ public class OrderActivity extends AppCompatActivity
     }
 
     /**
-     * Dialog which confirm and del product from the cart
+     * Dialog which confirm and del product from cart
      */
     private void ConfirmationAndDelete(final ProductInOrder productInOrder, final int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -155,12 +155,5 @@ public class OrderActivity extends AppCompatActivity
         String priceString = String.valueOf(new DecimalFormat("##.##").format(Order.getCurrentOrder().getTotalPrice()));
         mTotalPriceTextView.setText(priceString);
     }
-
-/*
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }*/
-
 
 }

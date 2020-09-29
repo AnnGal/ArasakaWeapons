@@ -41,23 +41,26 @@ public class CardListFragment extends Fragment
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * Factory method to create a new instance of fragment
      *
      * @param catalogType sets fragment type.
      * @return a the new instance of fragment StoreListFragment.
      */
     public static CardListFragment newInstance(CatalogType catalogType){
         CardListFragment fragment = new CardListFragment();
+        // put params
         Bundle args = new Bundle();
         args.putString(CATALOG_TYPE, String.valueOf(catalogType));
         fragment.setArguments(args);
+
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // get params
         if (getArguments() != null) {
             catalogType = CatalogType.valueOf(getArguments().getString(CATALOG_TYPE));
         }
@@ -66,7 +69,6 @@ public class CardListFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_list, container, false);
 
@@ -84,10 +86,9 @@ public class CardListFragment extends Fragment
         return recyclerView;
     }
 
-
     /**
      * After click on whole ViewCard from RecyclerView
-     * */
+     **/
     @Override
     public void onListItemClick(int position, Product product) {
         Intent intent = new Intent(mContext, CardDetailActivity.class);
@@ -95,17 +96,24 @@ public class CardListFragment extends Fragment
         startActivity(intent);
     }
 
+    /**
+     * After click on particular view on viewCard
+     **/
     @Override
     public void onViewClick(View v, int position, MaterialCardView item, Product product) {
         if (v.getId() == R.id.ib_add_position_in_cart || v.getId() == R.id.ll_add_position_in_cart){
+            // add item in cart
+
             // Change visibility
             //item.findViewById(R.id.ib_add_position_in_cart).setVisibility(View.GONE);
             //item.findViewById(R.id.ll_add_position_in_cart).setVisibility(View.GONE);
             //item.findViewById(R.id.tv_move_to_cart_from_card).setVisibility(View.VISIBLE);
+
+            // add item and refresh cart icon
             Order.getCurrentOrder().placeOrderToCart(product, 1);
             ((MainActivity) mContext).CheckCartImage();
 
-            // Snackbar interaction
+            // Snackbar interaction with user
             String snackMessage = getString(R.string.snack_message_added_to_cart, ((TextView) item.findViewById(R.id.product_name)).getText());
             Snackbar snackbar = Snackbar
                     .make(mViewGroup, snackMessage, Snackbar.LENGTH_LONG)
@@ -125,7 +133,7 @@ public class CardListFragment extends Fragment
             snackbar.show();
 
         } else if (v.getId() == R.id.tv_move_to_cart_from_card){
-            // move to cart
+            // move to cart from card view. Not active right now.
             Intent intent = new Intent(mContext, OrderActivity.class);
             startActivity(intent);
         }

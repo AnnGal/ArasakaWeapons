@@ -4,4 +4,5 @@
     <dimen name="card_text_padding_vertical">2dp</dimen>
     <dimen name="basic_gap">16dp</dimen>
     <dimen name="horizontal_layout_gap">32dp</dimen>
+    <dimen name="order_card_image">80dp</dimen>
 </resources>

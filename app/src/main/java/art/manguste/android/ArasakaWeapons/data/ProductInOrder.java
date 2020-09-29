@@ -1,9 +1,11 @@
 package art.manguste.android.ArasakaWeapons.data;
 
+/**
+ * Class for the product in order. Contains extra data, e.g. items count.
+ */
 public class ProductInOrder{
     private Product product;
-    private int itemsInOrder;    // not best decision, better make another class
-
+    private int itemsInOrder; // how many items of this product in order
 
     public ProductInOrder(Product product, Integer itemsCount) {
         this.product = product;
@@ -24,11 +26,14 @@ public class ProductInOrder{
         checkNumInRange();
     }
 
+    /**
+     * Control items count
+     */
     private void checkNumInRange(){
-        if (itemsInOrder > Order.getMaxNumPerItem()){
-            this.itemsInOrder = Order.getMaxNumPerItem();
-        } else if (itemsInOrder < Order.getMinNumPerItem()){
-            this.itemsInOrder = Order.getMinNumPerItem();
+        if (itemsInOrder > Order.getMaxNumPerProduct()){
+            this.itemsInOrder = Order.getMaxNumPerProduct();
+        } else if (itemsInOrder < Order.getMinNumPerProduct()){
+            this.itemsInOrder = Order.getMinNumPerProduct();
         }
     }
 

@@ -4,8 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="66dp"
+    android:layout_height="80dp"
     android:id="@+id/card_view"
+    android:layout_marginHorizontal="2dp"
     android:layout_marginBottom="4dp"
     app:cardElevation="2dp">
 
@@ -15,7 +16,7 @@
 
         <ImageView
             android:id="@+id/id_image_in_cart"
-            android:layout_width="60dp"
+            android:layout_width="@dimen/order_card_image"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:padding="2dp"
@@ -30,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5"/>
+            app:layout_constraintGuide_percent="0.45"/>
 
         <TextView
             android:id="@+id/product_name"
@@ -60,18 +61,19 @@
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/ic_button_remove_red"
                 android:gravity="center"
+                android:contentDescription="@string/action_decrease_count"
                 android:visibility="visible" />
 
             <TextView
                 android:id="@+id/tv_items_count"
-                style="@style/TextLight"
+                style="@style/TextCard"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingHorizontal="4dp"
                 android:gravity="center"
-                android:text="1"
                 android:textColor="@color/colorDarkBackground"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:text="1"/>
 
             <ImageButton
                 android:id="@+id/action_increase_count"
@@ -82,55 +84,37 @@
                 android:gravity="center"
                 android:paddingHorizontal="4dp"
                 android:src="@drawable/ic_button_add_red"
+                android:contentDescription="@string/action_increase_count"
                 android:visibility="visible" />
 
             <TextView
                 android:id="@+id/label_multiplication"
-                style="@style/TextLight"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
+                style="@style/TextOrderCard"
                 android:paddingHorizontal="4dp"
                 android:text="@string/sign_multiplication" />
 
             <TextView
                 android:id="@+id/tv_price_card"
-                style="@style/TextLight"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:paddingLeft="4dp"
-                android:textStyle="bold"
-                android:text="@string/test_price" />
+                style="@style/TextOrderCard"
+                android:paddingLeft="0dp"
+                android:paddingStart="0dp"
+                tools:text="7500"
+                tools:ignore="RtlSymmetry" />
 
             <TextView
                 android:id="@+id/label_equals"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
+                style="@style/TextOrderCard"
                 android:paddingHorizontal="4dp"
-                android:textStyle="bold"
-                android:text="@string/sign_equality"
-                android:textColor="@android:color/black" />
+                android:text="@string/sign_equality"/>
 
             <TextView
                 android:id="@+id/tv_price_card_total"
-                style="@style/TextLight"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:paddingLeft="4dp"
-                android:textStyle="bold"
-                android:text="@string/test_price" />
+                style="@style/TextOrderCard"
+                tools:text="7500" />
 
             <TextView
                 android:id="@+id/label_currency"
-                style="@style/TextLight"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:paddingLeft="4dp"
-                android:textStyle="bold"
+                style="@style/TextOrderCard"
                 android:text="@string/currency_2077" />
 
             <View
@@ -154,28 +138,9 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:src="@drawable/ic_remove_from_order"
+                    android:contentDescription="@string/action_remove_from_cart"
                     android:visibility="visible" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_move_to_cart_from_card"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginVertical="4dp"
-                android:background="@drawable/frame_for_letters"
-                android:fontFamily="sans-serif"
-                android:gravity="center_vertical"
-                android:paddingHorizontal="7dp"
-                android:scaleType="center"
-                android:text="@string/go_to_cart"
-                android:textAllCaps="true"
-                android:textColor="@color/colorArasakaRed"
-                android:textSize="10sp"
-                android:visibility="gone" />
-
         </LinearLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

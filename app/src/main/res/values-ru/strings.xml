@@ -68,4 +68,9 @@
     <string name="service_control_desc">Специально обученная команда для контроля территории и подавления беспорядков</string>
     <string name="service_control_desc_full">Специально обученная команда для контроля территории и подавления беспорядков</string>
     <string name="snack_message_added_to_cart">Продукт \"%s\" добавлен</string>
+    <string name="action_go_in_cart">действие перейти в корзину</string>
+    <string name="action_increase_count">действие увеличить количество</string>
+    <string name="action_decrease_count">действие уменьшить количество</string>
+    <string name="action_add_to_cart">действие добавить в корзину</string>
+    <string name="action_remove_from_cart">действие удалить из корзины</string>
 </resources>
