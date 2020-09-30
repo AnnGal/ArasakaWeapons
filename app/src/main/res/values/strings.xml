@@ -33,7 +33,7 @@
     <string name="weapon_m122_title">Cyberdyn M122</string>
     <string name="weapon_m122_desc">An extremely short assault rifle intended for vehicles crews</string>
     <string name="weapon_m122_desc_full">The great successor of legendary M22.  An extremely short assault rifle intended for vehicles crews.  It\'s equipped with an integrated laser sight, tactical light, aim point and silencer</string>
-    <string name="weapon_launch_title">Projectile Launch System</string>
+    <string name="weapon_launch_title">Launch System</string>
     <string name="weapon_launch_desc">A missile launcher in the palm of your hand. Lliterally</string>
     <string name="weapon_launch_desc_full">A varied warhead selection. A missile launcher in the palm of your hand. More or less literally</string>
     <string name="weapon_kit_title">\"New-in-town\" KIT</string>
@@ -41,10 +41,10 @@
     <string name="weapon_kit_desc_full">Standard-issue sidearm for all Arasaka troops and executives. WSA Automatic Pistol comes with two types of ammunition, against mechanoids and armored opponents</string>
     <string name="weapon_katana_title">Thermal katana</string>
     <string name="weapon_katana_desc">Nano filament heated blade</string>
-    <string name="weapon_katana_desc_full">Nano filament heated blade.  The purest essence of a katana. No add-ons, no modifications, only ripping hot steel</string>
+    <string name="weapon_katana_desc_full">Nano filament heated blade. The purest essence of a katana. \nNo add-ons, no modifications, only ripping hot steel</string>
     <string name="weapon_mantis_title">Mantis Blades</string>
     <string name="weapon_mantis_desc">Arm blades designed with lethality and concealment in mind</string>
-    <string name="weapon_mantis_desc_full">Modular design with swappable blade edges. Arm blades designed with lethality and concealment in mind. As effective as they are flashy</string>
+    <string name="weapon_mantis_desc_full">Modular design with swappable blade edges. Arm blades designed with lethality and concealment in mind. \nAs effective as they are flashy</string>
     <string name="weapon_tki20_title">TKI-20 Shingen</string>
     <string name="weapon_tki20_desc">Two mode - burst fire and micro guided missile.</string>
     <string name="weapon_tki20_desc_full">Two mode - burst fire and micro guided missile. Smart weapons require a smart link to unlock the full potential of their targeting systems</string>
