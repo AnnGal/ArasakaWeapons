@@ -127,7 +127,7 @@ public class CardListFragment extends Fragment
             snackbar.setActionTextColor(getResources().getColor(R.color.colorArasakaBackground));
             snackbar.setBackgroundTint(getResources().getColor(R.color.colorDarkBackground));
             //snackbar message appearance
-            TextView tvSnackbar = ((TextView) snackbar.getView().findViewById(R.id.snackbar_text));
+            TextView tvSnackbar = (snackbar.getView().findViewById(R.id.snackbar_text));
             tvSnackbar.setTextColor(getResources().getColor(R.color.colorArasakaRed));
             tvSnackbar.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             snackbar.show();
