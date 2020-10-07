@@ -208,8 +208,7 @@
             android:background="@drawable/ic_button_remove_red"
             android:gravity="center"
             android:layout_marginHorizontal="4dp"
-            android:contentDescription="@string/action_increase_count"
-            android:visibility="visible"/>
+            android:contentDescription="@string/action_decrease_count"/>
 
         <TextView
             android:id="@+id/tv_items_count"
@@ -219,7 +218,9 @@
             android:layout_marginHorizontal="4dp"
             android:textColor="@color/colorArasakaRed"
             android:gravity="center"
-            android:textSize="22sp"/>
+            android:textSize="22sp"
+            android:text="1"
+            tools:text="1"/>
 
         <ImageButton
             android:id="@+id/action_increase_count"
@@ -229,12 +230,7 @@
             android:background="@drawable/ic_button_add_red"
             android:layout_marginHorizontal="4dp"
             android:gravity="center"
-            android:contentDescription="@string/action_decrease_count"
-            android:visibility="visible"/>
-
-<!--        <View
-            android:layout_width="16dp"
-            android:layout_height="48dp"/>-->
+            android:contentDescription="@string/action_increase_count"/>
 
         <TextView
             android:id="@+id/tv_add_to_cart"

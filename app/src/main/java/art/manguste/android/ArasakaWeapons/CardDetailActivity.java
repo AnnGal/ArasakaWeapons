@@ -17,7 +17,9 @@ import art.manguste.android.ArasakaWeapons.data.Order;
 import art.manguste.android.ArasakaWeapons.data.Product;
 import art.manguste.android.ArasakaWeapons.Util.WeaponType;
 
-
+/**
+ * Activity for detail info about specific product
+ */
 public class CardDetailActivity extends AppCompatActivity {
     private static final String SAVE_KEY_ITEM_COUNT = "item_count";
 
@@ -35,6 +37,7 @@ public class CardDetailActivity extends AppCompatActivity {
 
     private Integer itemsCount = 1;
     private Product product;
+    private double price = 100d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +68,6 @@ public class CardDetailActivity extends AppCompatActivity {
         if (arguments != null){
             product = arguments.getParcelable(Product.class.getSimpleName());
         }
-
 
         setCardData();
 
@@ -140,10 +142,18 @@ public class CardDetailActivity extends AppCompatActivity {
         super.onResume();
     }
 
+
+    /**
+     * to Cart
+     */
     private void moveToOrderActivity(){
         startActivity(new Intent(getBaseContext(), OrderActivity.class));
     }
 
+
+    /**
+     * loads data from Product object, which we just received from "parcel"
+     */
     private void setCardData() {
         if (product != null) {
             mProductName.setText(product.getTitle());
@@ -154,13 +164,19 @@ public class CardDetailActivity extends AppCompatActivity {
             }
             mProductDescription.setText(product.getFullDescription());
             mImage.setImageResource(product.getImageResourceId());
+
+            price = product.getPrice(); // for UI test
+
             updateItemsAndPrice();
         }
     }
 
+    /**
+     * updates TextView with items count and price
+     */
     private void updateItemsAndPrice() {
         mItemsCount.setText(String.valueOf(itemsCount));
-        mPrice.setText(new DecimalFormat("##.##").format(itemsCount * product.getPrice()));
+        mPrice.setText(new DecimalFormat("##.##").format(itemsCount * price));
     }
 
     /**
@@ -189,6 +205,7 @@ public class CardDetailActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+        // saves how many items selected
         outState.putString(SAVE_KEY_ITEM_COUNT, String.valueOf(mItemsCount.getText()));
     }
 }
