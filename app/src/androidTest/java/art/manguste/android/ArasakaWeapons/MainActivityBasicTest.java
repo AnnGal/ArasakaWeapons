@@ -1,6 +1,5 @@
 package art.manguste.android.ArasakaWeapons;
 
-import androidx.test.espresso.ViewAssertion;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
