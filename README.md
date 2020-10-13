@@ -1,7 +1,7 @@
 # ArasakaWeapons 
 
 Sample app for checking android possibilities.  
-Fragment + RecyclerView + Singleton.  
+RecyclerView + Adapter + Fragment + Singleton + Parcelable + a bit of Espresso 
 
 <img src="https://user-images.githubusercontent.com/51135284/94603880-8d620900-029f-11eb-86e9-e0305879b57c.gif" width="225" height="400" />
 
