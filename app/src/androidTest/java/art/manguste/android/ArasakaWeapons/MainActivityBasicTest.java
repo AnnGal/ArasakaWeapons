@@ -26,7 +26,7 @@ public class MainActivityBasicTest {
     public void clickCartButton_GoToOrderActivity() {
         Intents.init();
         // click on cart button
-        onView(withId(R.id.tv_to_cart)).perform(click());
+        onView(withId(R.id.cartImage)).perform(click());
 
         // check activity opens
         intended(hasComponent(OrderActivity.class.getName()));

@@ -34,7 +34,7 @@
             app:layout_constraintGuide_percent="0.45"/>
 
         <TextView
-            android:id="@+id/product_name"
+            android:id="@+id/productName"
             style="@style/TextOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline_main">
 
             <ImageButton
-                android:id="@+id/action_decrease_count"
+                android:id="@+id/actionDecreaseCount"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center_vertical"
@@ -65,7 +65,7 @@
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/tv_items_count"
+                android:id="@+id/count"
                 style="@style/TextCard"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -76,7 +76,7 @@
                 tools:text="1"/>
 
             <ImageButton
-                android:id="@+id/action_increase_count"
+                android:id="@+id/actionIncreaseCount"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center_vertical"

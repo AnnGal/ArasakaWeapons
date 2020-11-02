@@ -30,21 +30,21 @@ public class CardDetailActivityBasicTest {
     @Test
     public void clickDecrementButton_NothingChanges() {
         // check init number
-        onView((withId(R.id.tv_items_count))).check(matches(withText("1")));
+        onView((withId(R.id.count))).check(matches(withText("1")));
         // click decrementing
-        onView((withId(R.id.action_decrease_count))).perform(click());
+        onView((withId(R.id.actionDecreaseCount))).perform(click());
         // verify value not change
-        onView(withId(R.id.tv_items_count)).check(matches(withText("1")));
+        onView(withId(R.id.count)).check(matches(withText("1")));
     }
 
     @Test
     public void clickIncrementButton_ChangesQuantity() {
         // check init number
-        onView((withId(R.id.tv_items_count))).check(matches(withText("1")));
+        onView((withId(R.id.count))).check(matches(withText("1")));
         // click incrementing
-        onView((withId(R.id.action_increase_count))).perform(click());
+        onView((withId(R.id.actionIncreaseCount))).perform(click());
         // verify value changes
-        onView(withId(R.id.tv_items_count)).check(matches(withText("2")));
+        onView(withId(R.id.count)).check(matches(withText("2")));
         onView(withId(R.id.price)).check(matches(withText("200")));
     }
 }

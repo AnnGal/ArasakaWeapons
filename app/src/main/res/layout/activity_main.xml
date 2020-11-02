@@ -23,12 +23,12 @@
             android:src="@drawable/arasaka_logo_label_cut"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_to_cart"
+            android:id="@+id/layoutToCart"
             android:layout_width="40dp"
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/tv_to_cart"
+                android:id="@+id/cartImage"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center_vertical"
@@ -42,7 +42,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_number_items_in_cart"
+                android:id="@+id/countInCart"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_gravity="center_vertical"
@@ -56,8 +56,8 @@
                 android:textColor="@android:color/white"
                 android:textSize="12sp"
                 android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_to_cart"
-                app:layout_constraintStart_toStartOf="@+id/tv_to_cart" />
+                app:layout_constraintBottom_toBottomOf="@+id/cartImage"
+                app:layout_constraintStart_toStartOf="@+id/cartImage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -70,7 +70,7 @@
         android:theme="@style/ArasakaTabTheme">
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs_shop"
+            android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabTextColor="@color/colorDarkBackground"
@@ -79,7 +79,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager_shop"
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
