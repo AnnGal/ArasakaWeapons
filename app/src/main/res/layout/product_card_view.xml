@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/product_image"
+            android:id="@+id/imageProduct"
             android:layout_width="120dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -28,7 +28,7 @@
             tools:src="@drawable/arasaka_logo" />
 
         <TextView
-            android:id="@+id/product_name"
+            android:id="@+id/productName"
             style="@style/TextMessage"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -37,12 +37,12 @@
             android:textColor="@color/colorRed"
             app:layout_constraintBottom_toTopOf="@+id/guideline_main"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/product_image"
+            app:layout_constraintStart_toEndOf="@+id/imageProduct"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Card title" />
 
         <TextView
-            android:id="@+id/product_type"
+            android:id="@+id/productType"
             style="@style/TextCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,12 +50,12 @@
             android:visibility="gone"
             android:paddingHorizontal="@dimen/card_text_padding_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/product_image"
-            app:layout_constraintTop_toBottomOf="@+id/product_name"
+            app:layout_constraintStart_toEndOf="@+id/imageProduct"
+            app:layout_constraintTop_toBottomOf="@+id/productName"
             tools:text="melee" />
 
         <TextView
-            android:id="@+id/product_description"
+            android:id="@+id/description"
             style="@style/TextCard"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -64,8 +64,8 @@
             android:textStyle="normal"
             app:layout_constraintBottom_toTopOf="@+id/guideline_bottom"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/product_image"
-            app:layout_constraintTop_toBottomOf="@+id/product_type"
+            app:layout_constraintStart_toEndOf="@+id/imageProduct"
+            app:layout_constraintTop_toBottomOf="@+id/productType"
             tools:text="description" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -82,7 +82,7 @@
 
             app:layout_constraintTop_toTopOf="@+id/guideline_bottom"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/product_image"
+            app:layout_constraintStart_toEndOf="@+id/imageProduct"
             >
 
             <TextView
@@ -114,7 +114,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/ib_add_position_in_cart"
+                    android:id="@+id/addCartButton"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:scaleType="center"

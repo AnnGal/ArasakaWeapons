@@ -26,6 +26,6 @@ public class MainActivityRecyclerViewTest {
         onView(allOf(ViewMatchers.withId(R.id.recycler_view), isDisplayed()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
 
-        onView(withId(R.id.product_name)).check(matches(withText(weaponName)));
+        onView(withId(R.id.productName)).check(matches(withText(weaponName)));
     }
 }
