@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
         tabLayout.setupWithViewPager(viewPager)
 
         // move to cart activity
-        cartImage.setOnClickListener { startActivity( Intent(this, OrderActivity::class.java)) }
-        countInCart.setOnClickListener { startActivity( Intent(this, OrderActivity::class.java ))}
-        layoutToCart.setOnClickListener { startActivity( Intent(this, OrderActivity::class.java)) }
+        cartImage.setOnClickListener { moveToTheCart() }
+        countInCart.setOnClickListener { moveToTheCart() }
+        layoutToCart.setOnClickListener { moveToTheCart() }
 
         checkCartImage()
     }
@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         checkCartImage()
         super.onResume()
+    }
+
+    private fun moveToTheCart(){
+        startActivity( Intent(this, OrderActivity::class.java))
     }
 
     fun checkCartImage() {

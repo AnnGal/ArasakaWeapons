@@ -26,7 +26,6 @@ import kotlinx.android.synthetic.main.product_card_view.view.*
  */
 class CardListFragment : Fragment(), ListItemClickListener {
     private lateinit var catalogType: CatalogType
-    private lateinit var mContext: Context
     private lateinit var mViewGroup: ViewGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,10 +42,9 @@ class CardListFragment : Fragment(), ListItemClickListener {
         // Inflate the layout for this fragment
         val recyclerView = inflater.inflate(R.layout.fragment_list, container, false) as RecyclerView
         mViewGroup = container!!
-        mContext = context!!
 
         // add adapter
-        val adapter = CardAdapter(catalogType!!, this)
+        val adapter = CardAdapter(catalogType, this)
         recyclerView.adapter = adapter
 
         // connect data and view
@@ -59,7 +57,7 @@ class CardListFragment : Fragment(), ListItemClickListener {
      * After click on whole ViewCard from RecyclerView
      */
     override fun onListItemClick(position: Int, product: Product) {
-        val intent = Intent(mContext, CardDetailActivity::class.java)
+        val intent = Intent(context, CardDetailActivity::class.java)
         intent.putExtra(Product::class.java.simpleName, product)
         startActivity(intent)
     }
@@ -68,29 +66,34 @@ class CardListFragment : Fragment(), ListItemClickListener {
      * After click on particular view on viewCard
      */
     override fun onViewClick(v: View, position: Int, item: MaterialCardView, product: Product) {
+        // add item into cart
         if (v.id == R.id.addCartButton || v.id == R.id.ll_add_position_in_cart) {
             // add item and refresh cart icon
             Order.placeOrderToCart(product, 1)
-            (mContext as MainActivity).checkCartImage()
+            (context as MainActivity).checkCartImage()
 
-            // Snackbar interaction with user
+            // create snackbar
             val snackMessage = getString(R.string.snack_message_added_to_cart, item.productName.text)
-            val snackbar = Snackbar
-                    .make(mViewGroup, snackMessage, Snackbar.LENGTH_LONG)
-                    .setAction(getString(R.string.go_to_cart)) { startActivity(Intent(context, OrderActivity::class.java)) }
+            val snackbar = Snackbar.make(mViewGroup, snackMessage, Snackbar.LENGTH_LONG);
+
             //change snackbar colors
-            snackbar.setActionTextColor(resources.getColor(R.color.colorArasakaBackground))
-            snackbar.setBackgroundTint(resources.getColor(R.color.colorDarkBackground))
+            snackbar.apply {
+                setAction(getString(R.string.go_to_cart)) { startActivity(Intent(context, OrderActivity::class.java)) }
+                setActionTextColor(resources.getColor(R.color.colorArasakaBackground))
+                setBackgroundTint(resources.getColor(R.color.colorDarkBackground))
+            }
             //snackbar message appearance
             val tvSnackbar = snackbar.view.findViewById<TextView>(R.id.snackbar_text)
-            tvSnackbar.setTextColor(resources.getColor(R.color.colorArasakaRed))
-            tvSnackbar.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
-            snackbar.show()
+            tvSnackbar.apply {
+                setTextColor(resources.getColor(R.color.colorArasakaRed))
+                typeface = Typeface.defaultFromStyle(Typeface.BOLD)
+            }
 
+            snackbar.show()
+        // go to the cart activity
         } else if (v.id == R.id.tv_move_to_cart_from_card) {
             // move to cart from card view. Not active right now.
-            val intent = Intent(mContext, OrderActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(context, OrderActivity::class.java))
         }
     }
 

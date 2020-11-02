@@ -12,6 +12,7 @@ import art.manguste.android.ArasakaWeapons.data.Order
 class PlacedOrderActivity : AppCompatActivity() {
     private var mOrderNum: String? = null
     private var mDroneId: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_placed)
@@ -39,7 +40,7 @@ class PlacedOrderActivity : AppCompatActivity() {
         (findViewById<View>(R.id.tv_drone_send_info) as TextView).text = droneMessage
     }
 
-    fun OnReturnClick(view: View?) {
+    fun onReturnClick(view: View?) {
         startActivity(Intent(this, MainActivity::class.java))
     }
 

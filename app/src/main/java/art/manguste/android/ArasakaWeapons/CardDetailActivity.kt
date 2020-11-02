@@ -17,47 +17,21 @@ import java.text.DecimalFormat
  */
 class CardDetailActivity : AppCompatActivity() {
 
-    private val SAVE_KEY_ITEM_COUNT = "item_count"
+    companion object {
+        private const val SAVE_KEY_ITEM_COUNT = "item_count"
+    }
+
     private lateinit var product: Product
     private var itemsCount = 1
     private var priceItem = 0.0
-/*    var mCartImage: ImageButton? = null
-    var mItemsCount: TextView? = null
-    var mProductName: TextView? = null
-    var mProductType: TextView? = null
-    var mProductDescription: TextView? = null
-    var mImage: ImageView? = null
-    var mPrice: TextView? = null
-    var mItemImage: TextView? = null
-    var mAddToCart: TextView? = null
-    var mIncCount: ImageButton? = null
-    var mDecCount: ImageButton? = null
-
-*/
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card_detail)
 
-        // toolbar and return button
-        //val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         title = ""
-
-        // UI
-/*        mCartImage = findViewById(R.id.cartImage)
-        mItemsCount = findViewById(R.id.itemsCount)
-        mProductName = findViewById(R.id.productName)
-        mProductType = findViewById(R.id.productType)
-        mProductDescription = findViewById(R.id.description)
-        mPrice = findViewById(R.id.price)
-        mImage = findViewById(R.id.image)
-        mItemImage = findViewById(R.id.countInCart)
-        mAddToCart = findViewById(R.id.addToCart)
-        mIncCount = findViewById(R.id.actionIncreaseCount)
-        mDecCount = findViewById(R.id.actionDecreaseCount)*/
 
         // Get parcelable object
         val arguments = intent.extras
@@ -68,7 +42,7 @@ class CardDetailActivity : AppCompatActivity() {
 
         // load items count after rotation
         if (savedInstanceState != null) {
-            count.text = savedInstanceState.getString(SAVE_KEY_ITEM_COUNT)
+            count.text = savedInstanceState.getString(Companion.SAVE_KEY_ITEM_COUNT)
         }
 
         // Buttons Listeners -->
@@ -102,6 +76,7 @@ class CardDetailActivity : AppCompatActivity() {
         cartImage.setOnClickListener { moveToOrderActivity() }
         layoutToCart.setOnClickListener { moveToOrderActivity() }
         countInCart.setOnClickListener { moveToOrderActivity() }
+
         checkCartImage()
     }
 
@@ -168,7 +143,5 @@ class CardDetailActivity : AppCompatActivity() {
         outState.putString(SAVE_KEY_ITEM_COUNT, count.text.toString())
     }
 
-    companion object {
 
-    }
 }

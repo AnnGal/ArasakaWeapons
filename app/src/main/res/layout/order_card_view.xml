@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/id_image_in_cart"
+            android:id="@+id/imageInCart"
             android:layout_width="@dimen/order_card_image"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -42,7 +42,7 @@
             android:paddingHorizontal="@dimen/card_text_padding_horizontal"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline_main"
-            app:layout_constraintStart_toEndOf="@+id/id_image_in_cart"
+            app:layout_constraintStart_toEndOf="@+id/imageInCart"
             tools:text="Card title"/>
 
         <LinearLayout
@@ -51,7 +51,7 @@
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/card_text_padding_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/id_image_in_cart"
+            app:layout_constraintStart_toEndOf="@+id/imageInCart"
             app:layout_constraintTop_toTopOf="@+id/guideline_main">
 
             <ImageButton
@@ -94,7 +94,7 @@
                 android:text="@string/sign_multiplication" />
 
             <TextView
-                android:id="@+id/tv_price_card"
+                android:id="@+id/cardPrice"
                 style="@style/TextOrderCard"
                 android:paddingLeft="0dp"
                 android:paddingStart="0dp"
@@ -108,7 +108,7 @@
                 android:text="@string/sign_equality"/>
 
             <TextView
-                android:id="@+id/tv_price_card_total"
+                android:id="@+id/cardPriceTotal"
                 style="@style/TextOrderCard"
                 tools:text="7500" />
 
@@ -123,13 +123,13 @@
                 android:layout_weight="1" />
 
             <LinearLayout
-                android:id="@+id/ll_action_delete_from_cart"
+                android:id="@+id/deleteFromCartLL"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/action_delete_from_cart"
+                    android:id="@+id/deleteFromCart"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginHorizontal="16dp"

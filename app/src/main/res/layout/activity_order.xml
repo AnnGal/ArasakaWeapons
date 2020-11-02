@@ -9,7 +9,7 @@
     tools:context=".OrderActivity">
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/layout_full_cart"
+        android:id="@+id/layoutFullCart"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -35,7 +35,7 @@
                 android:onClick="onPlaceOrder"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/recycler"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorArasakaBackground"
@@ -56,10 +56,10 @@
                 android:textAllCaps="true"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+                app:layout_constraintTop_toBottomOf="@+id/recycler" />
 
             <TextView
-                android:id="@+id/tv_total_price"
+                android:id="@+id/totalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -77,13 +77,13 @@
                 android:layout_marginLeft="8dp"
                 android:textStyle="bold"
                 android:text="@string/currency_2077"
-                app:layout_constraintBaseline_toBaselineOf="@+id/tv_total_price"
-                app:layout_constraintStart_toEndOf="@+id/tv_total_price" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/totalPrice"
+                app:layout_constraintStart_toEndOf="@+id/totalPrice" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_empty_cart"
+        android:id="@+id/layoutEmptyCart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible">

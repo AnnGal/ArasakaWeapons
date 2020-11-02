@@ -45,7 +45,7 @@ object Order {
                 hasMatch = true
                 //Log.d(TAG, "placeOrderToCart: got match for the id=" + product.getId());
                 // add total count
-                productInOrder.changeItemsInOrder(count)
+                productInOrder.itemsInOrder += count//changeItemsInOrder(count)
                 break
             }
         }
