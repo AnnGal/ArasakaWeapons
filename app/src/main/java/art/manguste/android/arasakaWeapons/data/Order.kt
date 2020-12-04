@@ -1,8 +1,8 @@
-package art.manguste.android.ArasakaWeapons.data
+package art.manguste.android.arasakaWeapons.data
 
 import android.util.Log
-import art.manguste.android.ArasakaWeapons.Util.getAssignedDroneId
-import art.manguste.android.ArasakaWeapons.Util.getOrderNum
+import art.manguste.android.arasakaWeapons.util.getAssignedDroneId
+import art.manguste.android.arasakaWeapons.util.getOrderNum
 import java.util.*
 
 /***
@@ -12,9 +12,9 @@ import java.util.*
  * Stores not Product directly, but ProductInOrder which contains extra data.
  */
 object Order {
-    var number: String? = null
+    lateinit var number: String
         private set
-    var droneId: String? = null
+    lateinit var droneId: String
         private set
     var productList: ArrayList<ProductInOrder> = ArrayList()
         private set
@@ -22,9 +22,8 @@ object Order {
     const val maxNumPerProduct = 99
     const val minNumPerProduct = 1
     private val TAG = Order::class.java.simpleName
-    /**
-     * sets order number and book drone for delivery
-     */
+
+    // sets and reset order number and book drone for delivery
     private fun setNewOrderParams() {
         number = getOrderNum()
         droneId = getAssignedDroneId()

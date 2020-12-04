@@ -1,8 +1,8 @@
-package art.manguste.android.ArasakaWeapons.data
+package art.manguste.android.arasakaWeapons.data
 
 import android.os.Parcelable
-import art.manguste.android.ArasakaWeapons.Util.CatalogType
-import art.manguste.android.ArasakaWeapons.Util.WeaponType
+import art.manguste.android.arasakaWeapons.util.CatalogType
+import art.manguste.android.arasakaWeapons.util.WeaponType
 import kotlinx.android.parcel.Parcelize
 import java.text.DecimalFormat
 
@@ -23,6 +23,7 @@ data class Product(var id: Int, var title: String, var shortDescription: String,
     override fun describeContents(): Int {
         return 0
     }
+
 
     fun getTotalPriceString(count: Int): String {
         return DecimalFormat(decimalPattern).format(price * count)

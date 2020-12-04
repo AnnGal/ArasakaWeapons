@@ -5,4 +5,6 @@
     <dimen name="basic_gap">16dp</dimen>
     <dimen name="horizontal_layout_gap">32dp</dimen>
     <dimen name="order_card_image">80dp</dimen>
+    <dimen name="small_gap">4dp</dimen>
+    <dimen name="gap">16dp</dimen>
 </resources>

@@ -1,14 +1,13 @@
-package art.manguste.android.ArasakaWeapons
+package art.manguste.android.arasakaWeapons.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
-import art.manguste.android.ArasakaWeapons.OrderAdapter.OrderViewHolder
-import art.manguste.android.ArasakaWeapons.data.Order
-import art.manguste.android.ArasakaWeapons.data.ProductInOrder
+import art.manguste.android.arasakaWeapons.R
+import art.manguste.android.arasakaWeapons.ui.OrderAdapter.OrderViewHolder
+import art.manguste.android.arasakaWeapons.data.Order
+import art.manguste.android.arasakaWeapons.data.ProductInOrder
 import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.order_card_view.view.*
 

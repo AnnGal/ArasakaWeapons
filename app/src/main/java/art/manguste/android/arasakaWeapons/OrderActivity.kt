@@ -1,4 +1,4 @@
-package art.manguste.android.ArasakaWeapons
+package art.manguste.android.arasakaWeapons
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -7,9 +7,10 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import art.manguste.android.ArasakaWeapons.OrderAdapter.OrderClickListener
-import art.manguste.android.ArasakaWeapons.data.Order
-import art.manguste.android.ArasakaWeapons.data.ProductInOrder
+import art.manguste.android.arasakaWeapons.ui.OrderAdapter.OrderClickListener
+import art.manguste.android.arasakaWeapons.data.Order
+import art.manguste.android.arasakaWeapons.data.ProductInOrder
+import art.manguste.android.arasakaWeapons.ui.OrderAdapter
 import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.activity_order.*
 import kotlinx.android.synthetic.main.order_card_view.view.*

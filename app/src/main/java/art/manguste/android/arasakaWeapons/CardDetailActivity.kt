@@ -1,4 +1,4 @@
-package art.manguste.android.ArasakaWeapons
+package art.manguste.android.arasakaWeapons
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,9 +6,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import art.manguste.android.ArasakaWeapons.Util.WeaponType
-import art.manguste.android.ArasakaWeapons.data.Order
-import art.manguste.android.ArasakaWeapons.data.Product
+import art.manguste.android.arasakaWeapons.util.WeaponType
+import art.manguste.android.arasakaWeapons.data.Order
+import art.manguste.android.arasakaWeapons.data.Product
 import kotlinx.android.synthetic.main.activity_card_detail.*
 import java.text.DecimalFormat
 
@@ -17,9 +17,7 @@ import java.text.DecimalFormat
  */
 class CardDetailActivity : AppCompatActivity() {
 
-    companion object {
-        private const val SAVE_KEY_ITEM_COUNT = "item_count"
-    }
+
 
     private lateinit var product: Product
     private var itemsCount = 1
@@ -30,7 +28,7 @@ class CardDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_card_detail)
 
         setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = ""
 
         // Get parcelable object
@@ -109,7 +107,7 @@ class CardDetailActivity : AppCompatActivity() {
     }
 
     /**
-     * updates TextView with items count and price
+     * update TextView with items count and price
      */
     private fun updateItemsAndPrice() {
         count.text = itemsCount.toString()
@@ -139,9 +137,12 @@ class CardDetailActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        // saves how many items selected
+        // saves how many items were selected
         outState.putString(SAVE_KEY_ITEM_COUNT, count.text.toString())
     }
 
+    companion object {
+        private const val SAVE_KEY_ITEM_COUNT = "item_count"
+    }
 
 }

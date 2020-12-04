@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:id="@+id/card_view"
     android:layout_marginHorizontal="2dp"
     android:layout_marginBottom="4dp"
     app:cardElevation="2dp">
@@ -18,9 +17,9 @@
             android:id="@+id/imageInCart"
             android:layout_width="@dimen/order_card_image"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:padding="2dp"
             android:contentDescription="@string/image_description_product_image"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -31,19 +30,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.45"/>
+            app:layout_constraintGuide_percent="0.45" />
 
         <TextView
             android:id="@+id/productName"
             style="@style/TextOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="4dp"
             android:paddingHorizontal="@dimen/card_text_padding_horizontal"
+            android:paddingVertical="@dimen/small_gap"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline_main"
             app:layout_constraintStart_toEndOf="@+id/imageInCart"
-            tools:text="Card title"/>
+            tools:text="Card title" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -60,8 +59,8 @@
                 android:layout_height="24dp"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/ic_button_remove_red"
-                android:gravity="center"
                 android:contentDescription="@string/action_decrease_count"
+                android:gravity="center"
                 android:visibility="visible" />
 
             <TextView
@@ -69,11 +68,11 @@
                 style="@style/TextCard"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:paddingHorizontal="4dp"
                 android:gravity="center"
+                android:paddingHorizontal="@dimen/small_gap"
                 android:textColor="@color/colorDarkBackground"
                 android:textSize="18sp"
-                tools:text="1"/>
+                tools:text="1" />
 
             <ImageButton
                 android:id="@+id/actionIncreaseCount"
@@ -81,41 +80,47 @@
                 android:layout_height="24dp"
                 android:layout_gravity="center_vertical"
                 android:background="@color/colorArasakaBackground"
-                android:gravity="center"
-                android:paddingHorizontal="4dp"
-                android:src="@drawable/ic_button_add_red"
                 android:contentDescription="@string/action_increase_count"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/small_gap"
+                android:src="@drawable/ic_button_add_red"
                 android:visibility="visible" />
 
             <TextView
                 android:id="@+id/label_multiplication"
                 style="@style/TextOrderCard"
-                android:paddingHorizontal="4dp"
+                android:paddingHorizontal="@dimen/small_gap"
                 android:text="@string/sign_multiplication" />
 
             <TextView
                 android:id="@+id/cardPrice"
                 style="@style/TextOrderCard"
-                android:paddingLeft="0dp"
                 android:paddingStart="0dp"
-                tools:text="7500"
-                tools:ignore="RtlSymmetry" />
+
+                tools:ignore="RtlSymmetry"
+                tools:text="7500" />
 
             <TextView
                 android:id="@+id/label_equals"
                 style="@style/TextOrderCard"
-                android:paddingHorizontal="4dp"
-                android:text="@string/sign_equality"/>
+                android:paddingHorizontal="@dimen/small_gap"
+                android:paddingStart="@dimen/small_gap"
+                android:text="@string/sign_equality"
+                tools:ignore="RtlSymmetry" />
 
             <TextView
                 android:id="@+id/cardPriceTotal"
                 style="@style/TextOrderCard"
+                android:paddingStart="@dimen/small_gap"
+                tools:ignore="RtlSymmetry"
                 tools:text="7500" />
 
             <TextView
                 android:id="@+id/label_currency"
                 style="@style/TextOrderCard"
-                android:text="@string/currency_2077" />
+                android:paddingStart="@dimen/small_gap"
+                android:text="@string/currency_2077"
+                tools:ignore="RtlSymmetry" />
 
             <View
                 android:layout_width="0dp"
@@ -132,13 +137,13 @@
                     android:id="@+id/deleteFromCart"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginVertical="4dp"
+                    android:layout_marginHorizontal="@dimen/gap"
+                    android:layout_marginVertical="@dimen/small_gap"
                     android:background="@color/colorArasakaBackground"
+                    android:contentDescription="@string/action_remove_from_cart"
                     android:gravity="center"
                     android:scaleType="center"
                     android:src="@drawable/ic_remove_from_order"
-                    android:contentDescription="@string/action_remove_from_cart"
                     android:visibility="visible" />
             </LinearLayout>
         </LinearLayout>

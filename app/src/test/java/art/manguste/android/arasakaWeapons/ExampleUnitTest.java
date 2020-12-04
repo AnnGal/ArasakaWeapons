@@ -1,4 +1,4 @@
-package art.manguste.android.ArasakaWeapons;
+package art.manguste.android.arasakaWeapons;
 
 import org.junit.Test;
 

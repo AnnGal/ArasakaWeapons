@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="124dp"
-    android:id="@+id/card_view"
-    android:layout_marginTop="2dp"
-    >
+    android:layout_marginTop="2dp">
     <!--android:theme="@style/Theme.MaterialComponents.Light"-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,9 +44,9 @@
             style="@style/TextCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/card_text_padding_horizontal"
             android:textColor="@color/colorAccent"
             android:visibility="gone"
-            android:paddingHorizontal="@dimen/card_text_padding_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageProduct"
             app:layout_constraintTop_toBottomOf="@+id/productName"
@@ -73,34 +71,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.25"/>
+            app:layout_constraintGuide_percent="0.25" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
 
-            app:layout_constraintTop_toTopOf="@+id/guideline_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageProduct"
-            >
+            app:layout_constraintTop_toTopOf="@+id/guideline_bottom">
 
             <TextView
                 android:id="@+id/price"
+                style="@style/TextProductCard"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                style="@style/TextProductCard"
                 android:paddingHorizontal="@dimen/card_text_padding_horizontal"
                 android:textColor="@color/colorDarkBackground"
-                tools:text="7500"/>
+                tools:text="7500" />
 
             <TextView
                 android:id="@+id/label_currency"
+                style="@style/TextProductCard"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                style="@style/TextProductCard"
-                android:textColor="@color/colorDarkBackground"
-                android:text="@string/currency_2077"/>
+                android:text="@string/currency_2077"
+                android:textColor="@color/colorDarkBackground" />
 
             <View
                 android:layout_width="0dp"
@@ -117,12 +114,12 @@
                     android:id="@+id/addCartButton"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:scaleType="center"
                     android:layout_marginHorizontal="16dp"
+                    android:background="@drawable/ic_action_add_to_card"
                     android:contentDescription="@string/action_add_to_cart"
-                    android:visibility="visible"
                     android:gravity="center"
-                    android:background="@drawable/ic_action_add_to_card"/>
+                    android:scaleType="center"
+                    android:visibility="visible" />
             </LinearLayout>
         </LinearLayout>
 
@@ -131,7 +128,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.75"/>
+            app:layout_constraintGuide_percent="0.75" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

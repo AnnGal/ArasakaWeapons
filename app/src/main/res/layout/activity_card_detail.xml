@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -28,8 +27,8 @@
                     android:id="@+id/image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/product_image"
                     android:background="@color/colorArasakaBackground"
+                    android:contentDescription="@string/product_image"
                     android:scaleType="centerCrop"
                     android:src="@drawable/arasaka_logo"
                     app:layout_collapseMode="parallax" />
@@ -49,13 +48,13 @@
                         <ImageView
                             android:id="@+id/info_image"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="50dp"
+                            android:layout_weight="1"
                             android:contentDescription="@string/arasaka_title_logo"
-                            android:scaleType="fitCenter"
                             android:padding="8dp"
-                            android:visibility="invisible"
-                            android:src="@drawable/arasaka_logo_label_cut"/>
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/arasaka_logo_label_cut"
+                            android:visibility="invisible" />
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layoutToCart"
@@ -68,9 +67,9 @@
                                 android:layout_height="24dp"
                                 android:layout_gravity="center_vertical"
                                 android:background="@drawable/ic_cart"
+                                android:contentDescription="@string/action_go_in_cart"
                                 android:fontFamily="sans-serif-medium"
                                 android:gravity="center"
-                                android:contentDescription="@string/action_go_in_cart"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -105,8 +104,8 @@
 
 
         <androidx.core.widget.NestedScrollView
-            android:layout_height="match_parent"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -115,47 +114,47 @@
 
                 <TextView
                     android:id="@+id/productName"
+                    style="@style/TextMessage"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    style="@style/TextMessage"
                     android:textColor="@color/colorArasakaRed"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Katana"/>
+                    tools:text="Katana" />
 
                 <TextView
                     android:id="@+id/productType"
+                    style="@style/TextCard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="3dp"
-                    android:textColor="@color/colorAccent"
-                    style="@style/TextCard"
                     android:gravity="start"
                     android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
                     android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/productName"
-                    tools:text="melee"/>
+                    tools:text="melee" />
 
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/productType"
-                    tools:text="description full of words and phrases"/>
+                    tools:text="description full of words and phrases" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
@@ -168,14 +167,13 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/TextBottomToolbar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            style="@style/TextBottomToolbar"
-            android:textStyle="bold"
-            android:paddingLeft="16dp"
-            android:paddingStart="16dp"
             android:gravity="center_vertical"
+            android:paddingStart="16dp"
             android:text="@string/price"
+            android:textStyle="bold"
             tools:ignore="RtlSymmetry" />
 
         <TextView
@@ -183,14 +181,17 @@
             style="@style/TextBottomToolbar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            />
+            android:paddingStart="4dp"
+            tools:ignore="RtlSymmetry" />
 
         <TextView
             android:id="@+id/label_currency"
             style="@style/TextBottomToolbar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/currency_2077"/>
+            android:paddingStart="4dp"
+            android:text="@string/currency_2077"
+            tools:ignore="RtlSymmetry" />
 
         <View
             android:layout_width="0dp"
@@ -202,68 +203,66 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/ic_button_remove_red"
-            android:gravity="center"
             android:layout_marginHorizontal="4dp"
-            android:contentDescription="@string/action_decrease_count"/>
+            android:background="@drawable/ic_button_remove_red"
+            android:contentDescription="@string/action_decrease_count"
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/count"
+            style="@style/TextBottomToolbar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            style="@style/TextBottomToolbar"
             android:layout_marginHorizontal="4dp"
-            android:textColor="@color/colorArasakaRed"
             android:gravity="center"
+            android:textColor="@color/colorArasakaRed"
             android:textSize="22sp"
-            android:text="1"
-            tools:text="1"/>
+            tools:text="1" />
 
         <ImageButton
             android:id="@+id/actionIncreaseCount"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/ic_button_add_red"
             android:layout_marginHorizontal="4dp"
-            android:gravity="center"
-            android:contentDescription="@string/action_increase_count"/>
+            android:background="@drawable/ic_button_add_red"
+            android:contentDescription="@string/action_increase_count"
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/addToCart"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:scaleType="center"
             android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="5dp"
-            android:visibility="visible"
-            android:paddingHorizontal="16dp"
             android:background="@drawable/frame_for_letters_fill"
+            android:fontFamily="sans-serif"
             android:gravity="center_vertical"
+            android:paddingHorizontal="16dp"
+            android:scaleType="center"
             android:text="@string/add"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
-            android:fontFamily="sans-serif"
             android:textSize="16sp"
-            />
+            android:visibility="visible" />
 
         <!--not active-->
         <TextView
             android:id="@+id/tv_move_to_cart_from_card"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:scaleType="center"
             android:layout_marginHorizontal="8dp"
-            android:text="@string/go_to_cart"
             android:layout_marginVertical="4dp"
+            android:background="@drawable/frame_for_letters"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="7dp"
+            android:scaleType="center"
+            android:text="@string/go_to_cart"
             android:textAllCaps="true"
             android:textColor="@color/colorArasakaRed"
-            android:fontFamily="sans-serif"
             android:textSize="20sp"
-            android:visibility="gone"
-            android:paddingHorizontal="7dp"
-            android:background="@drawable/frame_for_letters"
-            android:gravity="center_vertical" />
+            android:visibility="gone" />
 
     </LinearLayout>
 

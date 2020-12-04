@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="art.manguste.android.ArasakaWeapons">
+    package="art.manguste.android.arasakaWeapons">
 
     <application
         android:allowBackup="true"
@@ -10,20 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/ArasakaMainTheme">
         <activity
-            android:name=".PlacedOrderActivity"
-            android:parentActivityName=".MainActivity">
+            android:name="art.manguste.android.arasakaWeapons.PlacedOrderActivity"
+            android:parentActivityName="art.manguste.android.arasakaWeapons.MainActivity">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="art.manguste.android.arasakaWeapons.MainActivity" />
         </activity>
         <activity
-            android:name=".OrderActivity"
+            android:name="art.manguste.android.arasakaWeapons.OrderActivity"
             android:theme="@style/ArasakaTheme" />
         <activity
-            android:name=".CardDetailActivity"
+            android:name="art.manguste.android.arasakaWeapons.CardDetailActivity"
             android:theme="@style/ArasakaBlackToolbarTheme" />
-        <activity android:name=".MainActivity">
+        <activity android:name="art.manguste.android.arasakaWeapons.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
