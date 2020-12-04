@@ -1,6 +1,4 @@
-package art.manguste.android.ArasakaWeapons.data
-
-import art.manguste.android.ArasakaWeapons.data.Order
+package art.manguste.android.arasakaWeapons.data
 
 /**
  * Class for the product in order. Contains extra data, e.g. items count.

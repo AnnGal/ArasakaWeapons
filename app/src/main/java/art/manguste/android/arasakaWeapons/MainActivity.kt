@@ -1,4 +1,4 @@
-package art.manguste.android.ArasakaWeapons
+package art.manguste.android.arasakaWeapons
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import art.manguste.android.ArasakaWeapons.Util.CatalogType
-import art.manguste.android.ArasakaWeapons.Util.WeaponType
-import art.manguste.android.ArasakaWeapons.data.Order
-import art.manguste.android.ArasakaWeapons.data.Product
+import art.manguste.android.arasakaWeapons.util.CatalogType
+import art.manguste.android.arasakaWeapons.util.WeaponType
+import art.manguste.android.arasakaWeapons.data.Order
+import art.manguste.android.arasakaWeapons.data.Product
+import art.manguste.android.arasakaWeapons.ui.CardListFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,7 +59,8 @@ class MainActivity : AppCompatActivity() {
         override fun getItem(position: Int): Fragment {
             return when (position) {
                 0 -> CardListFragment.newInstance(CatalogType.WEAPON)
-                else -> CardListFragment.newInstance(CatalogType.SERVICE)
+                1 -> CardListFragment.newInstance(CatalogType.SERVICE)
+                else -> throw Exception("Unregistered tab")
             }
         }
 

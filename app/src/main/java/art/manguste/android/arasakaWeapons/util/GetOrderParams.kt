@@ -1,4 +1,4 @@
-package art.manguste.android.ArasakaWeapons.Util
+package art.manguste.android.arasakaWeapons.util
 
 import java.util.*
 

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".OrderActivity">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/layoutFullCart"
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,12 +26,12 @@
                 android:layout_marginLeft="143dp"
                 android:layout_marginEnd="175dp"
                 android:layout_marginRight="175dp"
+                android:onClick="onPlaceOrder"
                 android:text="@string/btn_place_order"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.139"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/label_total_price"
-                android:onClick="onPlaceOrder"/>
+                app:layout_constraintTop_toBottomOf="@+id/label_total_price" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler"
@@ -67,7 +66,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBaseline_toBaselineOf="@+id/label_total_price"
                 app:layout_constraintStart_toEndOf="@+id/label_total_price"
-                tools:text="1000"/>
+                tools:text="1000" />
 
             <TextView
                 android:id="@+id/label_currency"
@@ -75,8 +74,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:textStyle="bold"
                 android:text="@string/currency_2077"
+                android:textStyle="bold"
                 app:layout_constraintBaseline_toBaselineOf="@+id/totalPrice"
                 app:layout_constraintStart_toEndOf="@+id/totalPrice" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -92,8 +91,8 @@
             android:id="@+id/imageView2"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:src="@drawable/ic_empty_cart_grey"
             android:contentDescription="@string/image_description_empty_cart"
+            android:src="@drawable/ic_empty_cart_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,10 +105,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/label_empty_cart"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            android:textSize="20sp"/>
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

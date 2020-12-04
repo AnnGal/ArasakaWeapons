@@ -1,6 +1,5 @@
-package art.manguste.android.ArasakaWeapons
+package art.manguste.android.arasakaWeapons.ui
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
@@ -11,10 +10,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import art.manguste.android.ArasakaWeapons.CardAdapter.ListItemClickListener
-import art.manguste.android.ArasakaWeapons.Util.CatalogType
-import art.manguste.android.ArasakaWeapons.data.Order
-import art.manguste.android.ArasakaWeapons.data.Product
+import art.manguste.android.arasakaWeapons.*
+import art.manguste.android.arasakaWeapons.ui.CardAdapter.ListItemClickListener
+import art.manguste.android.arasakaWeapons.util.CatalogType
+import art.manguste.android.arasakaWeapons.data.Order
+import art.manguste.android.arasakaWeapons.data.Product
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.product_card_view.view.*

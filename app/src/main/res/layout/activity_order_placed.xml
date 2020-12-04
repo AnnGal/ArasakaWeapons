@@ -12,56 +12,53 @@
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/drone_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/drone_cut"
-
-        android:contentDescription="@string/drone_image"/>
+        app:srcCompat="@drawable/drone_cut" />
 
     <TextView
         android:id="@+id/tv_order_created_info"
+        style="@style/TextOrderTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextOrderTitle"
-        android:text="@string/info_order_num"
         android:layout_marginVertical="24dp"
+        android:text="@string/info_order_num"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/tv_drone_send_info"
+        style="@style/TextOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="24dp"
-        style="@style/TextOrder"
         android:text="@string/info_drone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_order_created_info"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_created_info" />
 
     <TextView
         android:id="@+id/tv_manager_info"
+        style="@style/TextOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        style="@style/TextOrder"
         android:text="@string/info_contact_manager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_drone_send_info"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/tv_drone_send_info" />
 
 
     <TextView
         android:id="@+id/ty_info"
+        style="@style/TextOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginVertical="32dp"
-        style="@style/TextOrder"
         android:text="@string/info_ty_for_choosing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,12 +69,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:onClick="onReturnClick"
         android:text="@string/label_return_to_main_page"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ty_info"
-        android:onClick="onReturnClick"/>
+        app:layout_constraintTop_toBottomOf="@+id/ty_info" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
