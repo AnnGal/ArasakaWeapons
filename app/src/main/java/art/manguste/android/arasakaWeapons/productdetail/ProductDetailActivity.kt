@@ -11,9 +11,7 @@ import art.manguste.android.arasakaWeapons.R
 import art.manguste.android.arasakaWeapons.core.Order
 import art.manguste.android.arasakaWeapons.core.Product
 import art.manguste.android.arasakaWeapons.core.WeaponType
-import art.manguste.android.arasakaWeapons.databinding.ActivityMainBinding
 import art.manguste.android.arasakaWeapons.databinding.ActivityProductDetailBinding
-import art.manguste.android.arasakaWeapons.databinding.FragmentListBinding
 import java.text.DecimalFormat
 
 /**
@@ -31,6 +29,7 @@ class ProductDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityProductDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(binding.toolbar)
@@ -46,7 +45,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
         // load items count after rotation
         if (savedInstanceState != null) {
-            binding.count.text = savedInstanceState.getString(Companion.SAVE_KEY_ITEM_COUNT)
+            binding.count.text = savedInstanceState.getString(SAVE_KEY_ITEM_COUNT)
         }
 
         // Buttons Listeners -->

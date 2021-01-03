@@ -5,30 +5,37 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import art.manguste.android.arasakaWeapons.PlacedOrderActivity
 import art.manguste.android.arasakaWeapons.R
 import art.manguste.android.arasakaWeapons.order.OrderAdapter.OrderClickListener
 import art.manguste.android.arasakaWeapons.core.Order
 import art.manguste.android.arasakaWeapons.core.ProductInOrder
+import art.manguste.android.arasakaWeapons.databinding.ActivityOrderBinding
 import com.google.android.material.card.MaterialCardView
+import org.w3c.dom.Text
+import java.text.DecimalFormat
 
 class OrderActivity : AppCompatActivity(), OrderClickListener {
 
     //private static final String TAG = OrderActivity.class.getSimpleName();
 
+    private lateinit var binding: ActivityOrderBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_order)
+        binding = ActivityOrderBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         this.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         title = "Cart"
 
-        // todo fix viewbinding
         // add an adapter
-        /*recycler.adapter = OrderAdapter(this)
+        binding.recycler.adapter = OrderAdapter(this)
         // connect data and view
-        recycler.layoutManager = GridLayoutManager(this, 1)*/
+        binding.recycler.layoutManager = GridLayoutManager(this, 1)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -48,15 +55,14 @@ class OrderActivity : AppCompatActivity(), OrderClickListener {
      * if no products in the cart shows special layout
      */
     private fun checkLayoutsVisibility() {
-        // todo fix viewbinding
-        /*if (Order.isAnyProductInCart) {
-            layoutFullCart.visibility = View.VISIBLE
-            layoutEmptyCart.visibility = View.GONE
+        if (Order.isAnyProductInCart) {
+            binding.layoutFullCart.visibility = View.VISIBLE
+            binding.layoutEmptyCart.visibility = View.GONE
             refreshTotalPrice()
         } else {
-            layoutFullCart.visibility = View.GONE
-            layoutEmptyCart.visibility = View.VISIBLE
-        }*/
+            binding.layoutFullCart.visibility = View.GONE
+            binding.layoutEmptyCart.visibility = View.VISIBLE
+        }
     }
 
     override fun onViewClick(v: View, position: Int, item: MaterialCardView, productInOrder: ProductInOrder) {
@@ -72,12 +78,14 @@ class OrderActivity : AppCompatActivity(), OrderClickListener {
             // change items count
             productInOrder.itemsInOrder += diff
 
-            // todo fix viewbinding
             // set actual information
-         /*   item.count.text = productInOrder.itemsInOrder.toString()
-            item.cardPrice.text = productInOrder.product.priceString
-            item.cardPriceTotal.text =
-                    productInOrder.product.getTotalPriceString(productInOrder.itemsInOrder)*/
+            val count = item.findViewById<TextView>(R.id.count)
+            count.text = productInOrder.itemsInOrder.toString()
+            val cardPrice = item.findViewById<TextView>(R.id.cardPrice)
+            cardPrice.text = productInOrder.product.priceString
+            val cardPriceTotal = item.findViewById<TextView>(R.id.cardPriceTotal)
+            cardPriceTotal.text =
+                    productInOrder.product.getTotalPriceString(productInOrder.itemsInOrder)
 
             // change order total cost
             refreshTotalPrice()
@@ -105,14 +113,13 @@ class OrderActivity : AppCompatActivity(), OrderClickListener {
     private fun confirmationAndDelete(productInOrder: ProductInOrder, position: Int) {
         val builder = AlertDialog.Builder(this)
 
-        // todo fix viewbinding
-       /* builder.apply {
+        builder.apply {
             // asking
             setMessage(R.string.dlg_q_delete_from_order)
             // on ok - delete from order
             setPositiveButton(R.string.dlg_yes_delete) { _, _ ->
                 Order.removeProduct(productInOrder)
-                (recycler.adapter as OrderAdapter).notifyItemRemoved(position)
+                (binding.recycler.adapter as OrderAdapter).notifyItemRemoved(position)
                 refreshTotalPrice()
                 checkLayoutsVisibility()
             }
@@ -120,15 +127,14 @@ class OrderActivity : AppCompatActivity(), OrderClickListener {
             setNegativeButton(R.string.dlg_no_chancel) { dialog, _ -> dialog?.dismiss() }
             //
             builder.create().show()
-        }*/
+        }
     }
 
     /**
      * Refresh actual order cost
      */
     private fun refreshTotalPrice() {
-        // todo fix viewbinding
-        /*val priceString: String = DecimalFormat("##.##").format(Order.totalPrice).toString()
-        totalPrice.text = priceString*/
+        val priceString: String = DecimalFormat("##.##").format(Order.totalPrice).toString()
+        binding.totalPrice.text = priceString
     }
 }
