@@ -1,19 +1,25 @@
 package art.manguste.android.arasakaWeapons.productslist
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import art.manguste.android.arasakaWeapons.*
 import art.manguste.android.arasakaWeapons.productslist.ProductAdapter.ListItemClickListener
 import art.manguste.android.arasakaWeapons.core.CatalogType
+import art.manguste.android.arasakaWeapons.core.Order
 import art.manguste.android.arasakaWeapons.core.Product
+import art.manguste.android.arasakaWeapons.databinding.FragmentListBinding
+import art.manguste.android.arasakaWeapons.order.OrderActivity
 import art.manguste.android.arasakaWeapons.productdetail.ProductDetailActivity
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * A simple [Fragment] subclass.
@@ -21,6 +27,11 @@ import com.google.android.material.card.MaterialCardView
  * create an instance of this fragment.
  */
 class ProductsListFragment : Fragment(), ListItemClickListener {
+
+    // ViewBinding
+    private var _binding: FragmentListBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var catalogType: CatalogType
     private lateinit var mViewGroup: ViewGroup
 
@@ -35,18 +46,26 @@ class ProductsListFragment : Fragment(), ListItemClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        _binding = FragmentListBinding.inflate(inflater, container, false)
+
         // Inflate the layout for this fragment
-        val recyclerView = inflater.inflate(R.layout.fragment_list, container, false) as RecyclerView
+        //val recyclerView = inflater.inflate(R.layout.fragment_list, container, false) as RecyclerView
         mViewGroup = container!!
 
         // add adapter
         val adapter = ProductAdapter(catalogType, this)
-        recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter
 
         // connect data and view
         val layoutManager = GridLayoutManager(activity, 1)
-        recyclerView.layoutManager = layoutManager
-        return recyclerView
+        binding.recyclerView.layoutManager = layoutManager
+
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     /**
@@ -63,14 +82,13 @@ class ProductsListFragment : Fragment(), ListItemClickListener {
      */
     override fun onViewClick(v: View, position: Int, item: MaterialCardView, product: Product) {
         // add item into cart
-        // todo fix viewbinding
-        /*if (v.id == R.id.addCartButton || v.id == R.id.ll_add_position_in_cart) {
+        if (v.id == R.id.addCartButton || v.id == R.id.addPositionInCartLayout) {
             // add item and refresh cart icon
             Order.placeOrderToCart(product, 1)
             (context as MainActivity).checkCartImage()
 
             // create snackbar
-            val snackMessage = getString(R.string.snack_message_added_to_cart, item.productName.text)
+            val snackMessage = getString(R.string.snack_message_added_to_cart, product.title)
             val snackbar = Snackbar.make(mViewGroup, snackMessage, Snackbar.LENGTH_LONG);
 
             //change snackbar colors
@@ -91,7 +109,7 @@ class ProductsListFragment : Fragment(), ListItemClickListener {
         } else if (v.id == R.id.tv_move_to_cart_from_card) {
             // move to cart from card view. Not active right now.
             startActivity(Intent(context, OrderActivity::class.java))
-        }*/
+        }
     }
 
     companion object {

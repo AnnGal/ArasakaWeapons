@@ -105,7 +105,7 @@
                 android:layout_weight="1" />
 
             <LinearLayout
-                android:id="@+id/ll_add_position_in_cart"
+                android:id="@+id/addPositionInCartLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
