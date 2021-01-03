@@ -7,6 +7,7 @@ import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
+import art.manguste.android.arasakaWeapons.order.OrderActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

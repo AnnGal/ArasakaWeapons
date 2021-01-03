@@ -1,36 +1,41 @@
-package art.manguste.android.arasakaWeapons
+package art.manguste.android.arasakaWeapons.order
 
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import art.manguste.android.arasakaWeapons.ui.OrderAdapter.OrderClickListener
-import art.manguste.android.arasakaWeapons.data.Order
-import art.manguste.android.arasakaWeapons.data.ProductInOrder
-import art.manguste.android.arasakaWeapons.ui.OrderAdapter
+import art.manguste.android.arasakaWeapons.PlacedOrderActivity
+import art.manguste.android.arasakaWeapons.R
+import art.manguste.android.arasakaWeapons.order.OrderAdapter.OrderClickListener
+import art.manguste.android.arasakaWeapons.core.Order
+import art.manguste.android.arasakaWeapons.core.ProductInOrder
+import art.manguste.android.arasakaWeapons.databinding.ActivityOrderBinding
 import com.google.android.material.card.MaterialCardView
-import kotlinx.android.synthetic.main.activity_order.*
-import kotlinx.android.synthetic.main.order_card_view.view.*
+import org.w3c.dom.Text
 import java.text.DecimalFormat
 
 class OrderActivity : AppCompatActivity(), OrderClickListener {
 
     //private static final String TAG = OrderActivity.class.getSimpleName();
 
+    private lateinit var binding: ActivityOrderBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_order)
+        binding = ActivityOrderBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         this.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         title = "Cart"
 
         // add an adapter
-        recycler.adapter = OrderAdapter(this)
+        binding.recycler.adapter = OrderAdapter(this)
         // connect data and view
-        recycler.layoutManager = GridLayoutManager(this, 1)
+        binding.recycler.layoutManager = GridLayoutManager(this, 1)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -51,12 +56,12 @@ class OrderActivity : AppCompatActivity(), OrderClickListener {
      */
     private fun checkLayoutsVisibility() {
         if (Order.isAnyProductInCart) {
-            layoutFullCart.visibility = View.VISIBLE
-            layoutEmptyCart.visibility = View.GONE
+            binding.layoutFullCart.visibility = View.VISIBLE
+            binding.layoutEmptyCart.visibility = View.GONE
             refreshTotalPrice()
         } else {
-            layoutFullCart.visibility = View.GONE
-            layoutEmptyCart.visibility = View.VISIBLE
+            binding.layoutFullCart.visibility = View.GONE
+            binding.layoutEmptyCart.visibility = View.VISIBLE
         }
     }
 
@@ -74,9 +79,12 @@ class OrderActivity : AppCompatActivity(), OrderClickListener {
             productInOrder.itemsInOrder += diff
 
             // set actual information
-            item.count.text = productInOrder.itemsInOrder.toString()
-            item.cardPrice.text = productInOrder.product.priceString
-            item.cardPriceTotal.text =
+            val count = item.findViewById<TextView>(R.id.count)
+            count.text = productInOrder.itemsInOrder.toString()
+            val cardPrice = item.findViewById<TextView>(R.id.cardPrice)
+            cardPrice.text = productInOrder.product.priceString
+            val cardPriceTotal = item.findViewById<TextView>(R.id.cardPriceTotal)
+            cardPriceTotal.text =
                     productInOrder.product.getTotalPriceString(productInOrder.itemsInOrder)
 
             // change order total cost
@@ -111,7 +119,7 @@ class OrderActivity : AppCompatActivity(), OrderClickListener {
             // on ok - delete from order
             setPositiveButton(R.string.dlg_yes_delete) { _, _ ->
                 Order.removeProduct(productInOrder)
-                (recycler.adapter as OrderAdapter).notifyItemRemoved(position)
+                (binding.recycler.adapter as OrderAdapter).notifyItemRemoved(position)
                 refreshTotalPrice()
                 checkLayoutsVisibility()
             }
@@ -127,6 +135,6 @@ class OrderActivity : AppCompatActivity(), OrderClickListener {
      */
     private fun refreshTotalPrice() {
         val priceString: String = DecimalFormat("##.##").format(Order.totalPrice).toString()
-        totalPrice.text = priceString
+        binding.totalPrice.text = priceString
     }
 }

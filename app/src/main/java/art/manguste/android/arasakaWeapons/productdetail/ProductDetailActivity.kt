@@ -1,4 +1,4 @@
-package art.manguste.android.arasakaWeapons
+package art.manguste.android.arasakaWeapons.productdetail
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,18 +6,20 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import art.manguste.android.arasakaWeapons.util.WeaponType
-import art.manguste.android.arasakaWeapons.data.Order
-import art.manguste.android.arasakaWeapons.data.Product
-import kotlinx.android.synthetic.main.activity_card_detail.*
+import art.manguste.android.arasakaWeapons.order.OrderActivity
+import art.manguste.android.arasakaWeapons.R
+import art.manguste.android.arasakaWeapons.core.Order
+import art.manguste.android.arasakaWeapons.core.Product
+import art.manguste.android.arasakaWeapons.core.WeaponType
+import art.manguste.android.arasakaWeapons.databinding.ActivityProductDetailBinding
 import java.text.DecimalFormat
 
 /**
  * Activity for detail info about specific product
  */
-class CardDetailActivity : AppCompatActivity() {
+class ProductDetailActivity : AppCompatActivity() {
 
-
+    private lateinit var binding: ActivityProductDetailBinding
 
     private lateinit var product: Product
     private var itemsCount = 1
@@ -25,9 +27,12 @@ class CardDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_card_detail)
 
-        setSupportActionBar(toolbar)
+        binding = ActivityProductDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        //val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = ""
 
@@ -40,12 +45,12 @@ class CardDetailActivity : AppCompatActivity() {
 
         // load items count after rotation
         if (savedInstanceState != null) {
-            count.text = savedInstanceState.getString(Companion.SAVE_KEY_ITEM_COUNT)
+            binding.count.text = savedInstanceState.getString(SAVE_KEY_ITEM_COUNT)
         }
 
         // Buttons Listeners -->
         // increase items count action
-        actionIncreaseCount.setOnClickListener { // if we still can increase - do it
+        binding.actionIncreaseCount.setOnClickListener { // if we still can increase - do it
             if (Order.maxNumPerProduct > itemsCount) {
                 itemsCount++
                 updateItemsAndPrice()
@@ -55,7 +60,7 @@ class CardDetailActivity : AppCompatActivity() {
         }
 
         // decrease items count action
-        actionDecreaseCount.setOnClickListener{ // if we still can decrease - do it
+        binding.actionDecreaseCount.setOnClickListener{ // if we still can decrease - do it
             if (Order.minNumPerProduct < itemsCount) {
                 itemsCount--
                 updateItemsAndPrice()
@@ -63,7 +68,7 @@ class CardDetailActivity : AppCompatActivity() {
         }
 
         // add to cart and refresh cart icon action
-        addToCart.setOnClickListener {
+        binding.addToCart.setOnClickListener {
             Order.placeOrderToCart(product, itemsCount)
             val message = getString(R.string.snack_message_added_to_cart, product.title)
             Toast.makeText(baseContext, message, Toast.LENGTH_LONG).show()
@@ -71,10 +76,9 @@ class CardDetailActivity : AppCompatActivity() {
         }
 
         // move to cart activity action
-        cartImage.setOnClickListener { moveToOrderActivity() }
-        layoutToCart.setOnClickListener { moveToOrderActivity() }
-        countInCart.setOnClickListener { moveToOrderActivity() }
-
+        binding.cartImage.setOnClickListener { moveToOrderActivity() }
+        binding.layoutToCart.setOnClickListener { moveToOrderActivity() }
+        binding.countInCart.setOnClickListener { moveToOrderActivity() }
         checkCartImage()
     }
 
@@ -94,14 +98,14 @@ class CardDetailActivity : AppCompatActivity() {
      * loads data from Product object, which we just received from "parcel"
      */
     private fun setCardData() {
-        productName.text = product.title
+        binding.productName.text = product.title
         if (product.weaponType == WeaponType.NONE) {
-            productType.visibility = View.GONE
+            binding.productType.visibility = View.GONE
         } else {
-            productType.text = product.weaponType.toString()
+            binding.productType.text = product.weaponType.toString()
         }
-        description.text = product.fullDescription
-        image.setImageResource(product.imageResourceId)
+        binding.description.text = product.fullDescription
+        binding.image.setImageResource(product.imageResourceId)
         priceItem = product.price // for UI test
         updateItemsAndPrice()
     }
@@ -110,20 +114,19 @@ class CardDetailActivity : AppCompatActivity() {
      * update TextView with items count and price
      */
     private fun updateItemsAndPrice() {
-        count.text = itemsCount.toString()
-        price.text = DecimalFormat("##.##").format(itemsCount * priceItem)
+        binding.count.text = itemsCount.toString()
+        binding.price.text = DecimalFormat("##.##").format(itemsCount * priceItem)
     }
 
     /**
      * Refresh cart icon after order changes
      */
     private fun checkCartImage() {
-
         if (Order.isAnyProductInCart) {
-            countInCart.text = Order.itemsCount
-            countInCart.visibility = View.VISIBLE
+            binding.countInCart.text = Order.itemsCount
+            binding.countInCart.visibility = View.VISIBLE
         } else {
-            countInCart.visibility = View.INVISIBLE
+            binding.countInCart.visibility = View.INVISIBLE
         }
     }
 
@@ -138,7 +141,8 @@ class CardDetailActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         // saves how many items were selected
-        outState.putString(SAVE_KEY_ITEM_COUNT, count.text.toString())
+
+        outState.putString(SAVE_KEY_ITEM_COUNT, binding.count.text.toString())
     }
 
     companion object {

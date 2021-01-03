@@ -7,30 +7,36 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import art.manguste.android.arasakaWeapons.util.CatalogType
-import art.manguste.android.arasakaWeapons.util.WeaponType
-import art.manguste.android.arasakaWeapons.data.Order
-import art.manguste.android.arasakaWeapons.data.Product
-import art.manguste.android.arasakaWeapons.ui.CardListFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import art.manguste.android.arasakaWeapons.core.CatalogType
+import art.manguste.android.arasakaWeapons.core.WeaponType
+import art.manguste.android.arasakaWeapons.core.Order
+import art.manguste.android.arasakaWeapons.core.Product
+import art.manguste.android.arasakaWeapons.databinding.ActivityMainBinding
+import art.manguste.android.arasakaWeapons.order.OrderActivity
+import art.manguste.android.arasakaWeapons.productslist.ProductsListFragment
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
         initFakeDBData()
 
         //set scroller
-        viewPager.adapter = SectionPagerAdapter(supportFragmentManager)
+        binding.viewPager.adapter = SectionPagerAdapter(supportFragmentManager)
         //set tabLayout
-        tabLayout.setupWithViewPager(viewPager)
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
 
         // move to cart activity
-        cartImage.setOnClickListener { moveToTheCart() }
-        countInCart.setOnClickListener { moveToTheCart() }
-        layoutToCart.setOnClickListener { moveToTheCart() }
+        binding.cartImage.setOnClickListener { moveToTheCart() }
+        binding.countInCart.setOnClickListener { moveToTheCart() }
+        binding.layoutToCart.setOnClickListener { moveToTheCart() }
 
         checkCartImage()
     }
@@ -45,12 +51,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun checkCartImage() {
-        println("isAnyProductInCart = ${Order.isAnyProductInCart}")
+        //println("isAnyProductInCart = ${Order.isAnyProductInCart}")
+
         if (Order.isAnyProductInCart) {
-            countInCart.text = Order.itemsCount
-            countInCart.visibility = View.VISIBLE
+            binding.countInCart.text = Order.itemsCount
+            binding.countInCart.visibility = View.VISIBLE
         } else {
-            countInCart.visibility = View.INVISIBLE
+            binding.countInCart.visibility = View.INVISIBLE
         }
     }
 
@@ -58,8 +65,8 @@ class MainActivity : AppCompatActivity() {
 
         override fun getItem(position: Int): Fragment {
             return when (position) {
-                0 -> CardListFragment.newInstance(CatalogType.WEAPON)
-                1 -> CardListFragment.newInstance(CatalogType.SERVICE)
+                0 -> ProductsListFragment.newInstance(CatalogType.WEAPON)
+                1 -> ProductsListFragment.newInstance(CatalogType.SERVICE)
                 else -> throw Exception("Unregistered tab")
             }
         }

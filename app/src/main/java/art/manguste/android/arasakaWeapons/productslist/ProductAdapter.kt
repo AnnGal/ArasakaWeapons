@@ -1,4 +1,4 @@
-package art.manguste.android.arasakaWeapons.ui
+package art.manguste.android.arasakaWeapons.productslist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,20 +6,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import art.manguste.android.arasakaWeapons.R
-import art.manguste.android.arasakaWeapons.ui.CardAdapter.CardViewHolder
-import art.manguste.android.arasakaWeapons.util.CatalogType
-import art.manguste.android.arasakaWeapons.util.WeaponType
-import art.manguste.android.arasakaWeapons.data.Product
+import art.manguste.android.arasakaWeapons.productslist.ProductAdapter.CardViewHolder
+import art.manguste.android.arasakaWeapons.core.CatalogType
+import art.manguste.android.arasakaWeapons.core.Product
+import art.manguste.android.arasakaWeapons.core.WeaponType
+import art.manguste.android.arasakaWeapons.databinding.ProductCardViewBinding
 import com.google.android.material.card.MaterialCardView
-import kotlinx.android.synthetic.main.product_card_view.view.*
 import java.text.DecimalFormat
 
 /**
  * Adapter for main RecyclerView with product cards
  */
-class CardAdapter(private val catalogType: CatalogType,
-                  private val mOnClickListener: ListItemClickListener) : RecyclerView.Adapter<CardViewHolder>() {
-
+class ProductAdapter(private val catalogType: CatalogType,
+                     private val mOnClickListener: ListItemClickListener) : RecyclerView.Adapter<CardViewHolder>() {
 
     interface ListItemClickListener {
         fun onListItemClick(position: Int, product: Product)
@@ -53,8 +52,10 @@ class CardAdapter(private val catalogType: CatalogType,
     inner class CardViewHolder(private val item: MaterialCardView) : RecyclerView.ViewHolder(item) {
 
         private var product: Product? = null
+        private val binding = ProductCardViewBinding.bind(item)
 
         fun bind(product: Product) {
+
             this.product = product
             (item.findViewById<View>(R.id.productName) as TextView).text = product.title
             if (product.weaponType == WeaponType.NONE) {
@@ -63,13 +64,13 @@ class CardAdapter(private val catalogType: CatalogType,
                 (item.findViewById<View>(R.id.productType) as TextView).text = product.weaponType.toString()
             }
 
-            item.description.text = product.shortDescription
-            item.imageProduct.setImageResource(product.iconResourceId)
-            item.price.text = DecimalFormat("##.##").format(product.price).toString()
+            binding.description.text = product.shortDescription
+            binding.imageProduct.setImageResource(product.iconResourceId)
+            binding.price.text = DecimalFormat("##.##").format(product.price).toString()
 
             // on cart icon click
-            item.addCartButton.setOnClickListener { v -> mOnClickListener.onViewClick(v, adapterPosition, item, product) }
-            item.ll_add_position_in_cart.setOnClickListener { v -> mOnClickListener.onViewClick(v, adapterPosition, item, product) }
+            binding.addCartButton.setOnClickListener { v -> mOnClickListener.onViewClick(v, adapterPosition, item, product) }
+            binding.addPositionInCartLayout.setOnClickListener { v -> mOnClickListener.onViewClick(v, adapterPosition, item, product) }
             itemView.setOnClickListener { mOnClickListener.onListItemClick(adapterPosition, product) }
         }
     }

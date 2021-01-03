@@ -19,7 +19,7 @@ class MainActivityRecyclerViewTest {
         val weaponName = mActivityTestRule.activity.getString(R.string.weapon_gorilla_title)
 
         // click on displayed recycler view, on a first item
-        Espresso.onView(AllOf.allOf(ViewMatchers.withId(R.id.recycler_view), ViewMatchers.isDisplayed()))
+        Espresso.onView(AllOf.allOf(ViewMatchers.withId(R.id.recyclerView), ViewMatchers.isDisplayed()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
         Espresso.onView(ViewMatchers.withId(R.id.productName)).check(ViewAssertions.matches(ViewMatchers.withText(weaponName)))
     }

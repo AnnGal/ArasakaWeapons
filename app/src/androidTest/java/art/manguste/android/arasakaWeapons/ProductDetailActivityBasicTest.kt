@@ -6,13 +6,13 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
-import art.manguste.android.arasakaWeapons.CardDetailActivity
+import art.manguste.android.arasakaWeapons.productdetail.ProductDetailActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class CardDetailActivityBasicTest {
+class ProductDetailActivityBasicTest {
     /*!!
     for error - "Error performing 'single click <..>' on view 'Animations or transitions are enabled on the target device"
     use:
@@ -21,7 +21,7 @@ class CardDetailActivityBasicTest {
     adb shell settings put global animator_duration_scale 0
     */
     @Rule
-    var mActivityTestRule = ActivityTestRule(CardDetailActivity::class.java)
+    var mActivityTestRule = ActivityTestRule(ProductDetailActivity::class.java)
     @Test
     fun clickDecrementButton_NothingChanges() {
         // check init number

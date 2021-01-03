@@ -7,7 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import art.manguste.android.arasakaWeapons.data.Order
+import art.manguste.android.arasakaWeapons.core.Order
 
 class PlacedOrderActivity : AppCompatActivity() {
     private var orderNum: String? = null

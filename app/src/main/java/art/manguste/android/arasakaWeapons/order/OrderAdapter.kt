@@ -1,15 +1,15 @@
-package art.manguste.android.arasakaWeapons.ui
+package art.manguste.android.arasakaWeapons.order
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import art.manguste.android.arasakaWeapons.R
-import art.manguste.android.arasakaWeapons.ui.OrderAdapter.OrderViewHolder
-import art.manguste.android.arasakaWeapons.data.Order
-import art.manguste.android.arasakaWeapons.data.ProductInOrder
+import art.manguste.android.arasakaWeapons.order.OrderAdapter.OrderViewHolder
+import art.manguste.android.arasakaWeapons.core.Order
+import art.manguste.android.arasakaWeapons.core.ProductInOrder
+import art.manguste.android.arasakaWeapons.databinding.OrderCardViewBinding
 import com.google.android.material.card.MaterialCardView
-import kotlinx.android.synthetic.main.order_card_view.view.*
 
 /**
  * Adapter for order activity. Shows products in the cart.
@@ -40,7 +40,7 @@ class OrderAdapter(private val mOnClickListener: OrderClickListener) : RecyclerV
     inner class OrderViewHolder(private val item: MaterialCardView) : RecyclerView.ViewHolder(item) {
 
         private lateinit var productInOrder: ProductInOrder
-
+        private val bindingItem = OrderCardViewBinding.bind(itemView)
         /**
          * place product info on a view card
          */
@@ -53,32 +53,31 @@ class OrderAdapter(private val mOnClickListener: OrderClickListener) : RecyclerV
             val totalPriceString = productInOrder.product.getTotalPriceString(itemsCount)
 
             //set data
-            item.imageInCart.setImageResource(productInOrder.product.imageResourceId)
-            item.productName.text = productInOrder.product.title
-            item.count.text = itemsCount.toString()
-            item.cardPrice.text = priceString
-            item.cardPriceTotal.text = totalPriceString
+            bindingItem.imageInCart.setImageResource(productInOrder.product.imageResourceId)
+            bindingItem.productName.text = productInOrder.product.title
+            bindingItem.count.text = itemsCount.toString()
+            bindingItem.cardPrice.text = priceString
+            bindingItem.cardPriceTotal.text = totalPriceString
 
             // action - decrease items count
-            item.actionDecreaseCount.setOnClickListener {
+            bindingItem.actionDecreaseCount.setOnClickListener {
                 v -> mOnClickListener.onViewClick(v, adapterPosition, item, productInOrder)
             }
 
             // action - increase items count
-            item.actionIncreaseCount.setOnClickListener {
+            bindingItem.actionIncreaseCount.setOnClickListener {
                 v -> mOnClickListener.onViewClick(v, adapterPosition, item, productInOrder)
             }
 
             // action - remove order from cart (linear layout which contains cart icon)
-            item.deleteFromCartLL.setOnClickListener {
+            bindingItem.deleteFromCartLL.setOnClickListener {
                 v -> mOnClickListener.onViewClick(v, adapterPosition, item, productInOrder)
             }
 
             // action - remove order from cart
-            item.deleteFromCart.setOnClickListener {
+            bindingItem.deleteFromCart.setOnClickListener {
                 v -> mOnClickListener.onViewClick(v, adapterPosition, item, productInOrder)
             }
         }
-
     }
 }
