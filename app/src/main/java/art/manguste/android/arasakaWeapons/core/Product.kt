@@ -1,8 +1,6 @@
-package art.manguste.android.arasakaWeapons.data
+package art.manguste.android.arasakaWeapons.core
 
 import android.os.Parcelable
-import art.manguste.android.arasakaWeapons.util.CatalogType
-import art.manguste.android.arasakaWeapons.util.WeaponType
 import kotlinx.android.parcel.Parcelize
 import java.text.DecimalFormat
 

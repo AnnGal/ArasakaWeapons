@@ -1,23 +1,17 @@
-package art.manguste.android.arasakaWeapons
+package art.manguste.android.arasakaWeapons.productdetail
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import art.manguste.android.arasakaWeapons.util.WeaponType
-import art.manguste.android.arasakaWeapons.data.Order
-import art.manguste.android.arasakaWeapons.data.Product
-import kotlinx.android.synthetic.main.activity_card_detail.*
-import java.text.DecimalFormat
+import art.manguste.android.arasakaWeapons.order.OrderActivity
+import art.manguste.android.arasakaWeapons.R
+import art.manguste.android.arasakaWeapons.core.Product
 
 /**
  * Activity for detail info about specific product
  */
-class CardDetailActivity : AppCompatActivity() {
-
-
+class ProductDetailActivity : AppCompatActivity() {
 
     private lateinit var product: Product
     private var itemsCount = 1
@@ -25,8 +19,9 @@ class CardDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_card_detail)
+        setContentView(R.layout.activity_product_detail)
 
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = ""
@@ -39,13 +34,15 @@ class CardDetailActivity : AppCompatActivity() {
         setCardData()
 
         // load items count after rotation
-        if (savedInstanceState != null) {
+        //todo fix
+       /* if (savedInstanceState != null) {
             count.text = savedInstanceState.getString(Companion.SAVE_KEY_ITEM_COUNT)
-        }
+        }*/
 
+        // todo fix view binding
         // Buttons Listeners -->
         // increase items count action
-        actionIncreaseCount.setOnClickListener { // if we still can increase - do it
+        /*actionIncreaseCount.setOnClickListener { // if we still can increase - do it
             if (Order.maxNumPerProduct > itemsCount) {
                 itemsCount++
                 updateItemsAndPrice()
@@ -74,7 +71,7 @@ class CardDetailActivity : AppCompatActivity() {
         cartImage.setOnClickListener { moveToOrderActivity() }
         layoutToCart.setOnClickListener { moveToOrderActivity() }
         countInCart.setOnClickListener { moveToOrderActivity() }
-
+*/
         checkCartImage()
     }
 
@@ -94,7 +91,8 @@ class CardDetailActivity : AppCompatActivity() {
      * loads data from Product object, which we just received from "parcel"
      */
     private fun setCardData() {
-        productName.text = product.title
+        // todo fix viewbinding
+        /*productName.text = product.title
         if (product.weaponType == WeaponType.NONE) {
             productType.visibility = View.GONE
         } else {
@@ -103,28 +101,29 @@ class CardDetailActivity : AppCompatActivity() {
         description.text = product.fullDescription
         image.setImageResource(product.imageResourceId)
         priceItem = product.price // for UI test
-        updateItemsAndPrice()
+        updateItemsAndPrice()*/
     }
 
     /**
      * update TextView with items count and price
      */
     private fun updateItemsAndPrice() {
-        count.text = itemsCount.toString()
-        price.text = DecimalFormat("##.##").format(itemsCount * priceItem)
+        // todo fix viewbinding
+        /*count.text = itemsCount.toString()
+        price.text = DecimalFormat("##.##").format(itemsCount * priceItem)*/
     }
 
     /**
      * Refresh cart icon after order changes
      */
     private fun checkCartImage() {
-
-        if (Order.isAnyProductInCart) {
+// todo fix viewbinding
+/*        if (Order.isAnyProductInCart) {
             countInCart.text = Order.itemsCount
             countInCart.visibility = View.VISIBLE
         } else {
             countInCart.visibility = View.INVISIBLE
-        }
+        }*/
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -138,7 +137,8 @@ class CardDetailActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         // saves how many items were selected
-        outState.putString(SAVE_KEY_ITEM_COUNT, count.text.toString())
+        // todo fix viewbinding
+        /*outState.putString(SAVE_KEY_ITEM_COUNT, count.text.toString())*/
     }
 
     companion object {

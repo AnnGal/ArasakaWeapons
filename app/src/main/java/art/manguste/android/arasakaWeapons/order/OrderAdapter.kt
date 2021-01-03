@@ -1,15 +1,14 @@
-package art.manguste.android.arasakaWeapons.ui
+package art.manguste.android.arasakaWeapons.order
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import art.manguste.android.arasakaWeapons.R
-import art.manguste.android.arasakaWeapons.ui.OrderAdapter.OrderViewHolder
-import art.manguste.android.arasakaWeapons.data.Order
-import art.manguste.android.arasakaWeapons.data.ProductInOrder
+import art.manguste.android.arasakaWeapons.order.OrderAdapter.OrderViewHolder
+import art.manguste.android.arasakaWeapons.core.Order
+import art.manguste.android.arasakaWeapons.core.ProductInOrder
 import com.google.android.material.card.MaterialCardView
-import kotlinx.android.synthetic.main.order_card_view.view.*
 
 /**
  * Adapter for order activity. Shows products in the cart.
@@ -45,7 +44,8 @@ class OrderAdapter(private val mOnClickListener: OrderClickListener) : RecyclerV
          * place product info on a view card
          */
         fun bind(productInOrder: ProductInOrder) {
-            this.productInOrder = productInOrder
+            // todo fix viewbinding
+           /* this.productInOrder = productInOrder
 
             // get data
             val itemsCount = productInOrder.itemsInOrder
@@ -77,7 +77,7 @@ class OrderAdapter(private val mOnClickListener: OrderClickListener) : RecyclerV
             // action - remove order from cart
             item.deleteFromCart.setOnClickListener {
                 v -> mOnClickListener.onViewClick(v, adapterPosition, item, productInOrder)
-            }
+            }*/
         }
 
     }

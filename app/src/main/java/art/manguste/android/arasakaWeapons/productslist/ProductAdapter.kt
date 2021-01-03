@@ -1,24 +1,20 @@
-package art.manguste.android.arasakaWeapons.ui
+package art.manguste.android.arasakaWeapons.productslist
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import art.manguste.android.arasakaWeapons.R
-import art.manguste.android.arasakaWeapons.ui.CardAdapter.CardViewHolder
-import art.manguste.android.arasakaWeapons.util.CatalogType
-import art.manguste.android.arasakaWeapons.util.WeaponType
-import art.manguste.android.arasakaWeapons.data.Product
+import art.manguste.android.arasakaWeapons.productslist.ProductAdapter.CardViewHolder
+import art.manguste.android.arasakaWeapons.core.CatalogType
+import art.manguste.android.arasakaWeapons.core.Product
 import com.google.android.material.card.MaterialCardView
-import kotlinx.android.synthetic.main.product_card_view.view.*
-import java.text.DecimalFormat
 
 /**
  * Adapter for main RecyclerView with product cards
  */
-class CardAdapter(private val catalogType: CatalogType,
-                  private val mOnClickListener: ListItemClickListener) : RecyclerView.Adapter<CardViewHolder>() {
+class ProductAdapter(private val catalogType: CatalogType,
+                     private val mOnClickListener: ListItemClickListener) : RecyclerView.Adapter<CardViewHolder>() {
 
 
     interface ListItemClickListener {
@@ -55,7 +51,8 @@ class CardAdapter(private val catalogType: CatalogType,
         private var product: Product? = null
 
         fun bind(product: Product) {
-            this.product = product
+            // todo fix viewbinding
+            /*this.product = product
             (item.findViewById<View>(R.id.productName) as TextView).text = product.title
             if (product.weaponType == WeaponType.NONE) {
                 item.findViewById<View>(R.id.productType).visibility = View.GONE
@@ -70,7 +67,7 @@ class CardAdapter(private val catalogType: CatalogType,
             // on cart icon click
             item.addCartButton.setOnClickListener { v -> mOnClickListener.onViewClick(v, adapterPosition, item, product) }
             item.ll_add_position_in_cart.setOnClickListener { v -> mOnClickListener.onViewClick(v, adapterPosition, item, product) }
-            itemView.setOnClickListener { mOnClickListener.onListItemClick(adapterPosition, product) }
+            itemView.setOnClickListener { mOnClickListener.onListItemClick(adapterPosition, product) }*/
         }
     }
 }

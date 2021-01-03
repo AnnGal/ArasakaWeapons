@@ -18,10 +18,10 @@
                 android:value="art.manguste.android.arasakaWeapons.MainActivity" />
         </activity>
         <activity
-            android:name="art.manguste.android.arasakaWeapons.OrderActivity"
+            android:name="art.manguste.android.arasakaWeapons.order.OrderActivity"
             android:theme="@style/ArasakaTheme" />
         <activity
-            android:name="art.manguste.android.arasakaWeapons.CardDetailActivity"
+            android:name="art.manguste.android.arasakaWeapons.productdetail.ProductDetailActivity"
             android:theme="@style/ArasakaBlackToolbarTheme" />
         <activity android:name="art.manguste.android.arasakaWeapons.MainActivity">
             <intent-filter>

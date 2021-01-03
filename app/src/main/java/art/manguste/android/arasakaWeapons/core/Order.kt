@@ -1,4 +1,4 @@
-package art.manguste.android.arasakaWeapons.data
+package art.manguste.android.arasakaWeapons.core
 
 import android.util.Log
 import art.manguste.android.arasakaWeapons.util.getAssignedDroneId

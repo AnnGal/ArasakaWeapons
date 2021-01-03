@@ -2,17 +2,16 @@ package art.manguste.android.arasakaWeapons
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import art.manguste.android.arasakaWeapons.util.CatalogType
-import art.manguste.android.arasakaWeapons.util.WeaponType
-import art.manguste.android.arasakaWeapons.data.Order
-import art.manguste.android.arasakaWeapons.data.Product
-import art.manguste.android.arasakaWeapons.ui.CardListFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import art.manguste.android.arasakaWeapons.core.CatalogType
+import art.manguste.android.arasakaWeapons.core.WeaponType
+import art.manguste.android.arasakaWeapons.core.Order
+import art.manguste.android.arasakaWeapons.core.Product
+import art.manguste.android.arasakaWeapons.order.OrderActivity
+import art.manguste.android.arasakaWeapons.productslist.ProductsListFragment
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
@@ -22,15 +21,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initFakeDBData()
 
+        // todo fix viewbinding
         //set scroller
-        viewPager.adapter = SectionPagerAdapter(supportFragmentManager)
+       /* viewPager.adapter = SectionPagerAdapter(supportFragmentManager)
         //set tabLayout
         tabLayout.setupWithViewPager(viewPager)
 
         // move to cart activity
         cartImage.setOnClickListener { moveToTheCart() }
         countInCart.setOnClickListener { moveToTheCart() }
-        layoutToCart.setOnClickListener { moveToTheCart() }
+        layoutToCart.setOnClickListener { moveToTheCart() }*/
 
         checkCartImage()
     }
@@ -46,20 +46,21 @@ class MainActivity : AppCompatActivity() {
 
     fun checkCartImage() {
         println("isAnyProductInCart = ${Order.isAnyProductInCart}")
-        if (Order.isAnyProductInCart) {
+        // todo fix viewbinding
+        /*if (Order.isAnyProductInCart) {
             countInCart.text = Order.itemsCount
             countInCart.visibility = View.VISIBLE
         } else {
             countInCart.visibility = View.INVISIBLE
-        }
+        }*/
     }
 
     private inner class SectionPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm!!, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         override fun getItem(position: Int): Fragment {
             return when (position) {
-                0 -> CardListFragment.newInstance(CatalogType.WEAPON)
-                1 -> CardListFragment.newInstance(CatalogType.SERVICE)
+                0 -> ProductsListFragment.newInstance(CatalogType.WEAPON)
+                1 -> ProductsListFragment.newInstance(CatalogType.SERVICE)
                 else -> throw Exception("Unregistered tab")
             }
         }

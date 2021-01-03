@@ -1,4 +1,4 @@
-package art.manguste.android.arasakaWeapons
+package art.manguste.android.arasakaWeapons.order
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -6,15 +6,12 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
-import art.manguste.android.arasakaWeapons.ui.OrderAdapter.OrderClickListener
-import art.manguste.android.arasakaWeapons.data.Order
-import art.manguste.android.arasakaWeapons.data.ProductInOrder
-import art.manguste.android.arasakaWeapons.ui.OrderAdapter
+import art.manguste.android.arasakaWeapons.PlacedOrderActivity
+import art.manguste.android.arasakaWeapons.R
+import art.manguste.android.arasakaWeapons.order.OrderAdapter.OrderClickListener
+import art.manguste.android.arasakaWeapons.core.Order
+import art.manguste.android.arasakaWeapons.core.ProductInOrder
 import com.google.android.material.card.MaterialCardView
-import kotlinx.android.synthetic.main.activity_order.*
-import kotlinx.android.synthetic.main.order_card_view.view.*
-import java.text.DecimalFormat
 
 class OrderActivity : AppCompatActivity(), OrderClickListener {
 
@@ -27,10 +24,11 @@ class OrderActivity : AppCompatActivity(), OrderClickListener {
         this.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         title = "Cart"
 
+        // todo fix viewbinding
         // add an adapter
-        recycler.adapter = OrderAdapter(this)
+        /*recycler.adapter = OrderAdapter(this)
         // connect data and view
-        recycler.layoutManager = GridLayoutManager(this, 1)
+        recycler.layoutManager = GridLayoutManager(this, 1)*/
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -50,14 +48,15 @@ class OrderActivity : AppCompatActivity(), OrderClickListener {
      * if no products in the cart shows special layout
      */
     private fun checkLayoutsVisibility() {
-        if (Order.isAnyProductInCart) {
+        // todo fix viewbinding
+        /*if (Order.isAnyProductInCart) {
             layoutFullCart.visibility = View.VISIBLE
             layoutEmptyCart.visibility = View.GONE
             refreshTotalPrice()
         } else {
             layoutFullCart.visibility = View.GONE
             layoutEmptyCart.visibility = View.VISIBLE
-        }
+        }*/
     }
 
     override fun onViewClick(v: View, position: Int, item: MaterialCardView, productInOrder: ProductInOrder) {
@@ -73,11 +72,12 @@ class OrderActivity : AppCompatActivity(), OrderClickListener {
             // change items count
             productInOrder.itemsInOrder += diff
 
+            // todo fix viewbinding
             // set actual information
-            item.count.text = productInOrder.itemsInOrder.toString()
+         /*   item.count.text = productInOrder.itemsInOrder.toString()
             item.cardPrice.text = productInOrder.product.priceString
             item.cardPriceTotal.text =
-                    productInOrder.product.getTotalPriceString(productInOrder.itemsInOrder)
+                    productInOrder.product.getTotalPriceString(productInOrder.itemsInOrder)*/
 
             // change order total cost
             refreshTotalPrice()
@@ -105,7 +105,8 @@ class OrderActivity : AppCompatActivity(), OrderClickListener {
     private fun confirmationAndDelete(productInOrder: ProductInOrder, position: Int) {
         val builder = AlertDialog.Builder(this)
 
-        builder.apply {
+        // todo fix viewbinding
+       /* builder.apply {
             // asking
             setMessage(R.string.dlg_q_delete_from_order)
             // on ok - delete from order
@@ -119,14 +120,15 @@ class OrderActivity : AppCompatActivity(), OrderClickListener {
             setNegativeButton(R.string.dlg_no_chancel) { dialog, _ -> dialog?.dismiss() }
             //
             builder.create().show()
-        }
+        }*/
     }
 
     /**
      * Refresh actual order cost
      */
     private fun refreshTotalPrice() {
-        val priceString: String = DecimalFormat("##.##").format(Order.totalPrice).toString()
-        totalPrice.text = priceString
+        // todo fix viewbinding
+        /*val priceString: String = DecimalFormat("##.##").format(Order.totalPrice).toString()
+        totalPrice.text = priceString*/
     }
 }

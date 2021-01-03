@@ -1,4 +1,4 @@
-package art.manguste.android.arasakaWeapons.util
+package art.manguste.android.arasakaWeapons.core
 
 /**
  * What kind of weapon it is
